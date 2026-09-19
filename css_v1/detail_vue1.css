@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.2vw;
+}
+
+.detail {
+    background: wheat;
+    padding: 5.9vw 1vw 0 25vw;
+
+}
+
+.det1 {
+    width: 100%;
+    border-radius: 1vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card_fondImage {
+    width: 100%;
+    position: relative;
+    height: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1vw;
+
+}
+
+
+.nom_bout {
+    z-index: 1;
+    font-size: 5vw;
+    color: yellow;
+    position: relative;
+    text-transform: uppercase;
+
+}
+
+.desc_box{
+    z-index: 1;
+    width: 60%;
+    color: wheat;
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.desc_box em {
+    font-size: 2vw;
+    color: orange;
+}
+
+.desc_box em b {
+    font-size: 2vw;
+    text-transform: uppercase;
+}
+
+.retour {
+    z-index: 1;
+    padding: .5vw;
+    border-radius: .5vw;
+    background: wheat;
+    text-transform: uppercase;
+    border: solid .1vw orangered;
+}
+
+.retour a {
+    color: orangered;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.fond {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1vw;
+
+
+}
+
+.fond_hr {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.425);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1vw;
+
+}
+
+.produit {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 3vw;
+    justify-content: space-between;
+}
+
+
+.bar_but{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: .5vw;
+    
+}
+
+.but_type{
+    padding: .5vw 1vw;
+    width: 10vw;
+    border-radius: .5vw;
+    border: solid .1vw white;
+    background: moccasin;
+}
+
+.but_type a {
+    text-decoration: none;
+    color: blueviolet;
+    text-transform: capitalize;
+}
+
+.box_prox {
+    width: 20vw;
+    height: 24vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1vw;
+    
+    overflow: hidden;
+    transition: 1.5s;
+
+}
+
+.box_prox:hover{
+    border: solid .1vw white;
+    height: 26vw;
+}
+
+.img_pr{
+    width: 100%;
+    height: 15vw;
+}
+
+
+.nom_pr{
+    text-transform: capitalize;
+    font-size: 2vw;
+    color: yellow;
+}
+
+.desc_pr{
+    color: blue;
+    text-align: center;
+    font-weight: lighter;
+}
+
+.bay_pr{
+    width: 100%;
+    padding: .5vw;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.prix_pr{
+    font-size: 2vw;
+    color: red;
+}
+
+.butbay{
+    padding: .2vw;
+    width: 5vw;
+    border-radius: .5vw;
+    border: solid .1vw red;
+    text-transform: capitalize;
+    color: yellowgreen;
+    background: yellow;
+}
+
+
+
+.pr_gros{
+    color: midnightblue;
+}
+
+.pr_gros b {
+    color: red;
+}
+
+
+/* carte produit entière visible au chargement (plus de hauteur fixe dévoilée au survol) */
+.box_prox,
+.box_prox:hover {
+    height: auto;
+    padding-bottom: .5vw;
+}

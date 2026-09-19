@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.2vw;
+}
+
+#tete_vue3 {
+    background: transparent;
+    position: fixed;
+    width: 25vw;
+    padding: 6vw .5vw 0;
+}
+
+#bord_v3{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: .5vw;
+    transition: 5s;
+}
+
+#bord_v3:hover{
+    height: 42vw;
+    overflow-y: scroll;
+
+}
+
+.ah_pdp {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.img_ah {
+    width: 60%;
+    height: 10vw;
+    position: relative;
+    background: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1vw;
+    overflow: hidden;
+}
+
+.img_pdp {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+
+.v3_hr{
+    width: 100%;
+    height: 100%;
+    background:rgba(255, 99, 71, 0.438);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.v3_nom{
+    z-index: 1;
+    color: yellow;
+    font-size: 2vw;
+    text-transform: capitalize;
+
+}
+.ah_noms {
+    width: 100%;
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+    padding: .5vw;
+    position: relative;
+
+
+}
+
+.ah_nom {
+    font-size: 2vw;
+    text-transform: capitalize;
+    color: red;
+}
+
+.toust{
+    width: 100%;
+    padding: .5vw 1vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* background: red; */
+}
+
+.tou_ve{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: blue;
+    text-transform: capitalize;
+}
+
+.tou_ve b{
+    color: grey;
+}
+
+.modifier{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: .5vw .4vw 0;
+    height: 3vw;
+    transition: 2s;
+    overflow: hidden;
+    border-bottom: solid .1vw white;
+}
+.modifier:hover{
+    height: 30vw; 
+
+}
+
+.afir_modi{
+    color: midnightblue;
+
+    text-align: center;
+    margin-bottom: 1vw;
+}
+
+.modi{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_modi{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 100%;
+}
+
+.inp_modif{
+    margin: .2vw;
+    width: 100%;
+    border-radius: .5vw;
+    padding: .5vw;
+    border: solid .1vw blueviolet;
+
+}
+
+.but_mode{
+    border-radius: .5vw;
+    text-transform: capitalize;
+    border: none;
+    background: tan;
+    color: blue;
+    padding: .3vw;
+    width: 7vw;
+}
+
+.modifier_px{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: .5vw .4vw 0;
+    height: 3vw;
+    transition: 2s;
+    border-bottom: solid .1vw white;
+    overflow: hidden;
+}
+
+.modifier_px:hover{
+    height: 30vw; 
+
+}
+
+
+.suprim {
+    width: 100%;
+    padding: .5vw;
+    border: solid .1vw white;
+    background: linear-gradient(to left, rgba(0, 0, 255, 0.411), white, rgba(0, 0, 255, 0.39));
+    position: relative;
+    margin: 1vw 0 .5vw;
+    
+    display: flex;
+    flex-wrap: wrap;
+    transition: 1s;
+    box-shadow: 0 0 .5vw blue;
+
+}
+
+.suprim:hover {
+    box-shadow: 0 0 .5vw blue;
+    border-radius: 1vw;
+}
+
+.boi_sup {
+    width: 100%;
+    position: relative;
+    border: solid .1vw brown;
+    border-radius: .5vw;
+    margin-bottom: .5vw;
+    background: rgba(255, 166, 0, 0.404);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: .5vw;
+    /* height: 4vw; */
+    /* align-items: center; */
+
+}
+
+.img_sup {
+    width: 5vw;
+    height: 5vw;
+    background: blueviolet;
+    border-radius: .5vw;
+}
+
+.prod_sup{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.prod1{
+    font-size: 1.5vw;
+    width: 100%;
+    color: orangered;
+    text-transform: capitalize;
+    margin-left: 2vw;
+}
+
+.prod {
+    color: green;
+    font-size: 1.5vw;
+    width: 50%;
+    text-transform: capitalize;
+}
+
+.suprimer{
+    border: solid .1vw red;
+    border-radius: .2vw;
+    color: red;
+    padding: .2vw;
+    margin: .5vw;
+}
+
+
+
+.suprimer:hover{
+    color: blue;
+    box-shadow: 0 0 .5vw blue;
+
+}

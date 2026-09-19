@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.2vw;
+}
+
+.tete{
+    width: 100%;
+    background: url(../photo/bfab2e74e5c5f55f06d0b7f737bd44b2.jpg)rgba(0, 0, 0, 0);
+    background-size: 100% 100%;
+    background-blend-mode: darken;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 1vw;
+    height: 30vw;
+    /* color: red; */
+    padding: 2vw;
+}
+
+.bout_nom{
+    font-size: 5vw;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 1vw;
+    color: red;
+}
+
+.bout_b{
+    font-size: 3vw;
+    text-transform: capitalize;
+    color: yellow;
+
+}
+
+.bout_l{
+    text-align: center;
+    color: black;
+    width: 60%;
+    font-size: 2vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bar_rech{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1vw;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.inp_rech{
+    padding: .7vw;
+    width: 30vw;
+    border-radius: .5vw 0 0 .5vw;
+    border: solid .1vw blue;
+    border-right: none;
+    background: rgba(255, 255, 255, 0.801);
+    
+}
+
+.but_rech{
+        padding: .7vw;
+    /* width: 30vw; */
+    border-radius: 0 .5vw .5vw 0;
+    border: solid .1vw white;
+    border-left: none;
+    background: rgba(255, 255, 255, 0.932);
+
+    color: mediumblue;
+    text-transform: capitalize;
+}
+

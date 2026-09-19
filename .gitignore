@@ -1,0 +1,30 @@
+# ------------------------------------------------------------
+# Service Boutique - fichiers à ne pas mettre dans Git
+# ------------------------------------------------------------
+
+# images/ : on garde seulement les images utilisées par le site
+# (CSS, pages et données de départ de service_boutique.sql).
+# Les photos envoyées par les formulaires (produits, logos, profils)
+# sont des données locales : elles restent hors du dépôt.
+images/*
+!images/530a84242939663d13643c0fd06c3384.jpg
+!images/589526406_1632793001040725_1757453481169695622_n.png
+!images/592153484_873934788721774_5929162429058727677_n.png
+!images/6e81b8c8618fc0cd04d0976e0d24b0cb.jpg
+!images/bfab2e74e5c5f55f06d0b7f737bd44b2.jpg
+!images/dd35bbf03073f5f226e47fa4b1e00cc8.jpg
+!images/ddc38e0410a4bc66a99c6f1ebbb13e2a.jpg
+!images/fondpp_cap.jpg
+!images/kara.jpg
+!images/logo 1.png
+!images/logo 2.jpg
+!images/logo.jpg
+!images/pdp.jpg
+!images/produit.jpg
+
+# sauvegardes de base de données et fichiers système
+*.bak
+sauvegarde_*.sql
+Thumbs.db
+desktop.ini
+.DS_Store

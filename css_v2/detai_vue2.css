@@ -1,0 +1,478 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.2vw;
+}
+
+.detail {
+    background: wheat;
+    padding: 5.9vw 1vw 0 25vw;
+
+}
+
+.det1 {
+    width: 100%;
+    border-radius: 1vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card_fondImage {
+    width: 100%;
+    position: relative;
+    height: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1vw;
+
+}
+
+
+.nom_bout {
+    z-index: 1;
+    font-size: 5vw;
+    color: yellow;
+    position: relative;
+    text-transform: uppercase;
+
+}
+
+.desc_box{
+    z-index: 1;
+    width: 60%;
+    color: wheat;
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.desc_box em {
+    font-size: 2vw;
+    color: orange;
+}
+
+.desc_box em b {
+    font-size: 2vw;
+    text-transform: uppercase;
+}
+
+.retour {
+    z-index: 1;
+    padding: .5vw;
+    border-radius: .5vw;
+    background: wheat;
+    text-transform: uppercase;
+    border: solid .1vw orangered;
+}
+
+.retour a {
+    color: orangered;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.fond {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1vw;
+
+
+}
+
+.fond_hr {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.425);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1vw;
+
+}
+
+.produit {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 3vw;
+    justify-content: space-between;
+}
+
+
+.bar_but{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: .5vw;
+    
+}
+
+.but_type{
+    padding: .5vw 1vw;
+    width: 10vw;
+    border-radius: .5vw;
+    border: solid .1vw white;
+    background: moccasin;
+}
+
+.but_type a {
+    text-decoration: none;
+    color: blueviolet;
+    text-transform: capitalize;
+}
+
+.box_prox {
+    width: 20vw;
+    height: 24vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2vw;
+    position: relative;
+    overflow: hidden;
+    transition: 1s;
+
+}
+
+.box_prox:hover{
+    border: solid .1vw white;
+    height: 30.5vw;
+}
+
+.box_prox:hover .comments {
+    position: absolute;
+    left: 0;
+    top: -2.3vw;
+
+}
+
+.img_pr{
+    width: 100%;
+    height: 15vw;
+}
+
+
+.nom_pr{
+    text-transform: capitalize;
+    font-size: 2vw;
+    color: yellow;
+}
+
+.desc_pr{
+    color: blue;
+    text-align: center;
+    font-weight: lighter;
+}
+
+.bay_pr{
+    width: 100%;
+    padding: .5vw;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.prix_pr{
+    font-size: 2vw;
+    color: red;
+}
+
+.butbay{
+    padding: .2vw;
+    width: 5vw;
+    border-radius: .5vw;
+    border: solid .1vw red;
+    text-transform: capitalize;
+    color: yellowgreen;
+    background: yellow;
+}
+
+.comt{
+    margin-top: 1vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: 1s;
+    /* background: red; */
+}
+
+.div_com{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    position: relative;
+
+}
+
+.inp_com{
+    width: 90%;
+    border-radius: .5vw;
+    border: solid .1vw blue;
+    height: 3.5vw;
+    background: rgba(137, 43, 226, 0.192);
+}
+
+.but_com{
+    width: 9%;
+    box-shadow: 0 0 1vw blueviolet;
+    margin-bottom: .2vw;
+    border-radius: .5vw;
+    background: rgba(0, 0, 255, 0.89);
+    border: solid .1vw blue;
+    color: white;
+
+}
+
+.but_emj{
+    width: 9%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 0 1vw blueviolet;
+    border-radius: .5vw;
+    background: wheat;
+    border: solid .1vw blue;
+    color: yellow;
+}
+.comt_rec{
+    width: 100%;
+    height: 5vw;
+    background: red;
+    position: absolute;
+    left: -19vw;
+    top: 0;
+}
+
+.pr_gros{
+    color: midnightblue;
+}
+
+.pr_gros b {
+    color: red;
+}
+
+.comments{
+    padding: .3vw;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    width: 101%;
+    height: 2.4vw;
+    overflow: hidden;
+    background: wheat;
+    border: solid .1vw white;
+    border-bottom: none;
+    transition: 1.5s;
+
+
+}
+
+.comments:hover {
+    border: solid .1vw blueviolet;
+    background: rgba(245, 222, 179, 0.89);
+    height: 33vw;
+    overflow-y: scroll;
+    border-radius: 1vw;
+
+}
+
+.coment_af{
+    color: orange;
+    background: wheat;
+    padding: .3vw;
+    border-radius: .3vw;
+
+
+}
+
+.boit_coments{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /* background: red; */
+}
+
+
+.com_acht{
+    display: flex;
+    background: rgba(128, 128, 128, 0.253);
+    border: solid .1vw grey;
+    border-radius: .5vw;
+
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: .5vw;
+    margin: .2vw;
+}
+
+.img_acht{
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    background: blueviolet;
+}
+
+.nd_acht{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: solid .1vw white;
+}
+.nd_acht h3{
+    color: blue;
+    text-transform: capitalize;
+    /* background: red; */
+    width: 100%;
+}
+
+.nd_acht b{
+    color: grey;
+}
+.nd_acht button{
+    color: blue;
+    background: transparent;
+    border-radius: .5vw;
+    padding: .2vw;
+    border: solid .1vw blue;
+
+}
+
+.com_pra{
+    width: 100%;
+    /* background: teal; */
+}
+
+.fv{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4vw;
+    height: 4vw;
+    background: orangered;
+    clip-path: polygon(0 0, 100% 100%, 100% 0);
+}
+
+.fvr{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: .3vw;
+    width: 50%;
+    height: 50%;
+    background: white;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+/* bouton "envoyer" du commentaire (à côté de "Qu'en pensez-vous ?") */
+.div_com .inp_com{
+    width: 70%;
+    padding: .3vw;
+}
+
+.but_envoyer{
+    width: 28%;
+    font-size: 1vw;
+    padding: .3vw;
+    border-radius: .5vw;
+    background: blue;
+    border: solid .1vw blue;
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.but_envoyer:hover{
+    background: blueviolet;
+}
+
+
+/* ------------------------------------------------------------------
+   Carte produit entière visible, jusqu'aux commentaires
+   (avant : hauteur fixe + overflow hidden, les commentaires n'étaient
+   visibles qu'en survolant une bande de 2.4vw cachée sous la carte)
+   ------------------------------------------------------------------ */
+.produit {
+    align-items: flex-start;
+}
+
+.box_prox,
+.box_prox:hover {
+    height: auto;
+    padding-bottom: .5vw;
+}
+
+.box_prox:hover {
+    border: solid .1vw white;
+    border-radius: .5vw;
+}
+
+.box_prox:hover .comments {
+    position: static;
+}
+
+.comments,
+.comments:hover {
+    height: auto;
+    max-height: 18vw;
+    overflow-y: auto;
+    border-radius: .5vw;
+    margin-top: .5vw;
+}
+
+/* produit épuisé : bouton "buy" désactivé */
+.butbay:disabled {
+    background: lightgrey;
+    color: grey;
+    border-color: grey;
+}
+
+
+/* ------------------------------------------------------------------
+   Étoile ★ des produits = bouton favori (ajax/favori.js)
+   blanche : pas en favori / dorée : en favori
+   ------------------------------------------------------------------ */
+/* tout le coin est cliquable : le triangle est dessiné par ::before
+   (avec clip-path sur le bouton lui-même, un clic hors du triangle était perdu) */
+button.fv {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 2;
+    clip-path: none;
+    background: transparent;
+}
+
+button.fv::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: orangered;
+    clip-path: polygon(0 0, 100% 100%, 100% 0);
+}
+
+button.fv .fvr {
+    z-index: 1;
+}
+
+button.fv:hover .fvr {
+    background: yellow;
+}
+
+button.fv.en_favori .fvr {
+    background: gold;
+}
+
+button.fv.en_favori::before {
+    background: red;
+}

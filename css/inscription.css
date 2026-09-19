@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.2vw;
+}
+
+#inscrit {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.form_inscr {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    text-transform: capitalize;
+    padding: 5vw;
+    /* background: red; */
+}
+
+
+
+.nom_box {
+    font-size: 2vw;
+    font-weight: bold;
+    color: red;
+}
+
+.inp_nom {
+    border-radius: .3vw;
+    padding: .5vw;
+    margin: .5vw 3vw;
+    width: 20vw;
+}
+
+.pdp {
+    border: solid .1vw blueviolet;
+    padding: .5vw;
+    border-radius: .5vw 1vw 0 0;
+    border-bottom: none;
+    color: blueviolet;
+}
+
+.inp_pdp {
+    border: solid .1vw blueviolet;
+    border-top: none;
+    padding: .5vw;
+    background: rgba(0, 0, 255, 0.123);
+
+}
+
+.securite {
+    display: flex;
+    border: solid .15vw red;
+    padding: 1vw;
+    width: 100%;
+    flex-direction: column;
+    margin: 1vw 0;
+    background: rgba(255, 0, 0, 0.116);
+}
+
+.code_n {
+    color: red;
+}
+
+.inp_n {
+    border-radius: .3vw;
+    border: solid .1vw red;
+    margin-bottom: .5vw;
+    padding: .3vw;
+    color: mediumvioletred;
+}
+
+.type {
+    width: 100%;
+    /* background: red; */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.lab_type {
+    color: blue;
+    width: 100%;
+    margin-bottom: .5vw;
+    /* background: green; */
+
+}
+
+.nbr_type {
+    width: 10vw;
+    margin: 0 .5vw .5vw;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: .5vw;
+    border: solid .1vw blue;
+    padding: .3vw;
+}
+
+.but_type {
+    width: 2vw;
+    height: 2vw;
+    background: rgba(0, 0, 255, 0.397);
+    border: none;
+}
+
+.suivent {
+    margin: 1vw auto;
+    width: 10vw;
+    padding: .5vw;
+    border-radius: .5vw;
+    border: double .1vw red;
+    color: orangered;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: rgba(0, 0, 255, 0.171);
+
+}
+
+.prod{
+    border: solid .1vw red;
+    margin: 2vw;
+    padding: 1vw;
+    border-radius: 1vw;
+    /* height: 40vw; */
+    background: rgba(255, 255, 0, 0.384);
+}
+
+
+.lab_prod {
+    color: blueviolet;
+    margin-left: 1vw;
+}
+
+.inp_prod {
+    border-radius: .5vw;
+    border: solid .1vw blue;
+    background: wheat;
+    /* height: 5vw; */
+    padding: .5vw;
+}
+
+#prix_prd {
+    margin-top: 3vw;
+    border-radius: 1vw;
+    padding: 1vw;
+    border: solid .1vw red;
+    background: rgba(255, 166, 0, 0.397);
+    display: flex;
+
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+#prix_prd h1{
+    font-size: 2vw;
+    text-align: center;
+    color: red;
+}
+
+#prix_prd label{
+    color: mediumblue;
+    font-size: 1.5vw;
+}
+
+#prix_prd input{
+    padding: .5vw;
+    border: solid .1vw green;
+    border-radius: .5vw;
+}
+
+#fini{
+    margin: 0 auto;
+    padding: .5vw;
+    text-transform: capitalize;
+    color: orangered;
+    background: rgba(165, 42, 42, 0.377);
+    border: solid .1vw red;
+    border-radius: .5vw;
+    width: 10vw;
+    margin-top: 1vw;
+    font-weight: bold;
+
+}
+
+.recu{
+    padding: 1vw;
+    width: 30vw;
+    background: rgba(0, 0, 255, 0.219);
+    height: 100vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recu_pro{
+    border: solid .1vw blue;
+    background: rgba(137, 43, 226, 0.308);
+    width: 100%;
+    height: 10vw;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 1vw;
+    padding: .5vw;
+}
+
+.recu_pro img {
+    width: 3vw;
+    height: 3vw;
+    background: blueviolet;
+
+
+}
+
+.recu_pro h3 {
+    margin-left: 2vw;
+    width: 5vw;
+    color: red;
+    text-transform: uppercase;
+}
+
+.recu_pro h4 {
+    color: blue;
+    text-transform: capitalize;
+    border-bottom: solid .1vw wheat;
+    height: 3vw;
+}
+

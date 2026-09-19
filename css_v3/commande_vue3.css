@@ -1,0 +1,138 @@
+/* "Commandes reçues" du tableau de bord vendeur (vue3.php) */
+
+.commandes_recues {
+    width: 100%;
+    margin: 0 3vw 3vw;
+    padding: 1.5vw;
+    border-radius: 1vw;
+    border: solid .1vw blueviolet;
+    background: rgba(128, 128, 128, 0.15);
+}
+
+.titre_commandes {
+    font-size: 2.2vw;
+    color: red;
+    text-transform: uppercase;
+    margin-bottom: 1vw;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.nouvelles {
+    font-size: 1.2vw;
+    color: white;
+    background: orangered;
+    border-radius: 1vw;
+    padding: .2vw .8vw;
+    text-transform: none;
+}
+
+.aucune_commande {
+    color: grey;
+    text-align: center;
+}
+
+.commande {
+    border: solid .1vw brown;
+    border-radius: 1vw;
+    background: rgba(255, 166, 0, 0.25);
+    padding: 1vw;
+    margin-bottom: 1vw;
+}
+
+/* commande à traiter : bien visible */
+.commande_en_attente {
+    border: solid .2vw orangered;
+    box-shadow: 0 0 1vw orange;
+}
+
+.commande_annulee,
+.commande_livree {
+    opacity: .7;
+}
+
+.commande_tete {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.commande_img {
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.commande_client {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.commande_client b {
+    color: blue;
+    font-size: 1.5vw;
+    text-transform: capitalize;
+}
+
+.commande_client span {
+    color: grey;
+}
+
+.statut {
+    padding: .2vw .8vw;
+    border-radius: 1vw;
+    color: white;
+}
+
+.statut_en_attente { background: orange; }
+.statut_acceptee { background: blue; }
+.statut_livree { background: green; }
+.statut_annulee { background: grey; }
+
+.commande_lignes {
+    margin: .8vw 0 .8vw 5vw;
+    color: midnightblue;
+}
+
+.commande_lignes b {
+    color: red;
+}
+
+.commande_pied {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.commande_pied i {
+    color: orangered;
+}
+
+.commande_total {
+    color: red;
+    font-weight: bold;
+    font-size: 1.6vw;
+}
+
+.commande_actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: .8vw;
+    margin-top: .8vw;
+}
+
+.but_statut {
+    padding: .4vw 1.2vw;
+    border-radius: .5vw;
+    border: none;
+    color: white;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.but_accepter { background: blue; }
+.but_livrer { background: green; }
+.but_annuler { background: white; color: red; border: solid .1vw red; }

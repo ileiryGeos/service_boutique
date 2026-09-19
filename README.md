@@ -1,0 +1,223 @@
+# Service Boutique — projet final (fusion)
+
+Ce dossier réunit en **un seul projet** le travail de chaque membre du groupe.
+Les dossiers d'origine n'ont pas été modifiés.
+
+## Installation (WampServer)
+
+1. Cloner le dépôt dans `C:\wamp64\www\` (le dossier doit s'appeler `service_boutique`) :
+   `git clone <url-du-dépôt> C:\wamp64\www\service_boutique`
+2. Dans phpMyAdmin, importer **`service_boutique.sql`**. Il crée la base `service_boutique`.
+3. Si besoin, changer les identifiants MySQL dans **`config/server.php`** (c'est le seul fichier de configuration).
+4. Ouvrir http://localhost/service_boutique/
+
+Les fichiers du modèle HTML/CSS (`css/`, `css_v1/`, `css_v2/`, `css_v3/`, `images/`, `photo/`) viennent du dossier `tdgroup`.
+`css_v1/` est utilisé par les pages publiques `vue1.php` et `suit_vue1.php`.
+Les photos envoyées par les formulaires sont aussi enregistrées dans `images/`. Elles ne sont pas mises dans le dépôt Git (voir `.gitignore`) : seules les images utilisées par le site et les données de départ y sont.
+
+### Comptes (mot de passe `1234` pour tous)
+
+| Rôle | Identifiants |
+|---|---|
+| Acheteur | email `acheteur@demo.mg` |
+| Vendeur | nom de boutique `Demo` (connexion : nom de la boutique + mot de passe) |
+
+Les autres comptes de départ utilisent aussi `1234` : acheteurs `rakoto@exemple.mg`, `miia@exemple.mg`, `alderson@exemple.mg`, `bozyy@exemple.mg` ; boutiques `Zara` et `KOTO`.
+Les emails et téléphones de départ sont fictifs.
+
+## Parcours
+
+```
+index.php → connection.php   (bouton « ignore » → vue1.php → suit_vue1.php?id=… : visite sans compte)
+   ├─ Acheteur : connexion.php ─────→ vue2.php (profil + liste des boutiques)
+   │   (inscription : profil.php)        └→ suit_vue2.php?id=… (boutique, produits, commentaires)
+   └─ Vendeur  : connecter() ───────→ vue3.php (profil, ajout / suppression de produits)
+       (inscription : inscription.php)   └→ suit_vue3.php (ma boutique + commentaires des clients)
+deconnexion.php : déconnexion (acheteur et vendeur)
+```
+
+## Qui a fait quoi → où c'est maintenant
+
+| Partie | Fichiers du projet final |
+|---|---|
+| **Daddy** (connexion + profil acheteur) | `connexion.php`, `profil.php` (inscription acheteur), formulaire acheteur de `connection.php`, protection des pages et affichage du profil depuis la session dans `vue2.php` / `suit_vue2.php` |
+| **Steve** (produits) | `api/add_prod_api.php`, `api/list_prod_inscri_api.php`, `functions/func_prod.php`, `utils/upload_file.php`, `ajax/ajout_prod_inscri.js`, formulaire produit de `inscription.php`, table `produits` |
+| **Hajatiana** (commentaires) | ajout et affichage des commentaires par produit dans `suit_vue2.php`, table `commentaire` |
+| **Zara** (inscription + connexion vendeur) | `functions/inscription_boutique.php`, formulaire boutique de `inscription.php`, formulaire vendeur de `connection.php`, `vue3.php`, table `inscription_vendeur` |
+| **Karine** (acheteur) | `functions/acheteur.php`, `api/get_acheteur.php`, `api/update_acheteur.php`, `ajax/acheteur.js`, liste des boutiques de `vue2.php`, en-tête et produits de la boutique dans `suit_vue2.php` |
+
+## Base de données unique
+
+Chaque partie avait sa propre base (`prov3`, `boutiques`, `boutique`, `varotra`, `gestion_de_stock`).
+Quand deux parties avaient créé une table pour la même chose, on garde la table de la personne responsable de cette partie :
+
+| Table finale | Vient de | Remplace aussi (Karine / Hajatiana) |
+|---|---|---|
+| `users` (acheteurs) | Daddy | `profil_acheteur` |
+| `inscription_vendeur` (boutiques) | Zara | `boutique` |
+| `produits` (+ colonne **`id_boutique`**) | Steve | `detail`, `produit` |
+| `commentaire` | Hajatiana | `comments` |
+
+Les requêtes de Karine utilisent maintenant ces tables. Par exemple, `boutname AS name` permet de garder le même code HTML.
+Le « TYPE » d'une boutique est calculé à partir des types de ses produits.
+
+## Modifications faites pour relier les parties
+
+Les fonctionnalités n'ont pas été changées. Voici seulement ce qui a été modifié pour que tout fonctionne ensemble :
+
+- **Connexion à la base**
+  - Une seule configuration (`config/server.php`) et une seule connexion PDO (`functions/db.php`, fonction `connection_db_bou()`).
+  - Le mysqli de Daddy utilise la même configuration.
+  - Correction `dbhost=` → `host=` dans la connexion PDO.
+- **Images** : tous les chemins d'upload pointent vers `images/`, et la base enregistre seulement le nom du fichier.
+  Daddy enregistrait avant `uploads/…`.
+- **Zara**
+  - Après l'inscription, la boutique est connectée : `$_SESSION["id_boutique"]`. Sans ça, `vue3.php` plantait.
+  - `vue3.php` renvoie vers la connexion si aucun vendeur n'est connecté.
+  - Le formulaire « Ajouter un Nouveau produit » (champs copiés par erreur) est remplacé par celui de la maquette `suit_vue3.html`, branché sur l'API de Steve.
+- **Steve**
+  - Un produit est lié à la boutique connectée (`id_boutique`).
+  - La liste affiche seulement les produits de cette boutique.
+  - Ajout du `</div>` qui manquait dans le gabarit JS.
+- **Karine**
+  - La session s'appelle maintenant `user_id` (celle créée par Daddy).
+  - Le téléphone est gardé en texte, pour ne pas perdre le 0 du début.
+  - Suppression d'un `<div class="modifier">` en double dans `vue2.php`, qui cassait la mise en page.
+- **Hajatiana**
+  - Les commentaires sont liés aux produits de Steve.
+  - Après un commentaire, retour sur la même boutique (`?id=`).
+  - L'auteur est l'acheteur connecté (voir « Panier et commentaires »).
+- **Navigation**
+  - `index.php` → `connection.php`.
+  - Liens « s'inscrire » et « créer ma boutique » sur la page de connexion.
+  - `deconnexion.php` créé (le lien existait mais pas le fichier).
+  - Les liens `*.html` sont remplacés par les pages `.php`.
+
+## Versions en double non reprises
+
+Elles restent dans les dossiers d'origine :
+
+- `modifier_profil.php`, `vue2.php` et `suit_vue2.php` de Daddy : la modification du profil utilise la version AJAX de Karine, qui fait la même chose.
+- `suit_vue2.html` + `ajax/ajout_prod_vue2.js` + `api/list_prod_vue2_api.php` de Steve : l'affichage des produits utilise la version PHP de Hajatiana, qui contient déjà les commentaires.
+- `get_comments()` / `add_comment()` de Karine : remplacées par les commentaires de Hajatiana.
+- Le formulaire boutique de `inscription.html` (Steve) : c'est celui de Zara qui est branché.
+
+## Corrections (2e passe : liens et fonctionnalités cassés)
+
+- **Pages manquantes** créées à partir des maquettes de `tdgroup` :
+  - `vue1.php` : accueil public, lien du bouton « ignore ». On y voit les boutiques sans compte, avec les liens vers la connexion et les deux inscriptions.
+  - `suit_vue1.php` : page publique d'une boutique, en lecture seule.
+  - `suit_vue3.php` : « ma boutique » du vendeur. On y trouve ses produits, les commentaires des clients, et il peut leur répondre au nom de la boutique.
+- **Images cassées**
+  - Les données de départ pointaient vers des fichiers qui n'existaient pas. Elles utilisent maintenant des images de `images/`.
+  - `utils/image.php` (`image_ou()`) affiche une image par défaut quand un fichier manque : `kara.jpg` pour une boutique, `produit.jpg` pour un produit, `pdp.jpg` pour un profil.
+- **Recherche** (`vue1.php`, `vue2.php`) : branchée sur `search_detail()` de Karine. Elle cherche dans le nom et le type des produits, et dans le nom des boutiques.
+- **Boutons « type »** (`suit_vue1/2/3.php`) : ils montrent les vrais types de la boutique et filtrent les produits.
+- **Vendeur** (`vue3.php` et `suit_vue3.php`)
+  - Le formulaire « Ajouter un Nouveau produit » (champs de la maquette + stock) envoie à l'API de Steve (`ajax/produit_vendeur.js`).
+  - La liste « suprimer ce produit » affiche les vrais produits. La suppression fonctionne, seulement pour les produits de sa boutique.
+  - La carte de la boutique affiche ses vrais produits et ses types.
+  - « Modifier » avec un seul champ rempli n'efface plus l'autre.
+- **Acheteur**
+  - Le bouton photo (« Q ») envoie la nouvelle photo tout de suite.
+  - Les commentaires ont un avatar.
+- **Formulaires**
+  - Champs obligatoires, et stock/prix en nombres. L'API refuse sinon, et le message s'affiche.
+  - Inscription d'une boutique possible sans logo.
+  - Suppression du `var_dump` qui s'affichait.
+  - Le style `.recu` de la liste des produits est maintenant appliqué.
+- **Navigation**
+  - Le logo ramène à l'accueil de chaque espace.
+  - Liens « déjà un compte ? » sur les pages d'inscription.
+  - Lien « retour » sur les messages d'erreur de connexion et d'inscription.
+
+⚠️ Pour avoir les nouvelles images de départ, il faut **réimporter `service_boutique.sql`**. Cela efface les données de test déjà saisies.
+
+## Panier et commentaires (3e passe)
+
+- **Bouton « buy »** (avant « bay ») sous chaque produit de `suit_vue2.php`
+  - Il ajoute le produit au **panier** de l'acheteur connecté, sans recharger la page (`ajax/panier.js` → `api/panier_api.php`).
+  - Cliquer encore ajoute une pièce, sans dépasser le stock.
+  - Le lien **« panier (n) »** du menu se met à jour.
+- **Page `panier.php`**
+  - Produits, boutique, prix, boutons − / + / retirer, sous-totaux et total.
+  - Au-delà de 5 pièces, le prix de gros s'applique (« Le prix de plus de 5p est … »).
+  - Fonctions dans `functions/panier.php`, table `panier`.
+- **Commentaires**
+  - Le champ « Votre nom » a disparu. Le commentaire est enregistré avec l'id de l'acheteur connecté (`commentaire.id_user`).
+  - Le nom et la photo de l'auteur sont lus dans la table `users`. Si l'acheteur change de nom, ses commentaires suivent.
+  - La zone de texte dit « Qu'en pensez-vous ? », avec un vrai bouton **« envoyer »**.
+- **Retour à l'accueil**
+  - Liens « accueil » et « panier » dans le menu des pages acheteur.
+  - Tout le bouton « accueil » de la boutique est cliquable, pas seulement le mot. Il ramène à `vue2.php` avec toutes les boutiques.
+- **`config/server.php`** : nouveau réglage `DB_PORT` (3306 = MySQL de WAMP, 3307 = MariaDB).
+
+### Mettre à jour une base déjà importée
+
+Importer **`mise_a_jour_panier.sql`** dans phpMyAdmin. Il ajoute la table `panier` et la colonne `commentaire.id_user`, et relie les anciens commentaires à leur auteur quand le nom correspond.
+Les comptes, boutiques, produits et commentaires existants sont conservés.
+Pour une nouvelle installation, importer seulement `service_boutique.sql`.
+
+## Commandes (4e passe)
+
+- **Le stock baisse à la commande, pas au clic sur « buy ».**
+  - Le panier est une liste d'envies : il vérifie le stock mais ne le bloque pas.
+  - Le stock est retiré quand l'acheteur clique sur **« commander »**, et rendu si la commande est annulée.
+- **Bouton « commander »** (`panier.php`)
+  - L'acheteur indique l'adresse de livraison et le téléphone, pré-remplis depuis son profil.
+  - Le panier devient **une commande par boutique**, et le panier est vidé.
+  - Tout se passe dans une transaction (`passer_commande()` dans `functions/commande.php`). Si un produit n'a plus assez de stock (un autre acheteur a commandé entre-temps), rien n'est enregistré et le message l'indique.
+- **« Mes commandes »** (sous le panier) : l'acheteur suit le statut de chaque commande (en attente, acceptée, livrée, annulée). Il peut l'annuler tant que la boutique ne l'a pas acceptée.
+- **Vendeur : « Commandes reçues »** (`vue3.php`, lien « commandes (n) » du menu)
+  - Pour chaque commande : client, produits, quantités, prix, adresse de livraison, téléphone et total.
+  - Boutons **accepter** → **marquer livrée**, ou **annuler** (le stock est rendu). Un vendeur ne peut traiter que les commandes de sa boutique.
+- **`suit_vue3.php`** : la colonne « commandes » de la maquette (à droite de chaque produit) montre les commandes de ce produit.
+- **Tables** `commande` et `commande_ligne`. Le nom et le prix sont copiés dans la commande : l'historique ne change pas si le vendeur modifie le produit.
+- **Carte produit** (`suit_vue2.php`)
+  - Elle affiche maintenant tout, jusqu'aux commentaires. Avant, sa hauteur fixe cachait les commentaires ; règles ajoutées à la fin de `css_v2/detai_vue2.css`.
+  - Produit sans stock : bouton « épuisé ».
+
+Base déjà importée : importer **`mise_a_jour_commande.sql`**, après `mise_a_jour_panier.sql`.
+
+## Connexion vendeur simplifiée (5e passe)
+
+- La connexion vendeur (`connection.php`) ne demande plus que le **nom de la boutique** et le **mot de passe**. Avant, il fallait aussi le téléphone et l'email.
+- Le nom de la boutique sert d'identifiant. Il reste donc **unique** :
+  - l'inscription refusait déjà un nom existant ;
+  - la modification du profil refuse maintenant aussi un nom déjà pris (« Ce nom de boutique est déjà utilisé »).
+- En cas d'erreur, le même message s'affiche que le nom existe ou non : « Nom de boutique ou mot de passe incorrect ».
+
+## Profil acheteur et favoris (6e passe)
+
+- **« Modifier votre profil »**
+  - Le formulaire du profil acheteur (barre de gauche de `vue2.php` et `suit_vue2.php`) ne s'ouvre plus au survol.
+  - Il s'ouvre et se ferme au clic sur le bouton « Modifier votre profil » (`ajax/acheteur.js`, classe `.ouvert` dans `css_v2/tete_vue2.css`).
+  - Il se referme tout seul après l'enregistrement.
+- **Favoris** (partie prévue pour Hajatiana, « mbola tsy vita ny fav »)
+  - L'étoile ★ dans le coin de chaque produit (`suit_vue2.php`) est un bouton. Un clic ajoute le produit aux favoris (étoile dorée), un autre clic le retire. Pas de rechargement de page (`ajax/favori.js` → `api/favori_api.php`).
+  - La liste **favoris** de la barre de gauche affiche les vrais favoris : photo, boutique, produit et prix. Un clic sur la photo ou la boutique ouvre la boutique ; l'étoile de la liste retire le favori.
+  - Chaque acheteur a ses propres favoris (table `favori`). Si un produit est supprimé, il disparaît aussi des favoris.
+  - Code dans `functions/favori.php`. La liste est construite par une seule fonction PHP, `afficher_favoris()`, utilisée par les pages et par l'API.
+
+Base déjà importée : importer **`mise_a_jour_favoris.sql`**.
+
+## Historique d'achats (7e passe)
+
+- La liste **« historique d'achats »** de la barre de gauche acheteur (`vue2.php`, `suit_vue2.php`) est placée au-dessus des **favoris**. Elle montre les derniers produits achetés, du plus récent au plus ancien (10 au maximum).
+- **Un achat** = un produit d'une commande envoyée avec le bouton « commander ». Les commandes **annulées** n'y figurent pas.
+- **Chaque ligne** : photo, produit × quantité, boutique, date et statut de la commande. Un clic ouvre la boutique.
+- **Sans achat**, la liste est vide (« Aucun achat pour le moment. »).
+- **Bouton ×** : retire l'achat de l'historique, sans recharger la page (`ajax/historique.js` → `api/historique_api.php`). La commande n'est **pas** modifiée (colonne `commande_ligne.dans_historique`).
+- Code dans `functions/historique.php`. La liste est construite par une seule fonction PHP, `afficher_historique()`, utilisée par les pages et par l'API.
+- Des titres « historique d'achats » et « favoris » séparent les deux listes.
+
+Base déjà importée : importer **`mise_a_jour_historique.sql`**.
+
+## Pas encore fait (fonctionnalités jamais développées)
+
+Les boutons existent dans la maquette mais personne ne les a encore programmés :
+
+- paiement en ligne (les commandes sont payées à la livraison pour le moment) ;
+- « like » des commentaires ;
+- choix de la langue ;
+- page « aide et suport ».

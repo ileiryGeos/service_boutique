@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.2vw;
+}
+
+#tete1 {
+    z-index: 3;
+    background: linear-gradient(mediumblue,blue,blue, transparent);
+    position: fixed;
+    width: 100%;
+    border-bottom: solid .1vw blue;
+}
+
+#tete1 nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: .5vw 3vw;
+}
+
+#nom {
+    text-decoration: none;
+    width: 3vw;
+    height: 3vw;
+    color: black;
+    text-transform: uppercase;
+    border: solid .1vw black;
+    border-radius: .5vw;
+    background: rgba(0, 0, 255, 0.459);
+    /* padding: .5vw; */
+    margin-bottom: 1vw;
+}
+
+#nom img{
+    width: 100%;
+    width: 100%;
+    border-radius: .5vw;
+
+
+}
+
+
+#tete1 nav ul {
+    list-style-type: none;
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    color: red;
+}
+
+.gar{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    width: 100%;
+    color: white;
+    background: transparent;
+    padding: .3vw 1vw;
+    border-radius: .5vw;
+    border: solid .1vw red;
+    transition: 1s;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+
+.gar:hover{
+    background: red;
+    border: solid .1vw white;
+
+    color: black;
+
+}
