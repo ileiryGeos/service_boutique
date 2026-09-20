@@ -28,3 +28,6 @@ sauvegarde_*.sql
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# identifiants de la base sur l'hébergeur (jamais sur GitHub)
+config/server.local.php
