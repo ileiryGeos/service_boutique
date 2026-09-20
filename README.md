@@ -213,6 +213,35 @@ Base déjà importée : importer **`mise_a_jour_favoris.sql`**.
 
 Base déjà importée : importer **`mise_a_jour_historique.sql`**.
 
+## Mettre le site en ligne (InfinityFree ou autre hébergeur PHP/MySQL)
+
+GitHub Pages ne convient pas : il n'exécute pas le PHP et n'a pas de base MySQL.
+Il faut un hébergeur avec **PHP** et **MySQL** (InfinityFree est gratuit).
+
+1. **Créer la base** : panneau de contrôle → *MySQL Databases* → créer une base.
+   Noter les 4 informations affichées : *MySQL DB Name*, *MySQL User Name*,
+   *MySQL Hostname* (ex. `sql123.infinityfree.com`) et le mot de passe du compte.
+2. **Importer les tables** : *phpMyAdmin* → choisir cette base → onglet *Importer*
+   → envoyer **`service_boutique_hebergement.sql`** (c'est la même base que
+   `service_boutique.sql`, sans `CREATE DATABASE` : l'hébergeur l'a déjà créée).
+3. **Préparer les identifiants** : copier `config/server.local.exemple.php` en
+   `config/server.local.php` et y mettre les 4 informations de l'étape 1.
+   Ce fichier ne part jamais sur GitHub (`.gitignore`) : il contient le mot de passe.
+4. **Envoyer les fichiers** par FTP (FileZilla, ou le gestionnaire de fichiers du
+   panneau) dans le dossier **`htdocs`** : tout le contenu du projet, y compris
+   `config/server.local.php` et le dossier `images/`.
+5. **Ouvrir l'adresse du site**. Les comptes de départ fonctionnent (mot de passe `1234`).
+
+Remarques :
+
+- Le dossier `images/` doit rester **accessible en écriture** : c'est là que vont les
+  photos envoyées par les formulaires (produits, logos, profils).
+- Le site en ligne est public : n'importe qui peut créer un compte et commander.
+  Pour une démonstration, c'est normal ; pensez à changer les mots de passe `1234`
+  si le site reste en ligne longtemps.
+- Les photos envoyées en ligne restent sur l'hébergeur : elles ne reviennent pas
+  dans le dépôt Git.
+
 ## Pas encore fait (fonctionnalités jamais développées)
 
 Les boutons existent dans la maquette mais personne ne les a encore programmés :
