@@ -14,7 +14,7 @@ if(isset($_POST["enter"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>créer ma boutique</title>
     <link rel="stylesheet" href="css/inscription.css?v=<?= filemtime("css/inscription.css") ?>">
 </head>
 
@@ -33,8 +33,8 @@ if(isset($_POST["enter"])){
             <input type="file" class="inp_pdp" name="file" accept="image/*">
 
             <div class="securite">
-                <label for="" class="code_n">numero et email </label>
-                <input type="text" name="numTel" id="" class="inp_n" placeholder="numero ..." required>
+                <label for="" class="code_n">numéro et email </label>
+                <input type="text" name="numTel" id="" class="inp_n" placeholder="numéro ..." required>
                 <input type="email" name="email" id="" class="inp_n" placeholder="email ..." required>
 
                 <label for="" class="code_n">votre nouveau mot de passe</label>
@@ -51,7 +51,7 @@ if(isset($_POST["enter"])){
                 <!-- <input type="text"   placeholder="lesquel ?"> -->
             </div>
 
-            <label for="">definition ou une style de publicité</label>
+            <label for="">définition ou un style de publicité</label>
             <textarea name="definition" id=""></textarea>
 
             <button class="suivent" name="enter">suivant</button>
@@ -62,7 +62,7 @@ if(isset($_POST["enter"])){
 
         <!-- Étape 2 : ajout des produits de la boutique connectée (Steve) -->
         <form action="" class="form_inscr prod" id="form-produit">
-            <label for="type-prod" class="lab_prod">l'un de type de produit</label>
+            <label for="type-prod" class="lab_prod">type de produit</label>
             <input type="text" id="type-prod" class="inp_prod" name="type" required>
 
             <label for="nom-prod" class="lab_prod">nom d'un produit</label>
@@ -72,18 +72,18 @@ if(isset($_POST["enter"])){
             <textarea name="description" id="desc-prod" class="inp_prod" required></textarea>
 
 
-            <label for="photo-prod" class="lab_prod">photo de produit</label>
+            <label for="photo-prod" class="lab_prod">photo du produit</label>
             <input type="file" name="photo" id="photo-prod" class="inp_prod" accept="image/*" required>
 
-            <label for="nbr-prod" class="lab_prod">nombre de produit que vous avez dans votre stock</label>
+            <label for="nbr-prod" class="lab_prod">nombre de produits que vous avez dans votre stock</label>
             <input type="number" min="0" name="stock" id="nbr-prod" class="inp_prod" required>
 
             <div action="" id="prix_prd">
-                <h1>prix de produit</h1>
-                <label for="prix-prod">une produit</label>
+                <h1>prix du produit</h1>
+                <label for="prix-prod">un produit</label>
                 <input type="number" min="0" name="prix" id="prix-prod" required>
 
-                <label for="prix-gros-prod">si antre 1 à 5</label>
+                <label for="prix-gros-prod">si entre 1 et 5</label>
                 <input type="number" min="0" name="prix_gros" id="prix-gros-prod" required>
 
 

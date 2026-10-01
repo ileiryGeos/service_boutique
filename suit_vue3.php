@@ -14,7 +14,7 @@
         exit;
     }
 
-    // bouton "suprimer ce produit"
+    // bouton "supprimer ce produit"
     if(isset($_POST["supprimer_produit"])){
         supprimer_produit();
         header("Location: suit_vue3.php");
@@ -83,7 +83,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>boite</title>
+    <title>boîte</title>
 
     <link rel="stylesheet" href="css_v3/detai_vue3.css?v=<?= filemtime("css_v3/detai_vue3.css") ?>">
     <link rel="stylesheet" href="css_v3/header_vue3.css?v=<?= filemtime("css_v3/header_vue3.css") ?>">
@@ -95,11 +95,11 @@
         <nav>
             <a href="vue3.php" id="nom"><img src="images/logo.jpg" alt=""></a>
             <ul>
-                <!-- <li><a href="" class="gar"><i>lanngue</i></a></li> -->
+                <!-- <li><a href="" class="gar"><i>langue</i></a></li> -->
                 <li><a href="vue3.php#commandes" class="gar"><i>commandes</i></a></li>
-                <li><a href="" class="gar"><i>aide et suport</i></a></li>
+                <li><a href="" class="gar"><i>aide et support</i></a></li>
                 <!-- afaka manova : entent que ... -->
-                <li><a href="deconnexion.php" class="gar"><i>deconnection</i></a></li>
+                <li><a href="deconnexion.php" class="gar"><i>déconnexion</i></a></li>
                 <li><input type="text" class="gar langue" value="langue"></li>
             </ul>
         </nav>
@@ -116,29 +116,29 @@
             </div>
 
             <div class="toust">
-                <h6 class="tou_ve">email: <b><?= htmlspecialchars($boutique["email"]) ?></b></h6>
-                <h6 class="tou_ve">N°: <b><?= htmlspecialchars($boutique["numTel"]) ?></b></h6>
-                <h6 class="tou_ve">localisation: <b><?= htmlspecialchars($boutique["localisation"]) ?></b></h6>
-                <h6 class="tou_ve">date de creation: <b><?= htmlspecialchars($boutique["date"]) ?></b></h6>
-                <!-- <h6 class="tou_ve">solde: <b>99 000ar</b></h6> -->
+                <h6 class="tou_ve">email : <b><?= htmlspecialchars($boutique["email"]) ?></b></h6>
+                <h6 class="tou_ve">N° : <b><?= htmlspecialchars($boutique["numTel"]) ?></b></h6>
+                <h6 class="tou_ve">localisation : <b><?= htmlspecialchars($boutique["localisation"]) ?></b></h6>
+                <h6 class="tou_ve">date de création : <b><?= htmlspecialchars($boutique["date"]) ?></b></h6>
+                <!-- <h6 class="tou_ve">solde : <b>99 000ar</b></h6> -->
                 <div class="modifier">
-                    <h2 class="afir_modi">Volez-vous modifier votre profil ?</h2>
+                    <h2 class="afir_modi">Voulez-vous modifier votre profil ?</h2>
                     <div action="" class="modi">
                         <form method="POST" class="form_modi">
-                            <label >Vous pouvez modifier une seul ou toutes les informations</label>
-                            <input type="text" placeholder="Nouveau Nom ..." name="boutname" class="inp_modif">
-                            <input type="text" placeholder="Nouvel localisation ..." name="localisation" class="inp_modif">
+                            <label >Vous pouvez modifier une seule ou toutes les informations</label>
+                            <input type="text" placeholder="Nouveau nom ..." name="boutname" class="inp_modif">
+                            <input type="text" placeholder="Nouvelle localisation ..." name="localisation" class="inp_modif">
                             <button class="but_mode" name="modifier_profil">modifier</button>
 
                         </form>
 
                         <form method="POST" class="form_modi">
-                            <label for="">Pour votre sécurité, il faut completer tous les champs</label>
-                            <input type="text" placeholder="Nouvel numero ..." name="numTel" id="" class="inp_modif" required>
-                            <input type="email" placeholder="Nouvel adress email ..." name="email" id="" class="inp_modif" required>
+                            <label for="">Pour votre sécurité, il faut compléter tous les champs</label>
+                            <input type="text" placeholder="Nouveau numéro ..." name="numTel" id="" class="inp_modif" required>
+                            <input type="email" placeholder="Nouvelle adresse email ..." name="email" id="" class="inp_modif" required>
                             <input type="password" placeholder="Ancien mot de passe ..." name="ancien_password" id=""
                                 class="inp_modif" required>
-                            <input type="password" placeholder="Nouveau Mot de passe ..." name="nouveau_password" id=""
+                            <input type="password" placeholder="Nouveau mot de passe ..." name="nouveau_password" id=""
                                 class="inp_modif" required>
                             <button class="but_mode" name="modifier_securite">modifier</button>
                         </form>
@@ -147,17 +147,17 @@
 
                 <div class="modifier_px">
                     <div class="modi">
-                        <h2 class="afir_modi">Ajouter un Nouveau produit</h2>
+                        <h2 class="afir_modi">Ajouter un nouveau produit</h2>
                         <!-- formulaire de la maquette, envoyé à l'API de Steve -->
                         <form class="form_modi" id="form_ajout_prod" enctype="multipart/form-data">
-                            <label for="">If faut completer tous</label>
+                            <label for="">Il faut compléter tous les champs</label>
                             <input type="text" placeholder="Type de produit ..." name="type" class="inp_modif" required>
                             <input type="text" placeholder="Nom de produit ..." name="nom" class="inp_modif" required>
-                            <input type="text" placeholder="Leur description ..." name="description" class="inp_modif" required>
+                            <input type="text" placeholder="Sa description ..." name="description" class="inp_modif" required>
                             <input type="file" name="photo" class="inp_modif" accept="image/*" required>
                             <input type="number" min="0" placeholder="Nombre en stock ..." name="stock" class="inp_modif" required>
-                            <input type="number" min="0" placeholder="Leur prix ..." name="prix" class="inp_modif" required>
-                            <input type="number" min="0" placeholder="Leur prix en gros..." name="prix_gros" class="inp_modif" required>
+                            <input type="number" min="0" placeholder="Son prix ..." name="prix" class="inp_modif" required>
+                            <input type="number" min="0" placeholder="Son prix en gros ..." name="prix_gros" class="inp_modif" required>
                             <button class="but_mode">créer</button>
                         </form>
                     </div>
@@ -184,7 +184,7 @@
                     </div>
                     <form method="POST" class="form_sup">
                         <input type="hidden" name="id_produit" value="<?= (int) $p["id"] ?>">
-                        <button class="suprimer" name="supprimer_produit">suprimer ce produit</button>
+                        <button class="suprimer" name="supprimer_produit">supprimer ce produit</button>
                     </form>
                     <!-- <button class="hist_sup">x</button> -->
                 </div>
@@ -201,7 +201,7 @@
             <div class="card_fondImage">
                 <h1 class="nom_bout"><?= htmlspecialchars($boutique["boutname"]) ?></h1>
                 <p class="desc_box"><?= htmlspecialchars($boutique["definition"]) ?>,<br><em>vous pouvez nous visiter à <b><?= htmlspecialchars($boutique["localisation"]) ?></b></em></p>
-                <button class="retour"><a href="vue3.php">acceul</a></button>
+                <button class="retour"><a href="vue3.php">accueil</a></button>
                 <img src="images/<?= htmlspecialchars($logo) ?>" alt="" class="fond">
                 <hr class="fond_hr">
 
@@ -228,7 +228,7 @@
                         <img src="images/<?= htmlspecialchars(image_ou($p["photo"], "produit.jpg")) ?>" alt="" class="img_pr">
                         <h2 class="nom_pr"><?= htmlspecialchars($p["nom"]) ?></h2>
                         <h6 class="desc_pr"><?= nl2br(htmlspecialchars($p["description"])) ?> <b
-                                style="color: midnightblue;font-size: 1.5vw;font-weight: bold;"><?= (int) $p["stock"] ?></b> pieces</h6>
+                                style="color: midnightblue;font-size: 1.5vw;font-weight: bold;"><?= (int) $p["stock"] ?></b> pièces</h6>
                         <div class="bay_pr">
                             <h4 class="prix_pr"><?= number_format($p["prix"], 0, ',', ' ') ?> Ar</h4>
                         </div>
@@ -240,7 +240,7 @@
                                 <button class="but_com" type="submit">></button>
                             </form>
 
-                            <h4 class="pr_gros">Le prix de plus de <b
+                            <h4 class="pr_gros">Le prix pour plus de <b
                                     style="color: blue;font-weight: bold;font-size: 1.5vw;">5p</b> est <b><?= number_format($p["prix_gros"], 0, ',', ' ') ?> Ar</b>
                             </h4>
                         </div>
@@ -280,11 +280,11 @@
                                 <h6 class="comt_nom"><span><?= htmlspecialchars($cmd["client"]) ?></span><b>le <?= htmlspecialchars($cmd["date_commande"]) ?> — <?= htmlspecialchars(STATUTS_COMMANDE[$cmd["statut"]] ?? $cmd["statut"]) ?></b></h6>
                             </div>
                             <p class="comt_dets">
-                                Commander
+                                Commande de
                                 <b><?= (int) $cmd["quantite"] ?></b>
-                                à
+                                article(s), à livrer à
                                 <i><?= htmlspecialchars($cmd["adresse_livraison"]) ?></i>
-                                disponible par
+                                — joignable au
                                 <b><?= htmlspecialchars($cmd["telephone"]) ?></b>
                             </p>
                         </div>

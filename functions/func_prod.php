@@ -42,7 +42,7 @@
         ] ;
     }
 
-    // produits d'une boutique (liste "suprimer ce produit" de vue3.php / suit_vue3.php)
+    // produits d'une boutique (liste "supprimer ce produit" de vue3.php / suit_vue3.php)
     function get_produits_boutique($id_boutique){
         global $db ;
 
@@ -52,7 +52,7 @@
         return $select->fetchAll() ;
     }
 
-    // bouton "suprimer ce produit" : seulement un produit de la boutique connectée
+    // bouton "supprimer ce produit" : seulement un produit de la boutique connectée
     function supprimer_produit(){
         global $db ;
 

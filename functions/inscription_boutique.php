@@ -40,11 +40,11 @@ function inscription(){
         // connecter directement la nouvelle boutique (sinon vue3.php n'a pas d'id_boutique)
         $_SESSION["id_boutique"] = $db->lastInsertId();
 
-        echo "vous etes inscrit";
+        echo "vous êtes inscrit";
         header("location:vue3.php");
 
     }else{
-        echo "Déjà éxiste";
+        echo "Ce nom de boutique existe déjà";
     }
 
 }

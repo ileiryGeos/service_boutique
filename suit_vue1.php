@@ -20,7 +20,7 @@ $produits = filtrer_par_type($produits);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>boite</title>
+    <title>boîte</title>
     <link rel="stylesheet" href="css/tete.css?v=<?= filemtime("css/tete.css") ?>">
     <link rel="stylesheet" href="css_v1/detail_vue1.css?v=<?= filemtime("css_v1/detail_vue1.css") ?>">
     <link rel="stylesheet" href="css_v1/header_vue1.css?v=<?= filemtime("css_v1/header_vue1.css") ?>">
@@ -32,8 +32,8 @@ $produits = filtrer_par_type($produits);
         <nav>
             <a href="vue1.php" id="nom"><img src="images/logo.jpg" alt=""></a>
             <ul>
-                <!-- <li><a href="" class="gar"><i>lanngue</i></a></li> -->
-                <li><a href="" class="gar"><i>aide et suport</i></a></li>
+                <!-- <li><a href="" class="gar"><i>langue</i></a></li> -->
+                <li><a href="" class="gar"><i>aide et support</i></a></li>
                 <!-- <li><a href="" class="gar"><i>parametre</i></a></li> -->
                 <li><input type="text" class="gar langue" value="langue"></li>
             </ul>
@@ -45,13 +45,13 @@ $produits = filtrer_par_type($produits);
             <a href="connection.php" class="mon_cmp">Ouvrir par mon compte</a>
             <a href="profil.php" class="boxs">
                 <div class="label_img">
-                    <h6 class="afirm">Créer une nouveau compte</h6>
+                    <h6 class="afirm">Créer un nouveau compte</h6>
                 </div>
             </a>
 
             <a href="inscription.php" class="boxs">
                 <div class="label_img">
-                    <h6 class="afirm">Travaller avec nous:<br>Vendreur|Vendeuse</h6>
+                    <h6 class="afirm">Travailler avec nous :<br>Vendeur | Vendeuse</h6>
                 </div>
                 <!-- afaka mividy ,indrindra etana betsaka -->
             </a>
@@ -64,7 +64,7 @@ $produits = filtrer_par_type($produits);
             <div class="card_fondImage">
                 <h1 class="nom_bout"><?= htmlspecialchars($b["name"]) ?></h1>
                 <p class="desc_box"><?= htmlspecialchars($b["description"]) ?>,<br><em>vous pouvez nous visiter à <b><?= htmlspecialchars($b["lieu"]) ?></b></em></p>
-                <button class="retour"><a href="vue1.php">acceul</a></button>
+                <button class="retour"><a href="vue1.php">accueil</a></button>
                 <img src="images/<?= htmlspecialchars(image_ou($b["pdc"], "kara.jpg")) ?>" alt="" class="fond">
                 <hr class="fond_hr">
 
@@ -91,13 +91,13 @@ $produits = filtrer_par_type($produits);
                     <img src="images/<?= htmlspecialchars(image_ou($p["photo"], "produit.jpg")) ?>" alt="" class="img_pr">
                     <h2 class="nom_pr"><?= htmlspecialchars($p["nom"]) ?></h2>
                     <h6 class="desc_pr"><?= nl2br(htmlspecialchars($p["description"])) ?> <b
-                            style="color: midnightblue;font-size: 1.5vw;font-weight: bold;"><?= (int) $p["stock"] ?></b> pieces</h6>
+                            style="color: midnightblue;font-size: 1.5vw;font-weight: bold;"><?= (int) $p["stock"] ?></b> pièces</h6>
                     <div class="bay_pr">
                         <h4 class="prix_pr"><?= number_format($p["prix"], 0, ',', ' ') ?> Ar</h4>
                         <!-- <button class="butbay">bay</button> -->
                     </div>
 
-                    <h4 class="pr_gros">Le prix de plus de <b
+                    <h4 class="pr_gros">Le prix pour plus de <b
                         style="color: blue;font-weight: bold;font-size: 1.5vw;">5p</b> est <b><?= number_format($p["prix_gros"], 0, ',', ' ') ?> Ar</b></h4>
                 </div>
                 <?php endforeach; ?>

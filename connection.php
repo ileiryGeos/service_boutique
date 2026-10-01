@@ -16,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>voyager</title>
+    <title>connexion</title>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
 
         }
 
-        #acceul{
+        #accueil{
             z-index: 3;
             padding: 1vw;
             position: absolute;
@@ -212,18 +212,18 @@
     </style>
 
     <section id="fond1">
-        <a href="vue1.php" id="acceul">ignore</a>
+        <a href="vue1.php" id="accueil">ignore</a>
         <div id="bvue">
             <div class="comp ouvre">
                 <div class="rond">
                     <div class="bl">
-                        <h1 class="bc gch">bienvenu sur <br><span class="nboc"><b class="b">s</b>ervice <b
+                        <h1 class="bc gch">bienvenue sur <br><span class="nboc"><b class="b">s</b>ervice <b
                                     class="b">b</b>outique</span> </h1>
-                        <button class="butdm bo" style="margin: 3vw 0;">par compte de vente</button>
+                        <button class="butdm bo" style="margin: 3vw 0;">passer au compte vendeur</button>
                     </div>
                 </div>
                 <div class="inp rak">
-                    <h2 class="cot">acheter dans compte <br><span class="nboc"><b class="b">s</b>ervice <b class="b">b</b>outique</span>
+                    <h2 class="cot">acheter avec un compte <br><span class="nboc"><b class="b">s</b>ervice <b class="b">b</b>outique</span>
                     </h2>
 
                     <form action="connexion.php" method="POST"
@@ -254,7 +254,7 @@
 
             <div class="comp cre" style="display: none;">
                 <form class="inp rad" method="POST" >
-                    <h2 class="cot">Vendeur dans compte <br><span class="nboc" style="font-size: 2vw;"><b class="b">s</b>ervice
+                    <h2 class="cot">vendre avec un compte <br><span class="nboc" style="font-size: 2vw;"><b class="b">s</b>ervice
                             <b class="b">b</b>outique</span></h2>
                     <!-- connexion vendeur : nom de la boutique + mot de passe -->
                     <input type="text" placeholder="nom de votre boutique ..." class="fenoi" name="boutname" required>
@@ -266,7 +266,7 @@
                     <div class="bl2">
                         <h1 class="bc">ouvrir le compte <br><span class="nboc"><b class="b">s</b>ervice <b
                                     class="b">b</b>outique</span> </h1>
-                        <button class="butdm bcr" style="margin: 3vw 0;">saisir mon compte</button>
+                        <button class="butdm bcr" style="margin: 3vw 0;">passer au compte acheteur</button>
                     </div>
                 </div>
             </div>

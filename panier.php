@@ -208,7 +208,7 @@ function prix($montant) {
             <ul>
                 <li><a href="vue2.php" class="gar"><i>accueil</i></a></li>
                 <li><a href="panier.php" class="gar"><i>panier (<span class="nb_panier"><?= $nb_panier ?></span>)</i></a></li>
-                <li><a href="deconnexion.php" class="gar"><i>deconnection</i></a></li>
+                <li><a href="deconnexion.php" class="gar"><i>déconnexion</i></a></li>
             </ul>
         </nav>
     </header>

@@ -47,7 +47,7 @@ function e($value) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>boite</title>
+    <title>boîte</title>
     <link rel="stylesheet" href="css/tete.css?v=<?= filemtime("css/tete.css") ?>">
     <link rel="stylesheet" href="css/boutic.css?v=<?= filemtime("css/boutic.css") ?>">
     <link rel="stylesheet" href="css_v2/header_vue2.css?v=<?= filemtime("css_v2/header_vue2.css") ?>">
@@ -59,12 +59,12 @@ function e($value) {
         <nav>
             <a href="vue2.php" id="nom"><img src="images/logo.jpg" alt=""></a>
             <ul>
-                <!-- <li><a href="" class="gar"><i>lanngue</i></a></li> -->
+                <!-- <li><a href="" class="gar"><i>langue</i></a></li> -->
                 <li><a href="vue2.php" class="gar"><i>accueil</i></a></li>
                 <li><a href="panier.php" class="gar"><i>panier (<span class="nb_panier"><?= $nb_panier ?></span>)</i></a></li>
-                <li><a href="" class="gar"><i>aide et suport</i></a></li>
+                <li><a href="" class="gar"><i>aide et support</i></a></li>
                 <!-- afaka manova : entent que ... -->
-                <li><a href="deconnexion.php" class="gar"><i>deconnection</i></a></li>
+                <li><a href="deconnexion.php" class="gar"><i>déconnexion</i></a></li>
                 <li><input type="text" class="gar langue" value="langue"></li>
             </ul>
         </nav>
@@ -87,11 +87,11 @@ function e($value) {
 
             <div class="toust">
                 <div class="info_acheteur">
-                    <h6 class="tou_ve">email: <b><?php echo e($email); ?></b></h6>
-                    <h6 class="tou_ve">N°: <b><?php echo e($telephone); ?></b></h6>
-                    <h6 class="tou_ve">date naissence: <b><?php echo e($date_naissance); ?></b></h6>
-                    <h6 class="tou_ve">adress: <b><?php echo e($adresse); ?></b></h6>
-                    <!-- <h6 class="tou_ve">solde: <b>99 000ar</b></h6> -->
+                    <h6 class="tou_ve">email : <b><?php echo e($email); ?></b></h6>
+                    <h6 class="tou_ve">N° : <b><?php echo e($telephone); ?></b></h6>
+                    <h6 class="tou_ve">date de naissance : <b><?php echo e($date_naissance); ?></b></h6>
+                    <h6 class="tou_ve">adresse : <b><?php echo e($adresse); ?></b></h6>
+                    <!-- <h6 class="tou_ve">solde : <b>99 000ar</b></h6> -->
                 </div>
 
                 <div class="modifier">
@@ -210,7 +210,7 @@ function e($value) {
                 <button type="submit" class="but_rech"><i>rechercher</i></button>
             </div>
             <h2 class="bout_b">bienvenue sur notre site</h2>
-            <p class="bout_l">On fait reunir plusieurs boutique pour que vous ne perdre plus de temps</p>
+            <p class="bout_l">Nous réunissons plusieurs boutiques pour que vous ne perdiez plus de temps</p>
 
 </form>
 
@@ -244,7 +244,7 @@ function e($value) {
             </div>
 
             <p class="definition">
-                points fort du box <br>
+                points forts du box <br>
 
                 <?= htmlspecialchars($b["description"] ?? "") ?><br>
 

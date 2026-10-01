@@ -27,7 +27,7 @@ if (formAjout) {
     })
 }
 
-// bouton "suprimer ce produit" : demander confirmation
+// bouton "supprimer ce produit" : demander confirmation
 document.querySelectorAll(".form_sup").forEach(form => {
     form.addEventListener("submit", (e) => {
         if (!confirm("Supprimer ce produit ?")) {

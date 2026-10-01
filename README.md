@@ -117,7 +117,7 @@ Elles restent dans les dossiers d'origine :
 - **Boutons « type »** (`suit_vue1/2/3.php`) : ils montrent les vrais types de la boutique et filtrent les produits.
 - **Vendeur** (`vue3.php` et `suit_vue3.php`)
   - Le formulaire « Ajouter un Nouveau produit » (champs de la maquette + stock) envoie à l'API de Steve (`ajax/produit_vendeur.js`).
-  - La liste « suprimer ce produit » affiche les vrais produits. La suppression fonctionne, seulement pour les produits de sa boutique.
+  - La liste « supprimer ce produit » affiche les vrais produits. La suppression fonctionne, seulement pour les produits de sa boutique.
   - La carte de la boutique affiche ses vrais produits et ses types.
   - « Modifier » avec un seul champ rempli n'efface plus l'autre.
 - **Acheteur**
@@ -287,6 +287,49 @@ le style dans `css_admin/admin.css`.
 Base déjà importée : importer **`mise_a_jour_admin.sql`**. Les produits déjà en ligne
 restent visibles (ils passent en « approuve ») et aucun frais n'est créé pour eux.
 
+## Orthographe des textes affichés (9e passe)
+
+Relecture de tout le texte visible du site (menus, boutons, labels, placeholders,
+titres des onglets, messages). Seuls les textes ont changé : aucune classe CSS,
+aucun nom de champ et aucune requête SQL n'a changé.
+
+Principales corrections :
+
+| avant | après |
+| --- | --- |
+| aide et suport | aide et support |
+| deconnection | déconnexion |
+| acceul | accueil |
+| Travaller avec nous : Vendreur\|Vendeuse | Travailler avec nous : Vendeur \| Vendeuse |
+| Créer une nouveau compte | Créer un nouveau compte |
+| On fait reunir plusieurs boutique pour que vous ne perdre plus de temps | Nous réunissons plusieurs boutiques pour que vous ne perdiez plus de temps |
+| points fort du box | points forts du box |
+| bienvenue sur notre cite | bienvenue sur notre site |
+| pieces | pièces |
+| Volez-vous modifier votre profil ? | Voulez-vous modifier votre profil ? |
+| une seul ou toutes les informations | une seule ou toutes les informations |
+| If faut completer tous | Il faut compléter tous les champs |
+| suprimer ce produit | supprimer ce produit |
+| Nouvel localisation / Nouvel numero / Nouvel adress email | Nouvelle localisation / Nouveau numéro / Nouvelle adresse email |
+| Leur description / Leur prix | Sa description / Son prix |
+| date naissence / adress | date de naissance / adresse |
+| Soyez le premier a commenter | Soyez le premier à commenter |
+| si antre 1 à 5 | si entre 1 et 5 |
+| une produit / prix de produit | un produit / prix du produit |
+| definition ou une style de publicité | définition ou un style de publicité |
+| Déjà éxiste | Ce nom de boutique existe déjà |
+| titre de l onglet : boite / Document / voyager | boîte / créer ma boutique / connexion |
+
+La classe CSS `.suprimer` garde son nom (seul le texte du bouton est corrigé), et
+`id="acceul"` de la page de connexion a été renommé `id="accueil"` avec son style.
+
+Textes volontairement laissés tels quels :
+
+- le bouton « buy » (demande explicite) ;
+- les données de démonstration des camarades (`kkkkkkk`, `BOUTIQUE MILAY`,
+  `tsy aiko`, `fdhj`...) : ce sont des lignes de la base, pas du texte du site.
+  Elles se corrigent dans phpMyAdmin ou dans `service_boutique.sql`.
+
 ## Pas encore fait (fonctionnalités jamais développées)
 
 Les boutons existent dans la maquette mais personne ne les a encore programmés :
@@ -294,4 +337,4 @@ Les boutons existent dans la maquette mais personne ne les a encore programmés 
 - paiement en ligne (les commandes sont payées à la livraison pour le moment) ;
 - « like » des commentaires ;
 - choix de la langue ;
-- page « aide et suport ».
+- page « aide et support ».

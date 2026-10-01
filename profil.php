@@ -329,7 +329,7 @@ $connexion->close();
         <!-- TELEPHONE -->
 
         <label for="telephone">
-            Tel :
+            Téléphone :
         </label>
 
         <input
@@ -385,7 +385,7 @@ $connexion->close();
         <!-- PHOTO -->
 
         <label for="photo">
-            Pdp :
+            Photo de profil :
         </label>
 
         <input

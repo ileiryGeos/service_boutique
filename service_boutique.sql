@@ -59,7 +59,7 @@ INSERT INTO `users` (`id`, `nom`, `telephone`, `email`, `date_naissance`, `adres
 (3, 'alderson', '0340000013', 'alderson@exemple.mg', '2026-08-26', 'tana', '', '$2y$10$r00MAh6k5yKPP4iYmM/uKObFoUEWu59ea99c5UDcJpaSYOIWh8f4C'),
 (4, 'bozyy', '0340000014', 'bozyy@exemple.mg', '2026-09-01', 'antananrivo', '', '$2y$10$r00MAh6k5yKPP4iYmM/uKObFoUEWu59ea99c5UDcJpaSYOIWh8f4C'),
 -- tous les comptes de départ ont le mot de passe 1234 ; compte de démonstration : acheteur@demo.mg
-(5, 'acheteur demo', '0340000001', 'acheteur@demo.mg', '2000-01-01', 'tana', '', '$2y$10$r00MAh6k5yKPP4iYmM/uKObFoUEWu59ea99c5UDcJpaSYOIWh8f4C');
+(5, 'acheteur démo', '0340000001', 'acheteur@demo.mg', '2000-01-01', 'tana', '', '$2y$10$r00MAh6k5yKPP4iYmM/uKObFoUEWu59ea99c5UDcJpaSYOIWh8f4C');
 
 -- ------------------------------------------------------------
 -- Table `inscription_vendeur` : les BOUTIQUES / VENDEURS (Zara)
@@ -81,7 +81,7 @@ INSERT INTO `inscription_vendeur` (`id`, `boutname`, `logo`, `numTel`, `email`, 
 (25, 'Zara', 'logo 1.png', '0340000025', 'zara@exemple.mg', '$2y$10$Urx7wDN8tAp4s/OgoaQ4zOSKCB2uH1rjQC/6biyiIBok4tiEw9HKi', 'Tsarahonenana', 'BOUTIQUE MILAY', '2026-09-04 13:24:45'),
 (26, 'KOTO', 'logo 2.jpg', '0340000026', 'koto@exemple.mg', '$2y$10$Urx7wDN8tAp4s/OgoaQ4zOSKCB2uH1rjQC/6biyiIBok4tiEw9HKi', 'Tsarahonenana', 'kkkkkkk', '2026-09-04 13:40:14'),
 -- toutes les boutiques de départ ont le mot de passe 1234 (connexion : nom de la boutique + mot de passe)
-(27, 'Demo', 'kara.jpg', '0340000002', 'vendeur@demo.mg', '$2y$10$Urx7wDN8tAp4s/OgoaQ4zOSKCB2uH1rjQC/6biyiIBok4tiEw9HKi', 'Analakely', 'boutique de demonstration', '2026-09-11 08:00:00');
+(27, 'Demo', 'kara.jpg', '0340000002', 'vendeur@demo.mg', '$2y$10$Urx7wDN8tAp4s/OgoaQ4zOSKCB2uH1rjQC/6biyiIBok4tiEw9HKi', 'Analakely', 'boutique de démonstration', '2026-09-11 08:00:00');
 
 -- ------------------------------------------------------------
 -- Table `produits` : les PRODUITS (Steve)

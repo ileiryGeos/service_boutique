@@ -94,7 +94,7 @@ function e($value) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>boite</title>
+    <title>boîte</title>
     <link rel="stylesheet" href="css_v2/detai_vue2.css?v=<?= filemtime("css_v2/detai_vue2.css") ?>">
     <link rel="stylesheet" href="css_v2/header_vue2.css?v=<?= filemtime("css_v2/header_vue2.css") ?>">
     <link rel="stylesheet" href="css_v2/tete_vue2.css?v=<?= filemtime("css_v2/tete_vue2.css") ?>">
@@ -106,11 +106,11 @@ function e($value) {
         <nav>
             <a href="vue2.php" id="nom"><img src="images/logo.jpg" alt=""></a>
             <ul>
-                <!-- <li><a href="" class="gar"><i>lanngue</i></a></li> -->
+                <!-- <li><a href="" class="gar"><i>langue</i></a></li> -->
                 <li><a href="vue2.php" class="gar"><i>accueil</i></a></li>
                 <li><a href="panier.php" class="gar"><i>panier (<span class="nb_panier"><?= $nb_panier ?></span>)</i></a></li>
-                <li><a href="" class="gar"><i>aide et suport</i></a></li>
-                <li><a href="deconnexion.php" class="gar"><i>deconnection</i></a></li>
+                <li><a href="" class="gar"><i>aide et support</i></a></li>
+                <li><a href="deconnexion.php" class="gar"><i>déconnexion</i></a></li>
                 <li><input type="text" class="gar langue" value="langue"></li>
             </ul>
         </nav>
@@ -132,11 +132,11 @@ function e($value) {
 
             <div class="toust">
                 <div class="info_acheteur">
-                    <h6 class="tou_ve">email: <b><?php echo e($email); ?></b></h6>
-                    <h6 class="tou_ve">N°: <b><?php echo e($telephone); ?></b></h6>
-                    <h6 class="tou_ve">date naissence: <b><?php echo e($date_naissance); ?></b></h6>
-                    <h6 class="tou_ve">adress: <b><?php echo e($adresse); ?></b></h6>
-                    <!-- <h6 class="tou_ve">solde: <b>99 000ar</b></h6> -->
+                    <h6 class="tou_ve">email : <b><?php echo e($email); ?></b></h6>
+                    <h6 class="tou_ve">N° : <b><?php echo e($telephone); ?></b></h6>
+                    <h6 class="tou_ve">date de naissance : <b><?php echo e($date_naissance); ?></b></h6>
+                    <h6 class="tou_ve">adresse : <b><?php echo e($adresse); ?></b></h6>
+                    <!-- <h6 class="tou_ve">solde : <b>99 000ar</b></h6> -->
                 </div>
 
                 <div class="modifier">
@@ -206,7 +206,7 @@ function e($value) {
                         <img src="images/<?= htmlspecialchars(image_ou($p['photo'], 'produit.jpg')) ?>" alt="" class="img_pr">
                         <h2 class="nom_pr"><?= htmlspecialchars($p['nom']) ?></h2>
                         <h6 class="desc_pr"><?= nl2br(htmlspecialchars($p['description'])) ?> <b
-                                style="color: midnightblue;font-size: 1.5vw;font-weight: bold;"><?= (int)$p['stock'] ?></b> pieces</h6>
+                                style="color: midnightblue;font-size: 1.5vw;font-weight: bold;"><?= (int)$p['stock'] ?></b> pièces</h6>
                         <div class="bay_pr">
                             <h4 class="prix_pr"><?= number_format($p['prix'], 0, ',', ' ') ?> Ar</h4>
                             <?php if ($p["stock"] > 0) : ?>
@@ -232,7 +232,7 @@ function e($value) {
 
                                 <button class="but_envoyer" type="submit">envoyer</button>
                             </form>
-                            <h4 class="pr_gros">Le prix de plus de <b>5p</b> est <b><?= number_format($p['prix_gros'], 0, ',', ' ') ?> Ar</b></h4>
+                            <h4 class="pr_gros">Le prix pour plus de <b>5p</b> est <b><?= number_format($p['prix_gros'], 0, ',', ' ') ?> Ar</b></h4>
                         </div>
 
                         <div class="comments">
@@ -241,7 +241,7 @@ function e($value) {
 
                                 <?php $liste = $com_by_produit[$p['id']] ?? []; ?>
                                 <?php if (empty($liste)) : ?>
-                                    <p style="width:100%;text-align:center;color:grey;">Soyez le premier a commenter</p>
+                                    <p style="width:100%;text-align:center;color:grey;">Soyez le premier à commenter</p>
                                 <?php endif; ?>
 
                                 <?php foreach ($liste as $c) : ?>
