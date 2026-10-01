@@ -263,3 +263,18 @@
     box-shadow: 0 0 .5vw blue;
 
 }
+
+
+/* état de validation d'un produit (en attente / en ligne / refusé) */
+.etat_prod {
+    width: 100%;
+    margin-left: 2vw;
+    font-size: 1vw;
+    padding: .1vw .6vw;
+    border-radius: 1vw;
+    color: white;
+    background: orange;
+}
+
+.etat_prod.approuve { background: green; }
+.etat_prod.refuse { background: grey; }

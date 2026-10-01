@@ -38,7 +38,7 @@
 
         return [
             "statut" => 201 ,
-            "message" => "create $nom ok"
+            "message" => "« $nom » ajouté : en attente de validation par l'administrateur"
         ] ;
     }
 

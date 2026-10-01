@@ -21,6 +21,7 @@ Les photos envoyées par les formulaires sont aussi enregistrées dans `images/`
 |---|---|
 | Acheteur | email `acheteur@demo.mg` |
 | Vendeur | nom de boutique `Demo` (connexion : nom de la boutique + mot de passe) |
+| Administrateur | email `admin@demo.mg` (page `admin_connexion.php`) |
 
 Les autres comptes de départ utilisent aussi `1234` : acheteurs `rakoto@exemple.mg`, `miia@exemple.mg`, `alderson@exemple.mg`, `bozyy@exemple.mg` ; boutiques `Zara` et `KOTO`.
 Les emails et téléphones de départ sont fictifs.
@@ -33,7 +34,8 @@ index.php → connection.php   (bouton « ignore » → vue1.php → suit_vue1.p
    │   (inscription : profil.php)        └→ suit_vue2.php?id=… (boutique, produits, commentaires)
    └─ Vendeur  : connecter() ───────→ vue3.php (profil, ajout / suppression de produits)
        (inscription : inscription.php)   └→ suit_vue3.php (ma boutique + commentaires des clients)
-deconnexion.php : déconnexion (acheteur et vendeur)
+   └─ Administrateur : admin_connexion.php → admin.php (tableau de bord)
+deconnexion.php : déconnexion (acheteur, vendeur et administrateur)
 ```
 
 ## Qui a fait quoi → où c'est maintenant
@@ -241,6 +243,49 @@ Remarques :
   si le site reste en ligne longtemps.
 - Les photos envoyées en ligne restent sur l'hébergeur : elles ne reviennent pas
   dans le dépôt Git.
+
+## Administrateur (8e passe)
+
+Le site a maintenant **trois types de comptes** : acheteur, vendeur (boutique) et **administrateur**.
+L'administrateur se connecte sur **`admin_connexion.php`** (lien « administration » en bas de la page de connexion)
+et travaille dans **`admin.php`**.
+
+### Validation des produits
+
+- Un produit ajouté par une boutique est **en attente de validation** : les acheteurs ne le voient pas.
+- L'administrateur le **valide** (il passe « en ligne ») ou le **refuse**. Il peut aussi
+  **retirer du site** un produit déjà en ligne, ou le **supprimer** définitivement.
+- Le vendeur voit l'état de chacun de ses produits dans sa liste (`vue3.php`, `suit_vue3.php`, `inscription.php`).
+- Un produit retiré ne peut plus être commandé, même s'il était déjà dans un panier.
+
+### Frais de mise en vente
+
+- À chaque validation, les **frais de mise en vente** sont facturés à la **boutique**.
+  **Les acheteurs ne paient aucun frais.**
+- Le montant est réglable dans le tableau de bord (table `parametre`, 2 000 Ar au départ)
+  et vaut pour les validations suivantes.
+- Chaque frais est enregistré dans la table `frais` (boutique, produit, montant, payé ou non).
+  L'administrateur peut marquer les frais d'une boutique comme **payés**.
+- Les frais d'un produit supprimé sont conservés : l'historique des revenus ne change pas.
+
+### Tableau de bord
+
+- **Chiffres du haut** : produits à valider, produits en ligne, boutiques, acheteurs,
+  ventes des boutiques, frais facturés / encaissés / en attente.
+- **Produits à valider** : photo, boutique, description, prix et stock, avec les boutons
+  valider / refuser / supprimer.
+- **Produits en ligne et refusés** : tous les produits du site, avec retrait ou suppression.
+- **Ventes de toutes les boutiques** : date, boutique, client, montant et état de chaque commande.
+- **Revenus mois par mois** : produits validés, frais facturés, frais encaissés,
+  ventes des boutiques et nombre de commandes pour chaque mois, plus le détail des derniers frais.
+- **Boutiques** : produits, ventes, frais dus, bouton « frais payés » et suppression du compte.
+- **Acheteurs** : commandes, total acheté et suppression du compte.
+
+Le code est dans `functions/admin.php`, les pages `admin.php` et `admin_connexion.php`,
+le style dans `css_admin/admin.css`.
+
+Base déjà importée : importer **`mise_a_jour_admin.sql`**. Les produits déjà en ligne
+restent visibles (ils passent en « approuve ») et aucun frais n'est créé pour eux.
 
 ## Pas encore fait (fonctionnalités jamais développées)
 

@@ -46,11 +46,21 @@ function passer_commande(int $id_user, string $adresse, string $telephone): arra
 
     try {
         // bloquer les produits le temps de la commande (deux acheteurs en même temps)
-        $verif = $db->prepare("SELECT stock FROM produits WHERE id = ? FOR UPDATE");
+        $verif = $db->prepare("SELECT stock, statut_validation FROM produits WHERE id = ? FOR UPDATE");
 
         foreach ($panier as $l) {
             $verif->execute([$l["id_produit"]]);
-            $stock = (int) $verif->fetchColumn();
+            $produit = $verif->fetch(PDO::FETCH_ASSOC);
+            $stock = (int) $produit["stock"];
+
+            // un produit retiré par l'administrateur ne peut plus être commandé
+            if ($produit["statut_validation"] !== "approuve") {
+                $db->rollBack();
+                return [
+                    "success" => false,
+                    "message" => "« " . $l["nom"] . " » n'est plus en vente"
+                ];
+            }
 
             if ($l["quantite"] > $stock) {
                 $db->rollBack();

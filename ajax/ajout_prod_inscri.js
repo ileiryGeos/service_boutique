@@ -17,6 +17,7 @@ function getProduct (){
                     <img src="images/${produit.photo}" alt="" onerror="this.onerror=null;this.src='images/produit.jpg'">
                     <h3>${produit.type}</h3>
                     <h4>${produit.nom}</h4>
+                    <p class="etat_recu ${produit.statut_validation}">${produit.statut_validation === "approuve" ? "en ligne" : produit.statut_validation === "refuse" ? "refusé" : "en attente de validation"}</p>
                     <p>${produit.description}</p>
                 </div>
             `

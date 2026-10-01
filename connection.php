@@ -188,6 +188,22 @@
             /* text-transform: capitalize; */
         }
 
+        #lien_admin {
+            position: absolute;
+            bottom: 1vw;
+            right: 1vw;
+            color: white;
+            font-size: .9vw;
+            text-decoration: none;
+            border: solid .1vw rgba(255, 255, 255, .5);
+            border-radius: .5vw;
+            padding: .3vw .8vw;
+        }
+
+        #lien_admin:hover {
+            background: rgba(0, 0, 255, .5);
+        }
+
         /* liens vers les pages d'inscription */
         .lien_inscri {
             margin-top: 1vw;
@@ -255,6 +271,7 @@
                 </div>
             </div>
         </div>
+        <a href="admin_connexion.php" id="lien_admin">administration</a>
     </section>
     <script>
         const boChang = document.querySelector(".bo")

@@ -23,6 +23,9 @@ CREATE DATABASE IF NOT EXISTS `service_boutique` DEFAULT CHARACTER SET utf8mb4 C
 USE `service_boutique`;
 
 SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `frais`;
+DROP TABLE IF EXISTS `parametre`;
+DROP TABLE IF EXISTS `admin`;
 DROP TABLE IF EXISTS `favori`;
 DROP TABLE IF EXISTS `commande_ligne`;
 DROP TABLE IF EXISTS `commande`;
@@ -96,6 +99,8 @@ CREATE TABLE `produits` (
   `prix_gros` decimal(10,2) NOT NULL,
   `date_creation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_modification` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `statut_validation` varchar(20) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'en_attente',   -- en_attente / approuve / refuse (validation par l'administrateur)
+  `date_validation` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_boutique` (`id_boutique`),
   CONSTRAINT `fk_produits_boutique`
@@ -232,5 +237,71 @@ CREATE TABLE IF NOT EXISTS `favori` (
     FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id`)
     ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ------------------------------------------------------------
+-- Table `admin` : les ADMINISTRATEURS du site
+--   ils valident les produits, gèrent les comptes et les frais
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `mot_de_passe` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `date_creation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- compte administrateur de démonstration : admin@demo.mg / 1234
+INSERT INTO `admin` (`id`, `nom`, `email`, `mot_de_passe`) VALUES
+(1, 'administrateur', 'admin@demo.mg', '$2y$10$r00MAh6k5yKPP4iYmM/uKObFoUEWu59ea99c5UDcJpaSYOIWh8f4C');
+
+-- ------------------------------------------------------------
+-- Table `parametre` : réglages du site modifiables par l'administrateur
+--   frais_mise_en_vente = somme facturée à la boutique pour chaque
+--   produit validé (les acheteurs ne paient aucun frais)
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `parametre` (
+  `cle` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `valeur` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`cle`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `parametre` (`cle`, `valeur`) VALUES
+('frais_mise_en_vente', '2000');
+
+-- ------------------------------------------------------------
+-- Table `frais` : FRAIS DE MISE EN VENTE facturés aux boutiques
+--   une ligne est créée quand l'administrateur valide un produit
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `frais` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_boutique` int NOT NULL,
+  `id_produit` int DEFAULT NULL,
+  `nom_produit` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `montant` decimal(10,2) NOT NULL,
+  `paye` tinyint(1) NOT NULL DEFAULT 0,
+  `date_frais` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `id_boutique` (`id_boutique`),
+  KEY `id_produit` (`id_produit`),
+  CONSTRAINT `fk_frais_boutique`
+    FOREIGN KEY (`id_boutique`) REFERENCES `inscription_vendeur` (`id`)
+    ON DELETE CASCADE,
+  CONSTRAINT `fk_frais_produit`
+    FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id`)
+    ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- produits de départ : déjà validés par l'administrateur,
+-- avec les frais de mise en vente correspondants (2 000 Ar par produit)
+UPDATE `produits` SET `statut_validation` = 'approuve', `date_validation` = `date_creation`;
+
+INSERT INTO `frais` (`id_boutique`, `id_produit`, `nom_produit`, `montant`, `paye`, `date_frais`)
+SELECT `id_boutique`, `id`, `nom`, 2000.00, 0, `date_creation` FROM `produits`;
+
+-- quelques frais déjà réglés, pour l'exemple
+UPDATE `frais` SET `paye` = 1 WHERE `id_produit` IN (6, 7);
 
 COMMIT;

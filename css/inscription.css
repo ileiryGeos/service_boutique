@@ -228,3 +228,16 @@
     height: 3vw;
 }
 
+
+/* état de validation affiché sous chaque produit ajouté */
+.etat_recu {
+    width: 100%;
+    color: white;
+    background: orange;
+    border-radius: 1vw;
+    padding: .1vw .6vw;
+    text-align: center;
+}
+
+.etat_recu.approuve { background: green; }
+.etat_recu.refuse { background: grey; }

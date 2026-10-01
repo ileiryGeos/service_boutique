@@ -5,6 +5,7 @@
     require_once "functions/inscription_boutique.php";
     require_once "functions/func_prod.php";
     require_once "utils/image.php";
+    require_once "functions/statut_produit.php";
     require_once "functions/commande.php";
 
     // Page réservée au vendeur connecté
@@ -175,6 +176,7 @@
                     <img src="images/<?= htmlspecialchars(image_ou($p["photo"], "produit.jpg")) ?>" alt="" class="img_sup">
                     <div class="prod_sup">
                         <h5 class="prod1"><?= htmlspecialchars($p["type"]) ?>,</h5>
+                        <span class="etat_prod <?= htmlspecialchars($p["statut_validation"]) ?>"><?= htmlspecialchars(STATUTS_PRODUIT[$p["statut_validation"]] ?? "") ?></span>
                         <h5 class="prod1"><?= htmlspecialchars($p["nom"]) ?></h5>
                         <h5 class="prod"><?= number_format($p["prix"], 0, ',', ' ') ?> Ar ;</h5>
                         <h5 class="prod"><?= number_format($p["prix_gros"], 0, ',', ' ') ?> Ar</h5>

@@ -412,7 +412,7 @@ function modifier_acheteur()
             //data url
             $id = (int) ($_GET["id"] ?? 0);
 
-            $req = $db->prepare("SELECT * FROM produits WHERE id_boutique = ? ");
+            $req = $db->prepare("SELECT * FROM produits WHERE id_boutique = ? AND statut_validation = 'approuve' ");
             $req->execute(["$id"]);
             $res = $req->fetchAll();
             return $res;
@@ -465,7 +465,7 @@ function modifier_acheteur()
             prix,
             id_boutique
         FROM produits
-        WHERE nom LIKE ? OR type LIKE ?
+        WHERE (nom LIKE ? OR type LIKE ?) AND statut_validation = 'approuve'
         ORDER BY id DESC
     ");
 
@@ -516,7 +516,8 @@ function filtrer_par_type(array $produits): array
             b.logo AS boutique_pdc,
             (SELECT GROUP_CONCAT(DISTINCT p.type SEPARATOR ', ')
                FROM produits AS p
-              WHERE p.id_boutique = b.id) AS boutique_type,
+              WHERE p.id_boutique = b.id
+                AND p.statut_validation = 'approuve') AS boutique_type,
             b.localisation AS boutique_lieu,
 
             d.id AS produit_id,
@@ -533,6 +534,7 @@ function filtrer_par_type(array $produits): array
 
         LEFT JOIN produits AS d
             ON d.id_boutique = b.id
+           AND d.statut_validation = 'approuve'
 
         ORDER BY b.id DESC, d.id DESC
     ";
