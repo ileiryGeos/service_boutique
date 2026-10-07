@@ -48,6 +48,10 @@ function e($value) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>boîte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/design.css?v=<?= filemtime("css/design.css") ?>">
     <link rel="stylesheet" href="css/tete.css?v=<?= filemtime("css/tete.css") ?>">
     <link rel="stylesheet" href="css/boutic.css?v=<?= filemtime("css/boutic.css") ?>">
     <link rel="stylesheet" href="css_v2/header_vue2.css?v=<?= filemtime("css_v2/header_vue2.css") ?>">
@@ -215,7 +219,7 @@ function e($value) {
 </form>
 
     <?php if ($recherche !== ""): ?>
-        <p style="width:100%;text-align:center;">
+        <p class="vide">
             <?= empty($boutique) ? "Aucune boutique" : count($boutique) . " boutique(s)" ?>
             pour « <?= e($recherche) ?> » — <a href="vue2.php">voir toutes les boutiques</a>
         </p>
@@ -227,7 +231,6 @@ function e($value) {
     <a
         href="suit_vue2.php?id=<?= (int) ($b["id"] ?? 0) ?>"
         id="boite"
-        style="text-decoration: none;"
     >
         <div id="liste_boutiques" class="points">
 
@@ -248,7 +251,7 @@ function e($value) {
 
                 <?= htmlspecialchars($b["description"] ?? "") ?><br>
 
-                <b style="color: aqua;">
+                <b>
                     TYPE : <?= htmlspecialchars($b["type"] ?? "") ?>
                 </b>.
             </p>

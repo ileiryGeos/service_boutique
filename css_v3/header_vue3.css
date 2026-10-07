@@ -1,78 +1,130 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1.2vw;
-}
+/* ============================================================
+   BARRE DU HAUT (#tete1) — pages vendeur : vue3.php, suit_vue3.php
+   Variables : css/design.css
+   ============================================================ */
 
 #tete1 {
-    z-index: 3;
-    background: linear-gradient(mediumblue,blue,blue, transparent);
     position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
     width: 100%;
-    border-bottom: solid .1vw blue;
+    height: var(--h-tete);
+    background: var(--surface);
+    border-bottom: 1px solid var(--bord);
+    box-shadow: var(--o-1);
 }
 
 #tete1 nav {
+    height: 100%;
+    max-width: var(--l-max);
+    margin: 0 auto;
+    padding: 0 var(--e-5);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: .5vw 3vw;
+    justify-content: space-between;
+    gap: var(--e-4);
 }
+
+/* ---------- logo ---------- */
 
 #nom {
-    text-decoration: none;
-    width: 3vw;
-    height: 3vw;
-    color: black;
-    text-transform: uppercase;
-    border: solid .1vw black;
-    border-radius: .5vw;
-    background: rgba(0, 0, 255, 0.459);
-    /* padding: .5vw; */
-    margin-bottom: 1vw;
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--r-2);
+    overflow: hidden;
+    border: 1px solid var(--bord);
+    background: var(--surface-3);
+    transition: border-color var(--tr);
 }
 
-#nom img{
-    width: 100%;
-    width: 100%;
-    border-radius: .5vw;
+#nom:hover { border-color: var(--accent); }
 
-
+#nom img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
+/* ---------- liens ---------- */
 
 #tete1 nav ul {
-    list-style-type: none;
+    list-style: none;
     display: flex;
-    width: 55%;   /* 40% avant l'ajout de "commandes" */
-    justify-content: space-between;
-    color: red;
-}
-
-.gar{
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    font-style: italic;
-    width: 100%;
-    color: white;
+    gap: var(--e-2);
+    margin-left: auto;
+}
+
+.gar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: var(--e-2) var(--e-3);
+    border-radius: var(--r-2);
+    border: 1px solid transparent;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    font-style: normal;
+    letter-spacing: 0.01em;
+    color: var(--texte-2);
     background: transparent;
-    padding: .3vw 1vw;
-    border-radius: .5vw;
-    border: solid .1vw red;
-    transition: 1s;
-    text-transform: capitalize;
-    font-weight: bold;
+    transition: background var(--tr), color var(--tr), border-color var(--tr);
+}
+
+.gar i { font-style: normal; }
+
+.gar:hover {
+    color: var(--accent-fort);
+    background: var(--accent-doux);
+    border-color: var(--accent-bord);
+}
+
+/* le champ « langue » de la maquette : discret, pas un bouton */
+.langue {
+    width: 6rem;
+    padding: var(--e-1) var(--e-2);
+    font-size: var(--t-sm);
+    color: var(--texte-3);
+    background: var(--surface-2);
+    border-color: var(--bord);
+    text-align: center;
 }
 
 
-.gar:hover{
-    background: red;
-    border: solid .1vw white;
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
-    color: black;
+@media (max-width: 960px) {
+    #tete1 nav { padding: 0 var(--e-4); }
+    .langue { display: none; }
+}
 
+@media (max-width: 640px) {
+
+    #tete1 nav {
+        padding: 0 var(--e-3);
+        gap: var(--e-2);
+    }
+
+    #tete1 nav ul {
+        gap: var(--e-1);
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    #tete1 nav ul::-webkit-scrollbar { display: none; }
+
+    .gar {
+        padding: var(--e-1) var(--e-2);
+        font-size: var(--t-xs);
+    }
+
+    #nom {
+        width: 1.875rem;
+        height: 1.875rem;
+    }
 }

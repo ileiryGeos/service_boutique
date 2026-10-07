@@ -1,138 +1,243 @@
-/* "Commandes reçues" du tableau de bord vendeur (vue3.php) */
+/* ============================================================
+   COMMANDES REÇUES — TABLEAU DE BORD VENDEUR (vue3.php)
+   ------------------------------------------------------------
+   Une commande = une carte, avec le client, les articles,
+   l'adresse, le total et les boutons accepter / livrer / annuler.
+   Les pastilles .statut_* viennent de css/design.css.
+
+   Variables : css/design.css
+   ============================================================ */
 
 .commandes_recues {
     width: 100%;
-    margin: 0 3vw 3vw;
-    padding: 1.5vw;
-    border-radius: 1vw;
-    border: solid .1vw blueviolet;
-    background: rgba(128, 128, 128, 0.15);
+    margin: var(--e-6) 0 0;
+    padding: var(--e-5);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-4);
+    background: var(--surface);
+    box-shadow: var(--o-1);
 }
 
 .titre_commandes {
-    font-size: 2.2vw;
-    color: red;
-    text-transform: uppercase;
-    margin-bottom: 1vw;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1vw;
-}
-
-.nouvelles {
-    font-size: 1.2vw;
-    color: white;
-    background: orangered;
-    border-radius: 1vw;
-    padding: .2vw .8vw;
+    gap: var(--e-3);
+    margin-bottom: var(--e-4);
+    padding-bottom: var(--e-3);
+    border-bottom: 1px solid var(--bord);
+    font-size: var(--t-xl);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
     text-transform: none;
+    color: var(--texte);
 }
 
-.aucune_commande {
-    color: grey;
-    text-align: center;
+/* « n nouvelle(s) » à côté du titre */
+.nouvelles {
+    padding: var(--e-1) var(--e-3);
+    border: 1px solid var(--attention);
+    border-radius: var(--r-rond);
+    background: var(--attention-doux);
+    color: var(--attention);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
 }
+
+
+/* ============================================================
+   CARTE D'UNE COMMANDE
+   ============================================================ */
 
 .commande {
-    border: solid .1vw brown;
-    border-radius: 1vw;
-    background: rgba(255, 166, 0, 0.25);
-    padding: 1vw;
-    margin-bottom: 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-3);
+    margin-bottom: var(--e-3);
+    padding: var(--e-4);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-3);
+    background: var(--surface-2);
 }
 
-/* commande à traiter : bien visible */
+.commande:last-child { margin-bottom: 0; }
+
+/* commande à traiter : bord accentué, sans clignoter */
 .commande_en_attente {
-    border: solid .2vw orangered;
-    box-shadow: 0 0 1vw orange;
+    border-color: var(--attention);
+    background: var(--attention-doux);
 }
 
 .commande_annulee,
 .commande_livree {
-    opacity: .7;
+    opacity: 1;
+    color: var(--texte-2);
+    background: var(--surface-2);
 }
 
 .commande_tete {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1vw;
+    gap: var(--e-3);
 }
 
 .commande_img {
-    width: 3.5vw;
-    height: 3.5vw;
+    flex-shrink: 0;
+    width: 2.75rem;
+    height: 2.75rem;
     border-radius: 50%;
     object-fit: cover;
+    background: var(--surface-3);
+    border: 1px solid var(--bord);
 }
 
 .commande_client {
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-width: 0;
 }
 
 .commande_client b {
-    color: blue;
-    font-size: 1.5vw;
+    font-size: var(--t-base);
+    font-weight: var(--gras-fort);
     text-transform: capitalize;
+    color: var(--texte);
 }
 
 .commande_client span {
-    color: grey;
+    font-size: var(--t-xs);
+    color: var(--texte-3);
 }
 
-.statut {
-    padding: .2vw .8vw;
-    border-radius: 1vw;
-    color: white;
-}
-
-.statut_en_attente { background: orange; }
-.statut_acceptee { background: blue; }
-.statut_livree { background: green; }
-.statut_annulee { background: grey; }
+/* ---------- articles ---------- */
 
 .commande_lignes {
-    margin: .8vw 0 .8vw 5vw;
-    color: midnightblue;
+    margin: 0;
+    padding-left: var(--e-5);
+    list-style: disc;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
 }
 
 .commande_lignes b {
-    color: red;
+    font-weight: var(--gras-fort);
+    color: var(--texte);
 }
+
+/* ---------- livraison et total ---------- */
 
 .commande_pied {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
+    gap: var(--e-3);
+    padding-top: var(--e-3);
+    border-top: 1px solid var(--bord);
+    font-size: var(--t-sm);
+    color: var(--texte-2);
 }
 
 .commande_pied i {
-    color: orangered;
+    font-style: normal;
+    font-weight: var(--gras-moyen);
+    color: var(--accent);
 }
 
+.commande_pied b { color: var(--texte); }
+
 .commande_total {
-    color: red;
-    font-weight: bold;
-    font-size: 1.6vw;
+    font-size: var(--t-lg);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
+    color: var(--texte);
 }
+
+/* ---------- boutons ---------- */
 
 .commande_actions {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
-    gap: .8vw;
-    margin-top: .8vw;
+    gap: var(--e-2);
 }
 
 .but_statut {
-    padding: .4vw 1.2vw;
-    border-radius: .5vw;
-    border: none;
-    color: white;
+    padding: var(--e-2) var(--e-4);
+    border: 1px solid transparent;
+    border-radius: var(--r-2);
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
     text-transform: capitalize;
-    cursor: pointer;
 }
 
-.but_accepter { background: blue; }
-.but_livrer { background: green; }
-.but_annuler { background: white; color: red; border: solid .1vw red; }
+.but_accepter {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+}
+
+.but_accepter:hover {
+    background: var(--accent-fort);
+    border-color: var(--accent-fort);
+}
+
+.but_livrer {
+    background: var(--succes);
+    border-color: var(--succes);
+    color: #ffffff;
+}
+
+.but_livrer:hover { filter: brightness(.92); }
+
+.but_annuler {
+    background: var(--surface);
+    border-color: var(--bord-fort);
+    color: var(--texte-2);
+}
+
+.but_annuler:hover {
+    border-color: var(--danger);
+    background: var(--danger-doux);
+    color: var(--danger);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 960px) {
+
+    .commandes_recues {
+        padding: var(--e-4);
+        border-radius: var(--r-3);
+    }
+}
+
+@media (max-width: 640px) {
+
+    .commandes_recues {
+        padding: var(--e-3);
+        margin-top: var(--e-5);
+    }
+
+    .commande { padding: var(--e-3); }
+
+    .commande_lignes { padding-left: var(--e-4); }
+
+    .commande_pied {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .commande_actions {
+        justify-content: stretch;
+    }
+
+    .but_statut { flex: 1; text-align: center; }
+}

@@ -1,204 +1,326 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1.2vw;
-}
+/* ============================================================
+   PAGE D'UNE BOUTIQUE — VISITEUR (suit_vue1.php)
+   ------------------------------------------------------------
+   .card_fondImage : bandeau avec la photo de la boutique
+   .bar_but        : filtres par type de produit
+   .produit        : grille des produits
+   .box_prox       : carte d'un produit
+
+   Variables : css/design.css
+   ============================================================ */
 
 .detail {
-    background: wheat;
-    padding: 5.9vw 1vw 0 25vw;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .det1 {
     width: 100%;
-    border-radius: 1vw;
+    max-width: var(--l-max);
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--e-5);
 }
 
+
+/* ============================================================
+   BANDEAU DE LA BOUTIQUE
+   ============================================================ */
+
 .card_fondImage {
-    width: 100%;
     position: relative;
-    height: 30vw;
+    isolation: isolate;
+    width: 100%;
+    min-height: 16rem;
+    padding: var(--e-7) var(--e-5);
+    border-radius: var(--r-4);
+    overflow: hidden;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 1vw;
+    gap: var(--e-3);
 
+    background: var(--pierre-800);
+    box-shadow: var(--o-2);
 }
 
+/* la photo de la boutique, en fond */
+.fond {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* voile sombre : le texte reste lisible quelle que soit la photo */
+.fond_hr {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: linear-gradient(rgba(27, 24, 20, .58), rgba(27, 24, 20, .74));
+}
 
 .nom_bout {
-    z-index: 1;
-    font-size: 5vw;
-    color: yellow;
-    position: relative;
+    margin: 0;
+    font-size: var(--t-3xl);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-maj);
     text-transform: uppercase;
-
+    text-align: center;
+    color: #ffffff;
 }
 
-.desc_box{
-    z-index: 1;
-    width: 60%;
-    color: wheat;
-    font-size: 1.5vw;
+.desc_box {
+    max-width: 44rem;
+    margin: 0;
+    font-size: var(--t-base);
     text-align: center;
+    color: var(--pierre-200);
 }
 
 .desc_box em {
-    font-size: 2vw;
-    color: orange;
+    display: block;
+    margin-top: var(--e-2);
+    font-size: var(--t-base);
+    font-style: normal;
+    color: var(--pierre-300);
 }
 
 .desc_box em b {
-    font-size: 2vw;
-    text-transform: uppercase;
+    font-size: var(--t-base);
+    font-weight: var(--gras-fort);
+    text-transform: none;
+    color: #ffffff;
 }
 
+/* ---------- bouton « accueil » ---------- */
+
 .retour {
-    z-index: 1;
-    padding: .5vw;
-    border-radius: .5vw;
-    background: wheat;
-    text-transform: uppercase;
-    border: solid .1vw orangered;
+    margin-top: var(--e-2);
+    padding: 0;
+    border: none;
+    background: transparent;
 }
 
 .retour a {
-    color: orangered;
-    text-decoration: none;
-    font-weight: bold;
+    display: inline-block;
+    padding: var(--e-2) var(--e-5);
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-radius: var(--r-rond);
+    background: rgba(255, 255, 255, .1);
+    color: #ffffff;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    transition: background var(--tr), border-color var(--tr);
 }
 
-.fond {
-    position: absolute;
-    top: 0;
-    left: 0;
+.retour a:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: var(--texte);
+}
+
+
+/* ============================================================
+   FILTRES PAR TYPE
+   ============================================================ */
+
+.bar_but {
     width: 100%;
-    height: 100%;
-    border-radius: 1vw;
-
-
-}
-
-.fond_hr {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.425);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 1vw;
-
-}
-
-.produit {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    padding: 3vw;
-    justify-content: space-between;
+    gap: var(--e-2);
+    padding: 0;
 }
 
-
-.bar_but{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: .5vw;
-    
-}
-
-.but_type{
-    padding: .5vw 1vw;
-    width: 10vw;
-    border-radius: .5vw;
-    border: solid .1vw white;
-    background: moccasin;
+.but_type {
+    padding: 0;
+    width: auto;
+    border: none;
+    background: transparent;
 }
 
 .but_type a {
-    text-decoration: none;
-    color: blueviolet;
+    display: inline-block;
+    padding: var(--e-2) var(--e-4);
+    border: 1px solid var(--bord-fort);
+    border-radius: var(--r-rond);
+    background: var(--surface);
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
     text-transform: capitalize;
+    transition: background var(--tr), color var(--tr), border-color var(--tr);
 }
+
+.but_type a:hover {
+    border-color: var(--accent);
+    background: var(--accent-doux);
+    color: var(--accent-fort);
+}
+
+/* le type choisi (vue1 pose font-weight:bold en style en ligne) */
+.but_type a[style] {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   GRILLE DES PRODUITS
+   ============================================================ */
+
+.produit {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: var(--e-5);
+    align-items: start;
+    padding: 0;
+}
+
+/* message « Aucun produit pour le moment » : toute la largeur */
+.produit > .vide { grid-column: 1 / -1; }
 
 .box_prox {
-    width: 20vw;
-    height: 24vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 1vw;
-    
-    overflow: hidden;
-    transition: 1.5s;
+    align-items: stretch;
+    height: auto;
+    overflow: visible;
 
+    border: 1px solid var(--bord);
+    border-radius: var(--r-3);
+    background: var(--surface);
+    box-shadow: var(--o-1);
+    transition: box-shadow var(--tr), border-color var(--tr), transform var(--tr);
 }
 
-.box_prox:hover{
-    border: solid .1vw white;
-    height: 26vw;
+.box_prox:hover {
+    border-color: var(--bord-fort);
+    box-shadow: var(--o-2);
+    transform: translateY(-2px);
 }
 
-.img_pr{
+.img_pr {
     width: 100%;
-    height: 15vw;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--r-3) var(--r-3) 0 0;
+    background: var(--surface-3);
 }
 
-
-.nom_pr{
+.nom_pr {
+    margin: var(--e-4) var(--e-4) 0;
+    font-size: var(--t-md);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-titre);
     text-transform: capitalize;
-    font-size: 2vw;
-    color: yellow;
+    color: var(--texte);
 }
 
-.desc_pr{
-    color: blue;
-    text-align: center;
-    font-weight: lighter;
+.desc_pr {
+    margin: var(--e-2) var(--e-4) 0;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-normal);
+    text-align: left;
+    color: var(--texte-2);
 }
 
-.bay_pr{
+/* le nombre en stock, mis en avant dans la description */
+.desc_pr b {
+    font-size: var(--t-sm) !important;
+    font-weight: var(--gras-fort);
+    color: var(--texte) !important;
+}
+
+.bay_pr {
     width: 100%;
-    padding: .5vw;
+    margin-top: auto;
+    padding: var(--e-4);
     display: flex;
+    align-items: center;
     justify-content: space-between;
-
+    gap: var(--e-3);
 }
 
-.prix_pr{
-    font-size: 2vw;
-    color: red;
+.prix_pr {
+    margin: 0;
+    font-size: var(--t-lg);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
+    color: var(--texte);
 }
 
-.butbay{
-    padding: .2vw;
-    width: 5vw;
-    border-radius: .5vw;
-    border: solid .1vw red;
-    text-transform: capitalize;
-    color: yellowgreen;
-    background: yellow;
-}
-
-
-
-.pr_gros{
-    color: midnightblue;
+.pr_gros {
+    margin: 0 var(--e-4) var(--e-4);
+    padding-top: var(--e-3);
+    border-top: 1px solid var(--bord);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-normal);
+    color: var(--texte-3);
 }
 
 .pr_gros b {
-    color: red;
+    font-size: var(--t-xs) !important;
+    font-weight: var(--gras-fort);
+    color: var(--texte-2) !important;
 }
 
 
-/* carte produit entière visible au chargement (plus de hauteur fixe dévoilée au survol) */
-.box_prox,
-.box_prox:hover {
-    height: auto;
-    padding-bottom: .5vw;
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 960px) {
+
+    .card_fondImage {
+        min-height: 12rem;
+        padding: var(--e-6) var(--e-4);
+        border-radius: var(--r-3);
+    }
+
+    .produit {
+        grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+        gap: var(--e-4);
+    }
+}
+
+@media (max-width: 640px) {
+
+    .card_fondImage {
+        min-height: 9rem;
+        padding: var(--e-5) var(--e-3);
+    }
+
+    .box_prox:hover { transform: none; }
+
+    .produit {
+        grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+        gap: var(--e-3);
+    }
+
+    .nom_pr   { margin: var(--e-3) var(--e-3) 0; font-size: var(--t-base); }
+    .desc_pr  { margin: var(--e-1) var(--e-3) 0; }
+    .bay_pr   { padding: var(--e-3); }
+    .pr_gros  { margin: 0 var(--e-3) var(--e-3); }
+
+    .bar_but { gap: var(--e-1); }
+
+    .but_type a {
+        padding: var(--e-1) var(--e-3);
+        font-size: var(--t-xs);
+    }
 }

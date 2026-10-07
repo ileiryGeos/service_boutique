@@ -95,6 +95,10 @@ function e($value) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>boîte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/design.css?v=<?= filemtime("css/design.css") ?>">
     <link rel="stylesheet" href="css_v2/detai_vue2.css?v=<?= filemtime("css_v2/detai_vue2.css") ?>">
     <link rel="stylesheet" href="css_v2/header_vue2.css?v=<?= filemtime("css_v2/header_vue2.css") ?>">
     <link rel="stylesheet" href="css_v2/tete_vue2.css?v=<?= filemtime("css_v2/tete_vue2.css") ?>">
@@ -189,24 +193,23 @@ function e($value) {
             <?php endforeach; ?>
 
             <div class="bar_but">
-                <button class="but_type"><a href="suit_vue2.php?id=<?= $id_boutique ?>"<?= $type_choisi === "" ? ' style="font-weight:bold;"' : '' ?>>tous</a></button>
+                <button class="but_type"><a href="suit_vue2.php?id=<?= $id_boutique ?>"<?= $type_choisi === "" ? ' class="actif"' : '' ?>>tous</a></button>
                 <?php foreach ($types as $t) : ?>
-                    <button class="but_type"><a href="suit_vue2.php?id=<?= $id_boutique ?>&amp;type=<?= urlencode($t) ?>"<?= $type_choisi === $t ? ' style="font-weight:bold;"' : '' ?>><?= htmlspecialchars($t) ?></a></button>
+                    <button class="but_type"><a href="suit_vue2.php?id=<?= $id_boutique ?>&amp;type=<?= urlencode($t) ?>"<?= $type_choisi === $t ? ' class="actif"' : '' ?>><?= htmlspecialchars($t) ?></a></button>
                 <?php endforeach; ?>
             </div>
 
             <div class="produit">
 
                 <?php if (empty($produits)) : ?>
-                    <h2 style="width:100%;text-align:center;color:blueviolet;">Aucun produit pour le moment</h2>
+                    <p class="vide">Aucun produit pour le moment</p>
                 <?php endif; ?>
 
                 <?php foreach ($produits as $p) : ?>
                     <div class="box_prox">
                         <img src="images/<?= htmlspecialchars(image_ou($p['photo'], 'produit.jpg')) ?>" alt="" class="img_pr">
                         <h2 class="nom_pr"><?= htmlspecialchars($p['nom']) ?></h2>
-                        <h6 class="desc_pr"><?= nl2br(htmlspecialchars($p['description'])) ?> <b
-                                style="color: midnightblue;font-size: 1.5vw;font-weight: bold;"><?= (int)$p['stock'] ?></b> pièces</h6>
+                        <h6 class="desc_pr"><?= nl2br(htmlspecialchars($p['description'])) ?> <b><?= (int)$p['stock'] ?></b> pièces</h6>
                         <div class="bay_pr">
                             <h4 class="prix_pr"><?= number_format($p['prix'], 0, ',', ' ') ?> Ar</h4>
                             <?php if ($p["stock"] > 0) : ?>
@@ -241,7 +244,7 @@ function e($value) {
 
                                 <?php $liste = $com_by_produit[$p['id']] ?? []; ?>
                                 <?php if (empty($liste)) : ?>
-                                    <p style="width:100%;text-align:center;color:grey;">Soyez le premier à commenter</p>
+                                    <p class="vide">Soyez le premier à commenter</p>
                                 <?php endif; ?>
 
                                 <?php foreach ($liste as $c) : ?>

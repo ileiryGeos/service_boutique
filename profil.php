@@ -196,101 +196,11 @@ $connexion->close();
     <title>Inscription</title>
 
 
-    <style>
-
-        body {
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            min-height: 100vh;
-
-            margin: 0;
-
-            background: #fff;
-        }
-
-
-        .sect-one {
-
-            width: 700px;
-
-            background: white;
-
-            min-height: 90vh;
-
-            box-shadow:
-                0 1px 15px rgba(0, 0, 0, 0.2);
-
-            padding: 1vw 5vw;
-
-            position: relative;
-        }
-
-
-        h2 {
-
-            text-align: center;
-
-            text-transform: capitalize;
-        }
-
-
-        label {
-
-            display: block;
-
-            font-weight: lighter;
-
-            font-size: 18px;
-
-            margin-top: 1vw;
-
-            margin-bottom: 0.3vw;
-        }
-
-
-        input {
-
-            width: 95%;
-
-            padding: 0.5vw;
-
-            margin-bottom: 1vw;
-
-            border-radius: 5px;
-
-            border: 1px solid #ccc;
-        }
-
-
-        button {
-
-            background: #0b4f8a;
-
-            color: white;
-
-            margin: 1vw 25vw;
-
-            padding: 0.7vw 2vw;
-
-            border: none;
-
-            border-radius: 5px;
-
-            cursor: pointer;
-        }
-
-
-        button:hover {
-
-            background: #083b67;
-        }
-
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/design.css?v=<?= filemtime("css/design.css") ?>">
+    <link rel="stylesheet" href="css/profil.css?v=<?= filemtime("css/profil.css") ?>">
 
 </head>
 
@@ -430,7 +340,7 @@ $connexion->close();
             Envoyer
         </button>
 
-        <p style="text-align:center;"><a href="connection.php">déjà un compte ? se connecter</a></p>
+        <p><a href="connection.php">déjà un compte ? se connecter</a></p>
 
 
     </form>

@@ -15,6 +15,10 @@ $recherche = trim($_GET["search"] ?? "");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>boîte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/design.css?v=<?= filemtime("css/design.css") ?>">
     <link rel="stylesheet" href="css/tete.css?v=<?= filemtime("css/tete.css") ?>">
     <link rel="stylesheet" href="css/boutic.css?v=<?= filemtime("css/boutic.css") ?>">
     <link rel="stylesheet" href="css_v1/header_vue1.css?v=<?= filemtime("css_v1/header_vue1.css") ?>">
@@ -65,7 +69,7 @@ $recherche = trim($_GET["search"] ?? "");
         </form>
 
         <?php if ($recherche !== ""): ?>
-            <p style="width:100%;text-align:center;">
+            <p class="vide">
                 <?= empty($boutique) ? "Aucune boutique" : count($boutique) . " boutique(s)" ?>
                 pour « <?= htmlspecialchars($recherche) ?> » — <a href="vue1.php">voir toutes les boutiques</a>
             </p>
@@ -73,7 +77,7 @@ $recherche = trim($_GET["search"] ?? "");
 
         <?php foreach ($boutique as $b): ?>
 
-        <a href="suit_vue1.php?id=<?= (int) $b["id"] ?>" id="boite" style="text-decoration: none;">
+        <a href="suit_vue1.php?id=<?= (int) $b["id"] ?>" id="boite">
             <div class="points">
                 <div class="nom_img">
                     <!-- anaran'ilay box -->
@@ -84,7 +88,7 @@ $recherche = trim($_GET["search"] ?? "");
 
                 <!-- famaritana ilay box -->
                 <p class="definition">points forts du box <br>
-                    <?= htmlspecialchars($b["description"]) ?><br><b style="color: aqua;">TYPE :
+                    <?= htmlspecialchars($b["description"]) ?><br><b>TYPE :
                         <?= htmlspecialchars($b["type"] ?? "") ?></b>.</p>
 
             </div>

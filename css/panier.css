@@ -1,0 +1,360 @@
+/* ============================================================
+   MON PANIER (panier.php)
+   ------------------------------------------------------------
+   Lignes du panier, total, formulaire « commander », puis les
+   commandes déjà passées. Les pastilles .statut_* et les
+   messages .pan_ok / .pan_erreur viennent de css/design.css.
+
+   Était un bloc <style> dans panier.php.
+   Variables : css/design.css
+   ============================================================ */
+
+#panier {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: calc(var(--h-tete) + var(--e-6)) var(--e-5) var(--e-8);
+}
+
+.titre_panier {
+    margin-bottom: var(--e-5);
+    font-size: var(--t-2xl);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
+    text-transform: none;
+    text-align: left;
+    color: var(--texte);
+}
+
+
+/* ============================================================
+   UNE LIGNE DU PANIER
+   ============================================================ */
+
+.ligne_panier {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    gap: var(--e-4);
+    align-items: center;
+
+    margin-bottom: var(--e-3);
+    padding: var(--e-4);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-3);
+    background: var(--surface);
+    box-shadow: var(--o-1);
+}
+
+.ligne_panier img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: var(--r-2);
+    background: var(--surface-3);
+    border: 1px solid var(--bord);
+}
+
+.pan_info {
+    width: auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-1);
+}
+
+.pan_info h2 {
+    font-size: var(--t-md);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-titre);
+    text-transform: capitalize;
+    color: var(--texte);
+}
+
+.pan_info p {
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+}
+
+.pan_info a { color: var(--accent); }
+
+.pan_gros {
+    display: inline-block;
+    margin-left: var(--e-1);
+    padding: 0 var(--e-2);
+    border: 1px solid var(--succes);
+    border-radius: var(--r-rond);
+    background: var(--succes-doux);
+    color: var(--succes);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+}
+
+
+/* ---------- quantité ---------- */
+
+.pan_qte {
+    display: flex;
+    align-items: center;
+    gap: var(--e-2);
+}
+
+.pan_qte form { display: inline; }
+
+.pan_qte b {
+    min-width: 2rem;
+    text-align: center;
+    font-size: var(--t-md);
+    font-weight: var(--gras-titre);
+    color: var(--texte);
+}
+
+.pan_but {
+    padding: var(--e-1) var(--e-3);
+    border: 1px solid var(--bord-fort);
+    border-radius: var(--r-2);
+    background: var(--surface);
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+}
+
+.pan_but:hover {
+    border-color: var(--accent);
+    background: var(--accent-doux);
+    color: var(--accent-fort);
+}
+
+.pan_but:disabled,
+.pan_but:disabled:hover {
+    border-color: var(--bord);
+    background: var(--surface-3);
+    color: var(--texte-3);
+}
+
+.pan_retirer {
+    border-color: var(--bord-fort);
+    color: var(--texte-3);
+}
+
+.pan_retirer:hover {
+    border-color: var(--danger);
+    background: var(--danger-doux);
+    color: var(--danger);
+}
+
+.pan_prix {
+    width: auto;
+    text-align: right;
+    font-size: var(--t-md);
+    font-weight: var(--gras-titre);
+    color: var(--texte);
+}
+
+
+/* ============================================================
+   TOTAL
+   ============================================================ */
+
+.pan_total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--e-4);
+    margin-top: var(--e-5);
+    padding-top: var(--e-4);
+    border-top: 1px solid var(--bord-fort);
+}
+
+.pan_total span {
+    font-size: var(--t-md);
+    font-weight: var(--gras-moyen);
+    color: var(--texte-2);
+}
+
+.pan_total b {
+    font-size: var(--t-2xl);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
+    color: var(--texte);
+}
+
+
+/* ============================================================
+   COMMANDER
+   ============================================================ */
+
+.pan_commander {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--e-2) var(--e-4);
+    align-items: center;
+
+    margin-top: var(--e-5);
+    padding: var(--e-5);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-3);
+    background: var(--surface);
+    box-shadow: var(--o-1);
+}
+
+.pan_commander label {
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    color: var(--texte-2);
+    white-space: nowrap;
+}
+
+.pan_commander input {
+    width: 100%;
+    max-width: 28rem;
+}
+
+.but_commander {
+    grid-column: 1 / -1;
+    justify-self: end;
+    margin-top: var(--e-2);
+    padding: var(--e-3) var(--e-6);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-2);
+    background: var(--accent);
+    color: #ffffff;
+    font-size: var(--t-base);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+}
+
+.but_commander:hover {
+    background: var(--accent-fort);
+    border-color: var(--accent-fort);
+}
+
+.pan_retour {
+    display: inline-block;
+    margin-top: var(--e-5);
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    color: var(--accent);
+}
+
+
+/* ============================================================
+   MES COMMANDES
+   ============================================================ */
+
+.titre_commandes {
+    margin: var(--e-8) 0 var(--e-4);
+    padding-bottom: var(--e-3);
+    border-bottom: 1px solid var(--bord);
+    font-size: var(--t-xl);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
+    text-transform: none;
+    color: var(--texte);
+}
+
+.commande {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-3);
+    margin-bottom: var(--e-3);
+    padding: var(--e-4);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-3);
+    background: var(--surface);
+}
+
+.commande_tete {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--e-3);
+    margin: 0;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+}
+
+.commande_tete b { color: var(--texte); }
+
+.commande ul {
+    margin: 0;
+    padding-left: var(--e-5);
+    list-style: disc;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+}
+
+.commande_pied {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--e-3);
+    margin: 0;
+    padding-top: var(--e-3);
+    border-top: 1px solid var(--bord);
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+}
+
+.commande_pied b {
+    font-size: var(--t-md);
+    font-weight: var(--gras-titre);
+    color: var(--texte);
+}
+
+.commande_pied form { display: inline; }
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 960px) {
+    #panier { padding: calc(var(--h-tete) + var(--e-5)) var(--e-4) var(--e-7); }
+}
+
+@media (max-width: 760px) {
+
+    /* photo à gauche, le reste empilé à droite */
+    .ligne_panier {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: var(--e-3);
+    }
+
+    .pan_qte,
+    .pan_prix { grid-column: 2; }
+
+    .pan_prix { text-align: left; }
+
+    .pan_commander {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pan_commander input { max-width: none; }
+
+    .but_commander { justify-self: stretch; }
+}
+
+@media (max-width: 640px) {
+
+    #panier { padding: calc(var(--h-tete) + var(--e-4)) var(--e-3) var(--e-6); }
+
+    .ligne_panier {
+        padding: var(--e-3);
+    }
+
+    .ligne_panier img {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .commande,
+    .pan_commander { padding: var(--e-3); }
+
+    .commande_pied,
+    .commande_tete {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -1,441 +1,288 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1.2vw;
-}
+/* ============================================================
+   COLONNE DE GAUCHE — ACHETEUR (#tete_vue2)
+   ------------------------------------------------------------
+   Photo et informations du compte, formulaires de modification
+   (ouverts au clic par ajax/acheteur.js), historique d'achats
+   puis favoris.
 
-#tete_vue2 {
-    background: transparent;
-    position: fixed;
-    width: 25vw;
-    padding: 6vw .5vw 0;
-}
+   Pages : vue2.php, suit_vue2.php
+   Position de la colonne : css/design.css
+   ============================================================ */
 
 #bord {
-    width: 100%;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    padding: .5vw;
-    transition: 5s;
+    gap: var(--e-4);
 }
 
-#bord:hover{
-    height: 42vw;
-    overflow-y: scroll;
 
-}
+/* ============================================================
+   PHOTO ET NOM
+   ============================================================ */
 
 .ah_pdp {
-    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    position: relative;
+    gap: var(--e-2);
 }
 
 .img_ah {
-    width: 60%;
-    height: 10vw;
-    background: blueviolet;
-    border-radius: 1vw;
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
     overflow: hidden;
-}
-
-.img_ah_modi {
-    position: absolute;
-    bottom: .3vw;
-    right: 5vw;
-    width: 2vw;
-    height: 2vw;
-    /* padding: .3vw; */
-    border: none;
-    background: transparent;
-    border-radius: .5vw;
-    transition: 1s;
-    color: orange;
-
-
-}
-
-.img_ah_modi::before {
-    content: "Q";
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: wheat;
-    /* color: white; */
-}
-
-.img_ah_modi:hover {
-    border: solid .1vw blue;
-    box-shadow: 0 0 1vw white;
-    color: blue;
-    background: white;
+    border: 1px solid var(--bord);
+    background: var(--surface-3);
+    box-shadow: var(--o-1);
 }
 
 .img_pdp {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* choix d'une nouvelle photo : petit champ sobre sous l'avatar */
+.img_ah_modi {
+    width: 100%;
+    max-width: 13rem;
+    font-size: var(--t-xs);
+    color: var(--texte-3);
+}
+
+.img_ah_modi::file-selector-button {
+    margin-right: var(--e-2);
+    padding: var(--e-1) var(--e-3);
+    border: 1px solid var(--bord-fort);
+    border-radius: var(--r-rond);
+    background: var(--surface);
+    color: var(--texte-2);
+    font-family: inherit;
+    font-size: var(--t-xs);
+    font-weight: var(--gras-moyen);
+    cursor: pointer;
+}
+
+.img_ah_modi::file-selector-button:hover {
+    border-color: var(--accent);
+    color: var(--accent-fort);
 }
 
 .ah_noms {
-    width: 100%;
-    /* background: red; */
     display: flex;
     justify-content: center;
-    padding: .5vw;
-    position: relative;
-
-
 }
 
 .ah_nom {
-    font-size: 2vw;
+    font-size: var(--t-lg);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
     text-transform: capitalize;
-    color: red;
-}
-
-/* .ah_but_nom {
-    position: absolute;
-    padding: .3vw;
-    width: 2vw;
-    height: 2vw;
-    border-radius: .5vw;
-    right: 1vw;
-    border: solid .1vw white;
-    background: transparent;
-    color: orange;
-    transition: 1s;
-
-}
-
-.ah_but_nom::before {
-    content: "Q";
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: wheat;
-    color: white;
-}
-
-.ah_but_nom:hover {
-    border: solid .1vw blueviolet;
-    color: blueviolet;
-    box-shadow: 0 0 .2vw blue;
-} */
-
-.toust{
-    width: 100%;
-    padding: .5vw 1vw;
-    /* height: 3vw; */
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    /* background: red; */
-}
-
-.tou_ve{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    color: blue;
-    text-transform: capitalize;
-}
-
-.tou_ve b{
-    color: grey;
-}
-
-.modifier{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: .5vw .4vw 0;
-    height: 3vw;
-    transition: 2s;
-    overflow: hidden;
-}
-.modifier:hover{
-    height: 30vw; 
-
-}
-
-.afir_modi{
-    color: midnightblue;
-    margin-bottom: 1vw;
-}
-
-.form_modi{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-}
-
-.inp_modif{
-    margin: .2vw;
-    width: 100%;
-    border-radius: .5vw;
-    padding: .5vw;
-    border: solid .1vw blueviolet;
-
-}
-
-.but_mode{
-    border-radius: .5vw;
-    text-transform: capitalize;
-    border: none;
-    background: tan;
-    color: blue;
-    padding: .3vw;
-    width: 7vw;
-}
-
-
-.histior {
-    width: 100%;
-    padding: .5vw;
-    border: solid .1vw white;
-    position: relative;
-    margin: 1vw 0 .5vw;
-    display: flex;
-    flex-wrap: wrap;
-    transition: 1s;
-
-}
-
-
-
-.histior:hover {
-    box-shadow: 0 0 .5vw blue;
-    border-radius: 1vw;
-}
-
-.boi_hist {
-    width: 100%;
-    height: 4vw;
-    position: relative;
-    border: solid .1vw black;
-    border-radius: .5vw;
-    margin-bottom: .5vw;
-    background: rgba(255, 255, 255, 0.521);
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-
-}
-
-.img_hist {
-    width: 5vw;
-    height: 3vw;
-    background: blueviolet;
-    border-radius: .5vw;
-}
-
-.prod_hist {
-    color: yellow;
-    font-size: 2vw;
-    text-transform: capitalize;
-}
-
-.hist_sup{
-    position: absolute;
-    color: red;
-    border: solid .1vw red;
-    border-radius: .2vw;
-    padding: 0 .2vw;
-    top: .2vw;
-    right: .2vw;
-}
-
-.hist_sup:hover{
-    color: blue;
-    box-shadow: 0 0 .5vw blue;
-
-}
-
-.favorite {
-    width: 100%;
-    padding: 1vw 3vw;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    transition: 2vw;
-}
-
-
-.boit_fav {
-    margin-bottom: .5vw;
-    width: 100%;
-    border-radius: .5vw;
-    background: rgba(255, 166, 0, 0.253);
-    /* box-shadow: 0 0 1vw lime; */
-    border-radius: .5vw;
-    border: solid .1vw blueviolet;
-    position: relative;
-    padding: .4vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    transition: 1s;
-}
-
-.boit_fav:hover {
-    box-shadow: 0 0 .5vw blueviolet;
-}
-
-.fav_img {
-    width: 13vw;
-    height: 9vw;
-    border-radius: .5vw;
-    background: blueviolet;
-
-}
-
-.fav_nom {
     text-align: center;
-    font-size: 1.5vw;
-    color: red;
-    text-transform: capitalize;
-    margin: .3vw;
-
+    color: var(--texte);
+    overflow-wrap: anywhere;
 }
 
-.fav_prod {
-    color: brown;
-    text-transform: capitalize;
+
+/* ============================================================
+   INFORMATIONS DU COMPTE
+   ============================================================ */
+
+.toust {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-3);
 }
 
-.fav_px {
-    color: rgb(79, 158, 0);
-    text-align: end;
-    width: 100%;
-    font-weight: bold;
-    font-size: 2vw;
-
+.info_acheteur {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-1);
+    padding: var(--e-3);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-2);
+    background: var(--surface-2);
 }
 
-.fav {
-    padding: 1vw;
-    width: 3vw;
-    height: 3vw;
+.tou_ve {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--e-2);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-normal);
+    text-transform: none;
+    color: var(--texte-3);
+}
+
+.tou_ve b {
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    color: var(--texte) !important;
     text-align: right;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: orange;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    overflow-wrap: anywhere;
 }
 
-/* ------------------------------------------------------------------
-   Formulaire "Modifier votre profil" : s'ouvre au CLIC sur le bouton
-   (ajax/acheteur.js ajoute la classe .ouvert), plus au survol
-   ------------------------------------------------------------------ */
-.modifier:hover {
-    height: 3vw;
+.erreur {
+    font-size: var(--t-sm);
+    color: var(--danger);
 }
 
-.modifier.ouvert,
-.modifier.ouvert:hover {
+
+/* ============================================================
+   « MODIFIER VOTRE PROFIL »
+   ------------------------------------------------------------
+   Fermé par défaut. ajax/acheteur.js ajoute .ouvert au clic.
+   ============================================================ */
+
+.modifier {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-3);
+    overflow: hidden;
     height: auto;
-    padding-bottom: .5vw;
 }
 
+/* le bouton qui ouvre le formulaire */
 .but_ouvrir_modif {
-    background: transparent;
-    border: solid .1vw midnightblue;
-    border-radius: .5vw;
-    padding: .3vw 1vw;
-    font-size: 1.2vw;
-    font-weight: bold;
-    cursor: pointer;
+    width: 100%;
+    padding: var(--e-2) var(--e-3);
+    border: 1px solid var(--bord-fort);
+    border-radius: var(--r-2);
+    background: var(--surface);
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    text-align: center;
 }
 
 .but_ouvrir_modif:hover,
 .modifier.ouvert .but_ouvrir_modif {
-    background: midnightblue;
-    color: white;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
 }
 
-/* ------------------------------------------------------------------
-   FAVORIS : liste de la barre de gauche
-   ------------------------------------------------------------------ */
-.fav_vide {
-    text-align: center;
-    color: grey;
-    font-size: 1vw;
+/* les formulaires restent cachés tant que .ouvert n'est pas posée */
+.modifier > .form_modi { display: none; }
+
+.modifier.ouvert > .form_modi { display: flex; }
+
+.afir_modi {
+    margin: 0;
+    font-size: var(--t-base);
+    font-weight: var(--gras-fort);
+    color: var(--texte);
 }
 
-.fav_nom a {
-    color: inherit;
-    text-decoration: none;
-    font-size: 1.5vw;
+.form_modi {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--e-2);
+    padding: var(--e-3);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-2);
+    background: var(--surface-2);
 }
 
-.fav_img {
-    object-fit: cover;
+.form_modi > label {
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    color: var(--texte-3);
 }
 
-.fav {
-    border: none;
-    cursor: pointer;
+.inp_modif {
+    width: 100%;
+    font-size: var(--t-sm) !important;
 }
 
-.fav:hover {
-    background: red;
+.but_mode {
+    align-self: flex-end;
+    width: auto;
+    padding: var(--e-2) var(--e-4);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-2);
+    background: var(--accent);
+    color: #ffffff;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-fort);
+    text-transform: capitalize;
 }
 
-/* ------------------------------------------------------------------
-   HISTORIQUE d'achats (au-dessus des favoris)
-   ------------------------------------------------------------------ */
+.but_mode:hover {
+    background: var(--accent-fort);
+    border-color: var(--accent-fort);
+}
+
+
+/* ============================================================
+   TITRES DES BLOCS DE LA COLONNE
+   ============================================================ */
+
 .titre_barre {
     width: 100%;
-    margin-top: 1vw;
-    color: midnightblue;
+    margin: var(--e-3) 0 0;
+    padding-bottom: var(--e-2);
+    border-bottom: 1px solid var(--bord);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
     text-transform: uppercase;
-    font-size: 1vw;
-    border-bottom: solid .1vw blueviolet;
+    color: var(--texte-3);
 }
+
+
+/* ============================================================
+   HISTORIQUE D'ACHATS
+   ============================================================ */
 
 .histior {
-    margin-top: .3vw;
-}
-
-.hist_vide {
-    width: 100%;
-    text-align: center;
-    color: grey;
-    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-2);
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 .boi_hist {
+    position: relative;
+    display: flex;
+    align-items: center;
     height: auto;
-    min-height: 4vw;
-    padding: .3vw 1.8vw .3vw .3vw;
+    min-height: 0;
+    padding: var(--e-2) var(--e-6) var(--e-2) var(--e-2);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-2);
+    background: var(--surface);
+    transition: border-color var(--tr), box-shadow var(--tr);
+}
+
+.boi_hist:hover {
+    border-color: var(--bord-fort);
+    box-shadow: var(--o-1);
 }
 
 .lien_hist {
     display: flex;
     align-items: center;
-    gap: .5vw;
+    gap: var(--e-3);
     width: 100%;
-    text-decoration: none;
+    min-width: 0;
 }
 
 .img_hist {
     flex-shrink: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--r-2);
     object-fit: cover;
+    background: var(--surface-3);
+    border: 1px solid var(--bord);
 }
 
 .texte_hist {
@@ -445,28 +292,235 @@
 }
 
 .prod_hist {
-    color: midnightblue;
-    font-size: 1.1vw;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    text-transform: capitalize;
+    color: var(--texte);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .prod_hist b {
-    color: red;
-    font-size: 1vw;
+    font-size: var(--t-sm) !important;
+    font-weight: var(--gras-fort);
+    color: var(--accent) !important;
 }
 
 .texte_hist small {
-    color: grey;
-    font-size: .8vw;
+    font-size: var(--t-xs);
+    color: var(--texte-3);
 }
 
+/* bouton × : retirer une ligne de l'historique */
 .hist_sup {
-    background: white;
-    cursor: pointer;
-    font-size: 1vw;
-    min-width: 1.6vw;
-    min-height: 1.6vw;
+    position: absolute;
+    top: 50%;
+    right: var(--e-2);
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+
+    border: 1px solid var(--bord-fort);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--texte-3);
+    font-size: var(--t-xs);
     line-height: 1;
+    box-shadow: none;
+}
+
+.hist_sup:hover {
+    border-color: var(--danger);
+    background: var(--danger-doux);
+    color: var(--danger);
+}
+
+
+/* ============================================================
+   FAVORIS
+   ============================================================ */
+
+.favorite {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-2);
+    width: 100%;
+    padding: 0;
+}
+
+/* image à gauche sur deux lignes, nom du produit puis boutique au
+   milieu, prix en bas à droite, étoile dans le coin */
+.boit_fav {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--e-1) var(--e-3);
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: var(--e-2);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-2);
+    background: var(--surface);
+    transition: border-color var(--tr), box-shadow var(--tr);
+}
+
+.boit_fav > a:first-child { grid-row: 1 / 3; }
+
+.boit_fav:hover {
+    border-color: var(--bord-fort);
+    box-shadow: var(--o-1);
+}
+
+.fav_img {
+    flex-shrink: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--r-2);
+    object-fit: cover;
+    background: var(--surface-3);
+    border: 1px solid var(--bord);
+}
+
+/* .fav_prod est le NOM DU PRODUIT (ligne principale),
+   .fav_nom le nom de la boutique (ligne secondaire) :
+   voir functions/favori.php */
+.fav_prod {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+    min-width: 0;
+    margin: 0;
+    padding-right: var(--e-5);   /* place pour l'étoile */
+    font-size: var(--t-sm);
+    font-weight: var(--gras-fort);
+    text-transform: capitalize;
+    color: var(--texte);
+}
+
+.fav_nom {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    min-width: 0;
+    margin: 0;
+    font-size: var(--t-xs);
+    font-weight: var(--gras-normal);
+    text-align: left;
+    text-transform: capitalize;
+    color: var(--texte-3);
+}
+
+.fav_nom a {
+    font-size: var(--t-xs);
+    font-weight: var(--gras-normal);
+    color: var(--texte-3);
+}
+
+.fav_nom a:hover { color: var(--accent); }
+
+.fav_px {
+    grid-column: 1 / -1;
+    width: auto;
+    margin: 0;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-titre);
+    text-align: right;
+    color: var(--texte);
+}
+
+/* étoile ★ en coin : retirer des favoris
+   le bouton est vide dans le HTML (functions/favori.php) : l'étoile
+   est dessinée par ::before, le bouton lui-même reste cliquable */
+.fav {
+    position: absolute;
+    top: var(--e-1);
+    right: var(--e-1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    clip-path: none;
+    cursor: pointer;
+}
+
+.fav::before {
+    content: "";
+    width: 0.875rem;
+    height: 0.875rem;
+    background: var(--or);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transition: background var(--tr);
+}
+
+.fav:hover {
+    background: var(--attention-doux);
+}
+
+.fav:hover::before { background: var(--danger); }
+
+
+/* ============================================================
+   RESPONSIVE
+   ------------------------------------------------------------
+   Sous 960px la colonne est un bandeau horizontal : on range
+   l'identité, l'historique et les favoris en colonnes.
+   ============================================================ */
+
+@media (max-width: 960px) {
+
+    #bord {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+        gap: var(--e-4) var(--e-5);
+        align-items: start;
+    }
+
+    .ah_pdp,
+    .ah_noms {
+        grid-column: 1 / -1;
+    }
+
+    .ah_pdp {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: var(--e-4);
+    }
+
+    .img_ah {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .ah_noms { margin-top: calc(var(--e-3) * -1); }
+
+    .titre_barre { margin-top: 0; }
+}
+
+@media (max-width: 640px) {
+
+    #bord {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--e-3);
+    }
+
+    .ah_pdp { flex-direction: column; gap: var(--e-2); }
+
+    .boit_fav { gap: var(--e-2); }
 }

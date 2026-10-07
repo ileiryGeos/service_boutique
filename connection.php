@@ -17,199 +17,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>connexion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/design.css?v=<?= filemtime("css/design.css") ?>">
+    <link rel="stylesheet" href="css/connexion.css?v=<?= filemtime("css/connexion.css") ?>">
 </head>
 
 <body>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        #fond1 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: url(images/fondpp_cap.jpg) wheat;
-            background-blend-mode: darken;
-            background-size: cover;
-        }
-
-
-        #bvue {
-            width: 55%;
-            border-radius: 2vw;
-            background: white;
-            display: flex;
-            height: 70%;
-            flex-direction: column;
-            box-shadow: 0 0 2vw black;
-            transition: 2s;
-
-        }
-
-        #accueil{
-            z-index: 3;
-            padding: 1vw;
-            position: absolute;
-            top: 1vw;
-            right: 1vw;
-            border-radius: 1vw;
-            border: solid .1vw orangered;
-            color: yellow;
-            background: rgba(0, 0, 255, 0.507);
-            /* font-size: 1vw; */
-            text-transform: uppercase;
-
-        }
-
-        .comp {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            position: relative;
-            transition: 1s;
-
-        }
-
-        .rond {
-            z-index: 2;
-            background: wheat;
-            overflow: hidden;
-            width: 45%;
-            height: 100%;
-            border-radius: 2vw 30% 30% 2vw;
-            transition: 1s;
-            position: relative;
-        }
-
-        .bl {
-            background: wheat;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .rcnd {
-            z-index: 2;
-            background: wheat;
-            overflow: hidden;
-            width: 45%;
-            height: 100%;
-            border-radius: 30% 2vw 2vw 30%;
-            transition: 1s;
-            position: relative;
-        }
-
-        .bl2 {
-
-            background: wheat;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .ro:hover {
-            transform: translatex(37vw);
-            border-radius: 30% 2vw 2vw 30%;
-        }
-
-        .rc:hover {
-            transform: translateX(-37vw);
-            border-radius: 2vw 30% 30% 2vw;
-
-        }
-
-        .inp {
-            width: 60%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: 1s;
-            border-radius: 2vw;
-            background: white;
-
-        }
-
-        .b {
-            color: blueviolet;
-        }
-
-        .bc {
-            color: white;
-            text-transform: capitalize;
-            text-align: center;
-
-        }
-
-        .cot {
-            color: blue;
-            text-transform: capitalize;
-            font-size: 3vw;
-            text-align: center;
-            margin-bottom: 1vw;
-
-        }
-
-        .nboc {
-            color: aqua;
-            font-size: 2.5vw;
-        }
-
-        .butdm {
-            padding: 1vw;
-            font-size: 1vw;
-            font-weight: bold;
-            text-transform: capitalize;
-            background: blue;
-            border: solid .1vw white;
-            color: white;
-            border-radius: 1vw;
-            box-shadow: 0 .5vw 1vw grey;
-        }
-
-        .fenoi {
-            padding: 1vw;
-            width: 70%;
-            border-radius: .5vw;
-            font-size: 1vw;
-            margin-bottom: .5vw;
-            background: rgba(128, 128, 128, 0.253);
-            border: none;
-            /* text-transform: capitalize; */
-        }
-
-        #lien_admin {
-            position: absolute;
-            bottom: 1vw;
-            right: 1vw;
-            color: white;
-            font-size: .9vw;
-            text-decoration: none;
-            border: solid .1vw rgba(255, 255, 255, .5);
-            border-radius: .5vw;
-            padding: .3vw .8vw;
-        }
-
-        #lien_admin:hover {
-            background: rgba(0, 0, 255, .5);
-        }
-
-        /* liens vers les pages d'inscription */
-        .lien_inscri {
-            margin-top: 1vw;
-            font-size: 1vw;
-        }
-    </style>
 
     <section id="fond1">
         <a href="vue1.php" id="accueil">ignore</a>
@@ -219,15 +34,14 @@
                     <div class="bl">
                         <h1 class="bc gch">bienvenue sur <br><span class="nboc"><b class="b">s</b>ervice <b
                                     class="b">b</b>outique</span> </h1>
-                        <button class="butdm bo" style="margin: 3vw 0;">passer au compte vendeur</button>
+                        <button class="butdm bo">passer au compte vendeur</button>
                     </div>
                 </div>
                 <div class="inp rak">
                     <h2 class="cot">acheter avec un compte <br><span class="nboc"><b class="b">s</b>ervice <b class="b">b</b>outique</span>
                     </h2>
 
-                    <form action="connexion.php" method="POST"
-                        style="width:100%;display:flex;flex-direction:column;align-items:center;">
+                    <form action="connexion.php" method="POST">
 
                         <input type="email"
                             name="email"
@@ -242,8 +56,7 @@
                             required>
 
                         <button type="submit"
-                            class="butdm"
-                            style="width: 10vw;font-size: 1.3vw;">
+                            class="butdm">
                             connecter
                         </button>
 
@@ -254,19 +67,19 @@
 
             <div class="comp cre" style="display: none;">
                 <form class="inp rad" method="POST" >
-                    <h2 class="cot">vendre avec un compte <br><span class="nboc" style="font-size: 2vw;"><b class="b">s</b>ervice
+                    <h2 class="cot">vendre avec un compte <br><span class="nboc"><b class="b">s</b>ervice
                             <b class="b">b</b>outique</span></h2>
                     <!-- connexion vendeur : nom de la boutique + mot de passe -->
                     <input type="text" placeholder="nom de votre boutique ..." class="fenoi" name="boutname" required>
                     <input type="password" placeholder="votre mot de passe ..." class="fenoi" name="password" required>
-                    <button class="butdm" style="width: 10vw;font-size: 1.3vw;" name="connect">connecter</button>
+                    <button class="butdm" name="connect">connecter</button>
                     <a href="inscription.php" class="b lien_inscri">pas encore de boutique ? créer ma boutique</a>
                 </form>
                 <div class="rcnd">
                     <div class="bl2">
                         <h1 class="bc">ouvrir le compte <br><span class="nboc"><b class="b">s</b>ervice <b
                                     class="b">b</b>outique</span> </h1>
-                        <button class="butdm bcr" style="margin: 3vw 0;">passer au compte acheteur</button>
+                        <button class="butdm bcr">passer au compte acheteur</button>
                     </div>
                 </div>
             </div>

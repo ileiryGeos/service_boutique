@@ -55,6 +55,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>boîte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/design.css?v=<?= filemtime("css/design.css") ?>">
     <link rel="stylesheet" href="css/tete.css?v=<?= filemtime("css/tete.css") ?>">
     <link rel="stylesheet" href="css/boutic.css?v=<?= filemtime("css/boutic.css") ?>">
     <link rel="stylesheet" href="css_v3/header_vue3.css?v=<?= filemtime("css_v3/header_vue3.css") ?>">
@@ -83,7 +87,7 @@
                 <div class="img_ah">
                     <img src="images/<?= htmlspecialchars($logo) ?>" alt="" class="img_pdp">
                     <hr class="v3_hr">
-                    <h1 class="v3_nom" style="text-align:center;"><?= htmlspecialchars($boutique["boutname"]) ?></h1>
+                    <h1 class="v3_nom"><?= htmlspecialchars($boutique["boutname"]) ?></h1>
                 </div>
             </div>
 
@@ -140,7 +144,7 @@
             </div>
             <div class="suprim">
                 <?php if (empty($produits)) : ?>
-                    <p style="width:100%;text-align:center;">Aucun produit pour le moment</p>
+                    <p class="vide">Aucun produit pour le moment</p>
                 <?php endif; ?>
 
                 <?php foreach ($produits as $p) : ?>
@@ -180,7 +184,7 @@
 
         </div> -->
 
-        <a href="suit_vue3.php" id="boite" style="text-decoration: none;">
+        <a href="suit_vue3.php" id="boite">
             <div class="points">
                 <div class="nom_img">
                     <!-- anaran'ilay box -->
@@ -191,7 +195,7 @@
 
                 <!-- famaritana ilay box -->
                 <p class="definition">Points forts du box : <br>
-                   <?= htmlspecialchars($boutique["definition"]) ?><br><b style="color: aqua;">TYPE :
+                   <?= htmlspecialchars($boutique["definition"]) ?><br><b>TYPE :
                         <?= htmlspecialchars(implode(", ", $types)) ?></b>.</p>
 
             </div>

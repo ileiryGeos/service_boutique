@@ -1,243 +1,386 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1.2vw;
-}
+/* ============================================================
+   CRÉER MA BOUTIQUE (inscription.php)
+   ------------------------------------------------------------
+   Étape 1 : le formulaire de la boutique
+   Étape 2 : l'ajout des produits, avec la liste de ce qui a
+             déjà été envoyé dans #recu (ajax/ajout_prod_inscri.js)
+
+   Variables : css/design.css
+   ============================================================ */
+
+body { background: var(--fond); }
 
 #inscrit {
     display: flex;
-    justify-content: space-between;
-
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--e-5);
+    max-width: var(--l-max);
+    margin: 0 auto;
+    padding: var(--e-7) var(--e-5);
 }
 
+
+/* ============================================================
+   FORMULAIRE
+   ============================================================ */
 
 .form_inscr {
+    flex: 1 1 32rem;
+    max-width: 40rem;
+
     display: flex;
     flex-direction: column;
-    width: 40%;
-    text-transform: capitalize;
-    padding: 5vw;
-    /* background: red; */
+    gap: var(--e-3);
+
+    padding: var(--e-6);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-4);
+    background: var(--surface);
+    box-shadow: var(--o-2);
+    text-transform: none;
 }
 
-
-
+/* titre de la première étape */
 .nom_box {
-    font-size: 2vw;
-    font-weight: bold;
-    color: red;
+    font-size: var(--t-xl);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
+    text-transform: none;
+    color: var(--texte);
+}
+
+.form_inscr small {
+    margin-top: calc(var(--e-2) * -1);
+    font-size: var(--t-xs);
+    color: var(--texte-3);
+}
+
+.form_inscr > label {
+    margin-top: var(--e-2);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    color: var(--texte-3);
 }
 
 .inp_nom {
-    border-radius: .3vw;
-    padding: .5vw;
-    margin: .5vw 3vw;
-    width: 20vw;
+    width: 100%;
+    margin: 0;
 }
 
+/* ---------- photo ou logo ---------- */
+
 .pdp {
-    border: solid .1vw blueviolet;
-    padding: .5vw;
-    border-radius: .5vw 1vw 0 0;
-    border-bottom: none;
-    color: blueviolet;
+    margin-top: var(--e-2);
+    padding: 0;
+    border: none;
+    color: var(--texte-3) !important;
 }
 
 .inp_pdp {
-    border: solid .1vw blueviolet;
-    border-top: none;
-    padding: .5vw;
-    background: rgba(0, 0, 255, 0.123);
-
+    width: 100%;
+    padding: var(--e-3);
+    border: 1px dashed var(--bord-fort);
+    border-radius: var(--r-2);
+    background: var(--surface-2);
+    font-size: var(--t-sm);
+    color: var(--texte-2);
 }
+
+.inp_pdp::file-selector-button {
+    margin-right: var(--e-3);
+    padding: var(--e-1) var(--e-3);
+    border: 1px solid var(--bord-fort);
+    border-radius: var(--r-rond);
+    background: var(--surface);
+    color: var(--texte-2);
+    font-family: inherit;
+    font-size: var(--t-xs);
+    font-weight: var(--gras-moyen);
+    cursor: pointer;
+}
+
+/* ---------- bloc identifiants ---------- */
 
 .securite {
     display: flex;
-    border: solid .15vw red;
-    padding: 1vw;
-    width: 100%;
     flex-direction: column;
-    margin: 1vw 0;
-    background: rgba(255, 0, 0, 0.116);
+    gap: var(--e-2);
+    width: 100%;
+    margin: var(--e-3) 0;
+    padding: var(--e-4);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-3);
+    background: var(--surface-2);
 }
 
 .code_n {
-    color: red;
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    color: var(--texte-3);
 }
+
+.code_n:not(:first-child) { margin-top: var(--e-2); }
 
 .inp_n {
-    border-radius: .3vw;
-    border: solid .1vw red;
-    margin-bottom: .5vw;
-    padding: .3vw;
-    color: mediumvioletred;
+    width: 100%;
+    margin: 0;
+    color: var(--texte);
 }
 
+/* ---------- type de produit ---------- */
+
 .type {
-    width: 100%;
-    /* background: red; */
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-2);
+    width: 100%;
+    margin-top: var(--e-2);
 }
 
 .lab_type {
-    color: blue;
     width: 100%;
-    margin-bottom: .5vw;
-    /* background: green; */
-
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    color: var(--texte-3);
 }
 
 .nbr_type {
-    width: 10vw;
-    margin: 0 .5vw .5vw;
-    text-align: center;
+    flex: 1 1 10rem;
+    width: auto;
+    margin: 0;
+    text-align: left;
     text-transform: capitalize;
-    border-radius: .5vw;
-    border: solid .1vw blue;
-    padding: .3vw;
 }
 
-.but_type {
-    width: 2vw;
-    height: 2vw;
-    background: rgba(0, 0, 255, 0.397);
-    border: none;
+/* le « + » de la maquette : jamais programmé, on le laisse discret */
+.type .but_type {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid var(--bord-fort);
+    border-radius: var(--r-2);
+    background: var(--surface-2);
+    color: var(--texte-3);
+    font-size: var(--t-md);
+    line-height: 1;
 }
 
-.suivent {
-    margin: 1vw auto;
-    width: 10vw;
-    padding: .5vw;
-    border-radius: .5vw;
-    border: double .1vw red;
-    color: orangered;
+/* ---------- boutons ---------- */
+
+.suivent,
+#fini {
+    align-self: center;
+    width: 100%;
+    max-width: 18rem;
+    margin: var(--e-4) auto 0;
+    padding: var(--e-3) var(--e-5);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-2);
+    background: var(--accent);
+    color: #ffffff;
+    font-size: var(--t-base);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
     text-transform: uppercase;
-    font-weight: bold;
-    background: rgba(0, 0, 255, 0.171);
-
+    text-align: center;
 }
 
-.prod{
-    border: solid .1vw red;
-    margin: 2vw;
-    padding: 1vw;
-    border-radius: 1vw;
-    /* height: 40vw; */
-    background: rgba(255, 255, 0, 0.384);
+.suivent:hover,
+#fini:hover {
+    background: var(--accent-fort);
+    border-color: var(--accent-fort);
+    color: #ffffff;
 }
 
+/* le lien « déjà une boutique ? » */
+.form_inscr > a:not(.suivent) {
+    align-self: center;
+    font-size: var(--t-sm);
+    color: var(--accent);
+}
+
+
+/* ============================================================
+   ÉTAPE 2 : AJOUT DES PRODUITS
+   ============================================================ */
+
+.prod {
+    margin: 0;
+    padding: var(--e-6);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-4);
+    background: var(--surface);
+}
 
 .lab_prod {
-    color: blueviolet;
-    margin-left: 1vw;
+    margin: var(--e-2) 0 0;
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    color: var(--texte-3);
 }
 
 .inp_prod {
-    border-radius: .5vw;
-    border: solid .1vw blue;
-    background: wheat;
-    /* height: 5vw; */
-    padding: .5vw;
+    width: 100%;
+    background: var(--surface);
 }
 
 #prix_prd {
-    margin-top: 3vw;
-    border-radius: 1vw;
-    padding: 1vw;
-    border: solid .1vw red;
-    background: rgba(255, 166, 0, 0.397);
     display: flex;
-
     flex-direction: column;
-    /* align-items: center; */
+    gap: var(--e-2);
+    margin-top: var(--e-5);
+    padding: var(--e-4);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-3);
+    background: var(--surface-2);
 }
 
-#prix_prd h1{
-    font-size: 2vw;
-    text-align: center;
-    color: red;
+#prix_prd h1 {
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--texte-3);
 }
 
-#prix_prd label{
-    color: mediumblue;
-    font-size: 1.5vw;
+#prix_prd label {
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    color: var(--texte-2);
 }
 
-#prix_prd input{
-    padding: .5vw;
-    border: solid .1vw green;
-    border-radius: .5vw;
-}
-
-#fini{
-    margin: 0 auto;
-    padding: .5vw;
-    text-transform: capitalize;
-    color: orangered;
-    background: rgba(165, 42, 42, 0.377);
-    border: solid .1vw red;
-    border-radius: .5vw;
-    width: 10vw;
-    margin-top: 1vw;
-    font-weight: bold;
-
-}
-
-.recu{
-    padding: 1vw;
-    width: 30vw;
-    background: rgba(0, 0, 255, 0.219);
-    height: 100vh;
-    overflow-y: scroll;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.recu_pro{
-    border: solid .1vw blue;
-    background: rgba(137, 43, 226, 0.308);
+#prix_prd input {
     width: 100%;
-    height: 10vw;
+    border-color: var(--bord-fort);
+}
+
+
+/* ============================================================
+   PRODUITS DÉJÀ ENVOYÉS (#recu)
+   ============================================================ */
+
+.recu {
+    flex: 1 1 20rem;
+    max-width: 26rem;
+
     display: flex;
-    flex-wrap: wrap;
-    border-radius: 1vw;
-    padding: .5vw;
+    flex-direction: column;
+    gap: var(--e-2);
+
+    height: auto;
+    max-height: 40rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    padding: var(--e-4);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-4);
+    background: var(--surface-2);
+}
+
+.recu:empty { display: none; }
+
+.recu_pro {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--e-1) var(--e-3);
+    align-items: center;
+
+    width: 100%;
+    height: auto;
+    padding: var(--e-3);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-2);
+    background: var(--surface);
 }
 
 .recu_pro img {
-    width: 3vw;
-    height: 3vw;
-    background: blueviolet;
-
-
+    grid-row: 1 / 3;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--r-2);
+    object-fit: cover;
+    background: var(--surface-3);
+    border: 1px solid var(--bord);
 }
 
 .recu_pro h3 {
-    margin-left: 2vw;
-    width: 5vw;
-    color: red;
+    width: auto;
+    margin: 0;
+    font-size: var(--t-xs);
+    font-weight: var(--gras-moyen);
+    letter-spacing: var(--ls-maj);
     text-transform: uppercase;
+    color: var(--texte-3);
 }
 
 .recu_pro h4 {
-    color: blue;
+    width: auto;
+    height: auto;
+    margin: 0;
+    border: none;
+    font-size: var(--t-base);
+    font-weight: var(--gras-fort);
     text-transform: capitalize;
-    border-bottom: solid .1vw wheat;
-    height: 3vw;
+    color: var(--texte);
 }
 
+.recu_pro p {
+    grid-column: 1 / -1;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+}
 
-/* état de validation affiché sous chaque produit ajouté */
+/* la pastille d'état est habillée dans css/design.css */
 .etat_recu {
-    width: 100%;
-    color: white;
-    background: orange;
-    border-radius: 1vw;
-    padding: .1vw .6vw;
+    grid-column: 1 / -1;
+    justify-self: start;
+    width: auto;
     text-align: center;
 }
 
-.etat_recu.approuve { background: green; }
-.etat_recu.refuse { background: grey; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 960px) {
+
+    #inscrit {
+        padding: var(--e-5) var(--e-4);
+        gap: var(--e-4);
+    }
+
+    .form_inscr,
+    .prod { padding: var(--e-5); }
+
+    .recu { max-width: none; }
+}
+
+@media (max-width: 640px) {
+
+    #inscrit { padding: var(--e-4) var(--e-3); }
+
+    .form_inscr,
+    .prod {
+        padding: var(--e-4);
+        border-radius: var(--r-3);
+    }
+
+    .suivent,
+    #fini { max-width: none; }
+}

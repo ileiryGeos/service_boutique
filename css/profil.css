@@ -1,0 +1,131 @@
+/* ============================================================
+   INSCRIPTION ACHETEUR (profil.php)
+   ------------------------------------------------------------
+   Un seul formulaire centré. Les champs et les boutons sont
+   déjà habillés par css/design.css : on ne pose ici que la
+   carte et le rythme des labels.
+
+   Était un bloc <style> dans profil.php.
+   Variables : css/design.css
+   ============================================================ */
+
+body {
+    /* en colonne : après une inscription réussie, profil.php écrit son
+       message AVANT le formulaire — il doit se placer au-dessus de la
+       carte, pas à côté d'elle */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--e-6) var(--e-5);
+    background: var(--fond);
+}
+
+.sect-one {
+    width: 100%;
+    max-width: 34rem;
+    min-height: 0;
+    padding: var(--e-7);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-4);
+    background: var(--surface);
+    box-shadow: var(--o-2);
+}
+
+.sect-one h2 {
+    margin-bottom: var(--e-5);
+    font-size: var(--t-2xl);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
+    text-align: center;
+    text-transform: none;
+    color: var(--texte);
+}
+
+.sect-one form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sect-one label {
+    display: block;
+    margin: var(--e-4) 0 var(--e-2);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    color: var(--texte-3);
+}
+
+.sect-one input {
+    width: 100%;
+    margin: 0;
+}
+
+.sect-one button {
+    margin: var(--e-6) 0 0;
+    padding: var(--e-3) var(--e-5);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-2);
+    background: var(--accent);
+    color: #ffffff;
+    font-size: var(--t-base);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+}
+
+.sect-one button:hover {
+    background: var(--accent-fort);
+    border-color: var(--accent-fort);
+}
+
+.sect-one p {
+    margin-top: var(--e-4);
+    font-size: var(--t-sm);
+    text-align: center;
+}
+
+.sect-one p a {
+    font-weight: var(--gras-moyen);
+    color: var(--accent);
+}
+
+
+/* ============================================================
+   PAGES DE RÉPONSE (« Inscription réussie », erreurs)
+   ------------------------------------------------------------
+   profil.php écrit ces messages directement dans la page, sans
+   la carte : on leur donne quand même une mise en page lisible.
+   ============================================================ */
+
+body > h2 {
+    margin: var(--e-6) auto var(--e-3);
+    font-size: var(--t-xl);
+    text-align: center;
+}
+
+body > p,
+body > a {
+    display: block;
+    margin: 0 auto var(--e-3);
+    text-align: center;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 640px) {
+
+    body { padding: var(--e-4) var(--e-3); }
+
+    .sect-one {
+        padding: var(--e-5) var(--e-4);
+        border-radius: var(--r-3);
+    }
+
+    .sect-one h2 { font-size: var(--t-xl); }
+}

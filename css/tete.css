@@ -1,114 +1,144 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1.2vw;
-}
+/* ============================================================
+   BANDEAU D'ACCUEIL ET BARRE DE RECHERCHE
+   ------------------------------------------------------------
+   .tete / .bout_nom / .bout_b / .bout_l : le bandeau de haut de
+   liste (vue1.php, vue2.php, vue3.php)
+   .bar_rech / .inp_rech / .but_rech     : la recherche
 
-.tete{
+   Variables : css/design.css
+   ============================================================ */
+
+.tete {
+    position: relative;
+    isolation: isolate;
     width: 100%;
-    background: url(../photo/bfab2e74e5c5f55f06d0b7f737bd44b2.jpg)rgba(0, 0, 0, 0);
-    background-size: 100% 100%;
-    background-blend-mode: darken;
+    margin-bottom: var(--e-6);
+    padding: var(--e-8) var(--e-5);
+    border-radius: var(--r-4);
+    overflow: hidden;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    margin-bottom: 1vw;
-    height: 30vw;
-    /* color: red; */
-    padding: 2vw;
-}
-
-.bout_nom{
-    font-size: 5vw;
-    text-align: center;
-    text-transform: uppercase;
-    margin: 1vw;
-    color: red;
-}
-
-.bout_b{
-    font-size: 3vw;
-    text-transform: capitalize;
-    color: yellow;
-
-}
-
-.bout_l{
-    text-align: center;
-    color: black;
-    width: 60%;
-    font-size: 2vw;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.bar_rech{
-    display: flex;
     justify-content: center;
     align-items: center;
+    gap: var(--e-3);
+
+    background:
+        linear-gradient(rgba(27, 24, 20, .62), rgba(27, 24, 20, .72)),
+        url(../images/bfab2e74e5c5f55f06d0b7f737bd44b2.jpg) center / cover no-repeat,
+        var(--pierre-800);
+    color: var(--texte-clair);
+    box-shadow: var(--o-2);
+}
+
+.bout_nom {
+    margin: 0;
+    font-size: var(--t-3xl);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    text-align: center;
+    color: #ffffff;
+}
+
+.bout_b {
+    margin: 0;
+    font-size: var(--t-lg);
+    font-weight: var(--gras-moyen);
+    letter-spacing: var(--ls-titre);
+    text-transform: none;
+    text-align: center;
+    color: var(--pierre-200);
+}
+
+.bout_l {
+    max-width: 44rem;
+    margin: 0;
+    font-size: var(--t-base);
+    text-align: center;
+    color: var(--pierre-300);
+}
+
+
+/* ============================================================
+   RECHERCHE
+   ============================================================ */
+
+.bar_rech {
     width: 100%;
-    margin-bottom: 1vw;
-
-
+    max-width: 32rem;
+    margin: var(--e-2) 0 var(--e-1);
+    display: flex;
+    align-items: stretch;
+    background: var(--surface);
+    border-radius: var(--r-rond);
+    box-shadow: var(--o-2);
+    overflow: hidden;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.inp_rech{
-    padding: .7vw;
-    width: 30vw;
-    border-radius: .5vw 0 0 .5vw;
-    border: solid .1vw blue;
-    border-right: none;
-    background: rgba(255, 255, 255, 0.801);
-    
+.inp_rech {
+    flex: 1;
+    min-width: 0;
+    padding: var(--e-3) var(--e-5) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    font-size: var(--t-base) !important;
 }
 
-.but_rech{
-        padding: .7vw;
-    /* width: 30vw; */
-    border-radius: 0 .5vw .5vw 0;
-    border: solid .1vw white;
-    border-left: none;
-    background: rgba(255, 255, 255, 0.932);
-
-    color: mediumblue;
-    text-transform: capitalize;
+.inp_rech:focus {
+    outline: none;
+    box-shadow: none !important;
 }
 
+/* l'anneau de focus est porté par la barre entière */
+.bar_rech:focus-within {
+    box-shadow: var(--o-2), var(--o-focus);
+}
+
+.but_rech {
+    flex-shrink: 0;
+    padding: var(--e-3) var(--e-5);
+    border: none;
+    border-radius: 0;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+}
+
+.but_rech i { font-style: normal; }
+
+.but_rech:hover { background: var(--accent-fort); }
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 960px) {
+    .tete {
+        padding: var(--e-7) var(--e-4);
+        border-radius: var(--r-3);
+        margin-bottom: var(--e-5);
+    }
+}
+
+@media (max-width: 640px) {
+
+    .tete {
+        padding: var(--e-6) var(--e-3);
+        gap: var(--e-2);
+    }
+
+    .bout_l { font-size: var(--t-sm); }
+
+    .inp_rech { padding: var(--e-2) var(--e-4) !important; }
+
+    .but_rech {
+        padding: var(--e-2) var(--e-4);
+        font-size: var(--t-xs);
+    }
+}

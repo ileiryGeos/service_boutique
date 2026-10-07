@@ -1,280 +1,339 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1.2vw;
-}
+/* ============================================================
+   COLONNE DE GAUCHE — VENDEUR (#tete_vue3)
+   ------------------------------------------------------------
+   Logo et informations de la boutique, modification du profil,
+   ajout d'un produit, puis la liste de ses produits avec leur
+   état de validation et le bouton de suppression.
 
-#tete_vue3 {
-    background: transparent;
-    position: fixed;
-    width: 25vw;
-    padding: 6vw .5vw 0;
-}
+   Les blocs restent OUVERTS : avant, il fallait survoler
+   .modifier / .modifier_px pour voir les formulaires, ce qui est
+   impossible sur un écran tactile.
 
-#bord_v3{
-    width: 100%;
+   Pages : vue3.php, suit_vue3.php
+   Position de la colonne : css/design.css
+   ============================================================ */
+
+#bord_v3 {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    padding: .5vw;
-    transition: 5s;
+    gap: var(--e-4);
 }
 
-#bord_v3:hover{
-    height: 42vw;
-    overflow-y: scroll;
 
-}
+/* ============================================================
+   LOGO ET NOM DE LA BOUTIQUE
+   ============================================================ */
 
 .ah_pdp {
-    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: relative;
-
 }
 
 .img_ah {
-    width: 60%;
-    height: 10vw;
     position: relative;
-    background: blueviolet;
+    isolation: isolate;
     display: flex;
+    align-items: flex-end;
     justify-content: center;
-    align-items: center;
-    border-radius: 1vw;
+
+    width: 100%;
+    min-height: 8rem;
+    padding: var(--e-3);
+    border-radius: var(--r-3);
     overflow: hidden;
+    background: var(--pierre-800);
+    border: 1px solid var(--bord);
 }
 
 .img_pdp {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    
+    object-fit: cover;
 }
 
-.v3_hr{
+/* voile sombre sur le logo pour que le nom reste lisible */
+.v3_hr {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     width: 100%;
     height: 100%;
-    background:rgba(255, 99, 71, 0.438);
-    position: absolute;
-    top: 0;
-    left: 0;
+    border: none;
+    background: linear-gradient(rgba(27, 24, 20, .25), rgba(27, 24, 20, .78));
 }
 
-.v3_nom{
-    z-index: 1;
-    color: yellow;
-    font-size: 2vw;
+.v3_nom {
+    margin: 0;
+    font-size: var(--t-lg);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
     text-transform: capitalize;
-
+    color: #ffffff;
+    overflow-wrap: anywhere;
 }
+
 .ah_noms {
-    width: 100%;
-    /* background: red; */
     display: flex;
     justify-content: center;
-    padding: .5vw;
-    position: relative;
-
-
 }
 
 .ah_nom {
-    font-size: 2vw;
+    font-size: var(--t-lg);
+    font-weight: var(--gras-titre);
     text-transform: capitalize;
-    color: red;
-}
-
-.toust{
-    width: 100%;
-    padding: .5vw 1vw;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    /* background: red; */
-}
-
-.tou_ve{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    color: blue;
-    text-transform: capitalize;
-}
-
-.tou_ve b{
-    color: grey;
-}
-
-.modifier{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: .5vw .4vw 0;
-    height: 3vw;
-    transition: 2s;
-    overflow: hidden;
-    border-bottom: solid .1vw white;
-}
-.modifier:hover{
-    height: 30vw; 
-
-}
-
-.afir_modi{
-    color: midnightblue;
-
     text-align: center;
-    margin-bottom: 1vw;
+    color: var(--texte);
 }
 
-.modi{
-    width: 100%;
+
+/* ============================================================
+   INFORMATIONS DE LA BOUTIQUE
+   ============================================================ */
+
+.toust {
     display: flex;
     flex-direction: column;
+    gap: var(--e-1);
 }
 
-.form_modi{
+.tou_ve {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--e-2);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-normal);
+    text-transform: none;
+    color: var(--texte-3);
+}
+
+.tou_ve b {
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    color: var(--texte) !important;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   FORMULAIRES : MODIFIER LE PROFIL / AJOUTER UN PRODUIT
+   ============================================================ */
+
+.modifier,
+.modifier_px {
     display: flex;
     flex-direction: column;
-    align-items: end;
     width: 100%;
-}
-
-.inp_modif{
-    margin: .2vw;
-    width: 100%;
-    border-radius: .5vw;
-    padding: .5vw;
-    border: solid .1vw blueviolet;
-
-}
-
-.but_mode{
-    border-radius: .5vw;
-    text-transform: capitalize;
+    height: auto;
+    margin-top: var(--e-3);
+    padding: 0;
     border: none;
-    background: tan;
-    color: blue;
-    padding: .3vw;
-    width: 7vw;
+    overflow: visible;
 }
 
-.modifier_px{
-    width: 100%;
+.modi {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    padding: .5vw .4vw 0;
-    height: 3vw;
-    transition: 2s;
-    border-bottom: solid .1vw white;
-    overflow: hidden;
+    gap: var(--e-3);
+    width: 100%;
 }
 
-.modifier_px:hover{
-    height: 30vw; 
-
+.afir_modi {
+    margin: 0 0 var(--e-2);
+    padding-bottom: var(--e-2);
+    border-bottom: 1px solid var(--bord);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--texte-3);
 }
 
+.form_modi {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--e-2);
+    width: 100%;
+    padding: var(--e-3);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-2);
+    background: var(--surface-2);
+}
+
+.form_modi > label {
+    font-size: var(--t-xs);
+    color: var(--texte-3);
+}
+
+.inp_modif {
+    width: 100%;
+    margin: 0;
+    font-size: var(--t-sm) !important;
+}
+
+.but_mode {
+    align-self: flex-end;
+    width: auto;
+    padding: var(--e-2) var(--e-4);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-2);
+    background: var(--accent);
+    color: #ffffff;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-fort);
+    text-transform: capitalize;
+}
+
+.but_mode:hover {
+    background: var(--accent-fort);
+    border-color: var(--accent-fort);
+}
+
+
+/* ============================================================
+   MES PRODUITS
+   ============================================================ */
 
 .suprim {
-    width: 100%;
-    padding: .5vw;
-    border: solid .1vw white;
-    background: linear-gradient(to left, rgba(0, 0, 255, 0.411), white, rgba(0, 0, 255, 0.39));
-    position: relative;
-    margin: 1vw 0 .5vw;
-    
     display: flex;
-    flex-wrap: wrap;
-    transition: 1s;
-    box-shadow: 0 0 .5vw blue;
-
-}
-
-.suprim:hover {
-    box-shadow: 0 0 .5vw blue;
-    border-radius: 1vw;
+    flex-direction: column;
+    gap: var(--e-2);
+    width: 100%;
+    margin: var(--e-3) 0 0;
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
 }
 
 .boi_sup {
-    width: 100%;
-    position: relative;
-    border: solid .1vw brown;
-    border-radius: .5vw;
-    margin-bottom: .5vw;
-    background: rgba(255, 166, 0, 0.404);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding: .5vw;
-    /* height: 4vw; */
-    /* align-items: center; */
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--e-2) var(--e-3);
+    align-items: start;
 
+    width: 100%;
+    padding: var(--e-3);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-2);
+    background: var(--surface);
+    transition: border-color var(--tr), box-shadow var(--tr);
+}
+
+.boi_sup:hover {
+    border-color: var(--bord-fort);
+    box-shadow: var(--o-1);
 }
 
 .img_sup {
-    width: 5vw;
-    height: 5vw;
-    background: blueviolet;
-    border-radius: .5vw;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--r-2);
+    object-fit: cover;
+    background: var(--surface-3);
+    border: 1px solid var(--bord);
 }
 
-.prod_sup{
-    width: 70%;
+.prod_sup {
     display: flex;
     flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--e-1) var(--e-2);
+    width: auto;
+    min-width: 0;
 }
 
-.prod1{
-    font-size: 1.5vw;
+/* type puis nom du produit */
+.prod1 {
     width: 100%;
-    color: orangered;
+    margin: 0;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-fort);
     text-transform: capitalize;
-    margin-left: 2vw;
+    color: var(--texte);
+    overflow-wrap: anywhere;
 }
 
+.prod1:first-child {
+    font-size: var(--t-xs);
+    font-weight: var(--gras-moyen);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    color: var(--texte-3);
+}
+
+/* prix et prix de gros */
 .prod {
-    color: green;
-    font-size: 1.5vw;
-    width: 50%;
-    text-transform: capitalize;
+    width: auto;
+    margin: 0;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    color: var(--texte-2);
 }
 
-.suprimer{
-    border: solid .1vw red;
-    border-radius: .2vw;
-    color: red;
-    padding: .2vw;
-    margin: .5vw;
-}
-
-
-
-.suprimer:hover{
-    color: blue;
-    box-shadow: 0 0 .5vw blue;
-
-}
-
-
-/* état de validation d'un produit (en attente / en ligne / refusé) */
 .etat_prod {
-    width: 100%;
-    margin-left: 2vw;
-    font-size: 1vw;
-    padding: .1vw .6vw;
-    border-radius: 1vw;
-    color: white;
-    background: orange;
+    width: auto;
+    margin: 0;
 }
 
-.etat_prod.approuve { background: green; }
-.etat_prod.refuse { background: grey; }
+/* bouton « supprimer ce produit » */
+.form_sup { grid-column: 1 / -1; }
+
+.suprimer {
+    width: 100%;
+    margin: 0;
+    padding: var(--e-1) var(--e-3);
+    border: 1px solid var(--bord-fort);
+    border-radius: var(--r-2);
+    background: var(--surface);
+    color: var(--texte-3);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-moyen);
+    box-shadow: none;
+}
+
+.suprimer:hover {
+    border-color: var(--danger);
+    background: var(--danger-doux);
+    color: var(--danger);
+    box-shadow: none;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 960px) {
+
+    #bord_v3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+        gap: var(--e-4) var(--e-5);
+        align-items: start;
+    }
+
+    .ah_pdp { grid-column: 1 / -1; }
+
+    .img_ah { min-height: 6rem; }
+
+    .modifier,
+    .modifier_px,
+    .suprim { margin-top: 0; }
+}
+
+@media (max-width: 640px) {
+
+    #bord_v3 {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--e-3);
+    }
+
+    .img_ah { min-height: 5rem; }
+}

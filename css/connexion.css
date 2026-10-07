@@ -1,0 +1,303 @@
+/* ============================================================
+   PAGE DE CONNEXION (connection.php)
+   ------------------------------------------------------------
+   Deux panneaux : acheteur (.ouvre) et vendeur (.cre). Le script
+   de la page échange les deux en posant .ro / .rc et en écrivant
+   des transform en ligne — on garde ce principe sur grand écran
+   et on le neutralise sur petit écran, où les panneaux se
+   superposent simplement.
+
+   Était un bloc <style> dans connection.php.
+   Variables : css/design.css
+   ============================================================ */
+
+#fond1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--e-5);
+
+    background:
+        linear-gradient(rgba(27, 24, 20, .72), rgba(27, 24, 20, .82)),
+        url(../images/fondpp_cap.jpg) center / cover no-repeat,
+        var(--pierre-800);
+}
+
+/* ---------- liens de coin ---------- */
+
+#accueil,
+#lien_admin {
+    position: absolute;
+    z-index: 4;
+    padding: var(--e-2) var(--e-4);
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: var(--r-rond);
+    background: rgba(255, 255, 255, .08);
+    color: #ffffff;
+    font-size: var(--t-xs);
+    font-weight: var(--gras-moyen);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    transition: background var(--tr), border-color var(--tr), color var(--tr);
+}
+
+#accueil     { top: var(--e-4); right: var(--e-4); }
+#lien_admin  { bottom: var(--e-4); right: var(--e-4); }
+
+#accueil:hover,
+#lien_admin:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: var(--texte);
+}
+
+
+/* ============================================================
+   LA CARTE
+   ============================================================ */
+
+#bvue {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 58rem;
+    min-height: 30rem;
+    border-radius: var(--r-4);
+    background: var(--surface);
+    box-shadow: var(--o-3);
+    overflow: hidden;
+}
+
+.comp {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    position: relative;
+    transition: transform 600ms ease;
+}
+
+
+/* ---------- le côté illustré (présentation) ---------- */
+
+.rond,
+.rcnd {
+    z-index: 2;
+    position: relative;
+    flex: 0 0 42%;
+    overflow: hidden;
+    background: var(--pierre-800);
+    transition: transform 600ms ease, border-radius 600ms ease;
+}
+
+.bl,
+.bl2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--e-5);
+    width: 100%;
+    height: 100%;
+    padding: var(--e-6) var(--e-5);
+    background: linear-gradient(160deg, var(--pierre-700), var(--pierre-900));
+}
+
+.bc {
+    margin: 0;
+    font-size: var(--t-xl);
+    font-weight: var(--gras-titre);
+    line-height: var(--lh-serre);
+    letter-spacing: var(--ls-titre);
+    text-align: center;
+    text-transform: none;
+    color: var(--pierre-200);
+}
+
+/* « service boutique » */
+.nboc {
+    display: block;
+    margin-top: var(--e-2);
+    font-size: var(--t-2xl);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
+    color: #ffffff;
+}
+
+.b { color: var(--pierre-400); }
+
+.nboc .b { color: var(--pierre-400); }
+
+/* glissement déclenché par le script de la page */
+.ro { transform: translateX(138%); }
+.rc { transform: translateX(-138%); }
+
+
+/* ---------- le côté formulaire ---------- */
+
+.inp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--e-3);
+    flex: 1;
+    min-width: 0;
+    padding: var(--e-6) var(--e-6);
+    background: var(--surface);
+    transition: transform 600ms ease;
+}
+
+.cot {
+    margin: 0 0 var(--e-3);
+    font-size: var(--t-lg);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
+    text-align: center;
+    text-transform: none;
+    color: var(--texte);
+}
+
+.cot .nboc {
+    margin-top: var(--e-1);
+    font-size: var(--t-xl);
+    color: var(--texte);
+}
+
+.cot .b { color: var(--accent); }
+
+/* le formulaire acheteur est dans un <form>, celui du vendeur EST .inp */
+.inp form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--e-3);
+    width: 100%;
+}
+
+.fenoi {
+    width: 100%;
+    max-width: 20rem;
+    margin: 0;
+}
+
+/* ---------- boutons ---------- */
+
+.butdm {
+    width: 100%;
+    max-width: 20rem;
+    padding: var(--e-3) var(--e-5);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-2);
+    background: var(--accent);
+    color: #ffffff;
+    font-size: var(--t-base);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    box-shadow: none;
+}
+
+.butdm:hover {
+    background: var(--accent-fort);
+    border-color: var(--accent-fort);
+}
+
+/* les boutons du côté illustré : contour clair sur fond sombre */
+.bo,
+.bcr {
+    max-width: 16rem;
+    border-color: rgba(255, 255, 255, .45);
+    background: transparent;
+    color: #ffffff;
+}
+
+.bo:hover,
+.bcr:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: var(--texte);
+}
+
+/* ---------- liens d'inscription ---------- */
+
+.lien_inscri {
+    margin-top: var(--e-2);
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    text-align: center;
+    color: var(--accent) !important;
+}
+
+.lien_inscri:hover { color: var(--accent-fort) !important; }
+
+
+/* ============================================================
+   RESPONSIVE
+   ------------------------------------------------------------
+   Sous 860px le glissement n'a plus de sens : le panneau de
+   présentation passe au-dessus du formulaire et les transform
+   écrits en ligne par le script sont annulés (!important bat
+   un style en ligne).
+   ============================================================ */
+
+@media (max-width: 860px) {
+
+    #fond1 { padding: var(--e-4); align-items: flex-start; }
+
+    #bvue {
+        max-width: 32rem;
+        min-height: 0;
+        margin: var(--e-6) 0;
+    }
+
+    .comp,
+    .comp .inp,
+    .comp .rond,
+    .comp .rcnd {
+        transform: none !important;
+        border-radius: 0 !important;
+    }
+
+    /* présentation en haut, formulaire en bas, dans les deux panneaux */
+    .comp {
+        flex-direction: column;
+    }
+
+    .cre { flex-direction: column-reverse; }
+
+    .rond,
+    .rcnd { flex: 0 0 auto; }
+
+    .bl,
+    .bl2 {
+        gap: var(--e-4);
+        padding: var(--e-5) var(--e-4);
+    }
+
+    .inp { padding: var(--e-5) var(--e-4); }
+
+    .bc  { font-size: var(--t-lg); }
+    .nboc { font-size: var(--t-xl); }
+}
+
+@media (max-width: 640px) {
+
+    #fond1 { padding: var(--e-3); }
+
+    #bvue { margin: var(--e-7) 0 var(--e-6); }
+
+    #accueil,
+    #lien_admin {
+        padding: var(--e-1) var(--e-3);
+        font-size: 0.6875rem;
+    }
+
+    #accueil    { top: var(--e-3); right: var(--e-3); }
+    #lien_admin { bottom: var(--e-3); right: var(--e-3); }
+
+    .fenoi,
+    .butdm { max-width: none; }
+}

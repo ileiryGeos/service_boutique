@@ -330,6 +330,91 @@ Textes volontairement laissés tels quels :
   `tsy aiko`, `fdhj`...) : ce sont des lignes de la base, pas du texte du site.
   Elles se corrigent dans phpMyAdmin ou dans `service_boutique.sql`.
 
+## Refonte graphique et responsive (10e passe)
+
+Les cinq maquettes de départ avaient chacune ses couleurs (rouge, bleu,
+jaune, wheat, blueviolet) et **toutes les tailles étaient en `vw`**, y
+compris `* { font-size: 1.2vw }`. Le texte grossissait donc avec la
+fenêtre et devenait illisible sur un téléphone ; il n'y avait aucun
+`@media`. Tout a été repris sur une seule base.
+
+### `css/design.css` : le système de design
+
+Nouveau fichier chargé **avant** tous les autres sur chaque page. Il
+contient les variables, la remise à zéro et ce qui est commun :
+
+| | |
+| --- | --- |
+| couleurs | une gamme de gris chauds (`--pierre-50` à `--pierre-900`) utilisée sous des noms de rôle : `--fond`, `--surface`, `--bord`, `--texte`, `--texte-2`… |
+| accent | une seule couleur, sobre : `--accent` (bleu ardoise) pour les liens, les boutons et les éléments actifs |
+| sens | `--succes`, `--attention`, `--danger`, chacun avec sa version douce pour les fonds de pastille |
+| texte | `--t-xs` à `--t-3xl` ; les petites tailles sont fixes (en `rem`), les titres fluides avec `clamp()` |
+| espacements | `--e-1` (0.25rem) à `--e-8` (4rem) |
+| arrondis | `--r-1` à `--r-4` et `--r-rond` |
+| ombres | `--o-1`, `--o-2`, `--o-3`, discrètes |
+| mise en page | `--h-tete` (barre du haut), `--l-barre` (colonne de gauche), `--l-max` |
+
+Pour changer l'allure du site entier, il suffit de modifier ces
+variables : aucune couleur ni taille n'est écrite en dur ailleurs.
+
+### Typographie
+
+Une seule famille, **Inter** (Google Fonts), avec une pile de secours
+système si la police ne se charge pas. La hiérarchie se fait à la
+graisse et à la taille, plus à la couleur :
+
+- les titres de section sont en capitales, petits, gris et espacés
+  (`--ls-maj`) ;
+- les titres de page utilisent l'échelle fluide ;
+- le texte courant est à 15 px avec un interlignage de 1.55.
+
+Avant, chaque feuille redéfinissait `font-size` en `vw` ; plus aucune
+feuille ne le fait.
+
+### Responsive
+
+Seuils : **1200 px**, **960 px**, **760 px**, **640 px**.
+
+- au-dessus de 960 px : barre du haut fixe, colonne de gauche fixe,
+  contenu décalé de `--l-barre` ;
+- en dessous : la colonne devient un bandeau posé au-dessus du contenu
+  (l'ordre du HTML le permettait déjà, rien n'a été déplacé) ;
+- les listes de produits sont des grilles `auto-fill` : elles passent
+  de quatre colonnes à une sans seuil à écrire ;
+- sur `suit_vue3.php`, la rangée « produit / commentaires / commandes »
+  passe de trois colonnes à deux puis à une ;
+- les tableaux de l'administration défilent horizontalement plutôt que
+  d'élargir la page ;
+- la page de connexion garde son animation de panneaux sur grand écran ;
+  en dessous de 860 px les `transform` écrits par le script sont annulés
+  et les deux panneaux se superposent.
+
+Vérifié : **aucun débordement horizontal** sur les 11 pages, de 320 px
+à 1600 px de large.
+
+### Autres changements
+
+- Les blocs `<style>` écrits dans les pages sont devenus de vraies
+  feuilles : `css/connexion.css`, `css/panier.css`, `css/profil.css`.
+- Les `style="…"` en `vw` dans le HTML ont été retirés. Le filtre de
+  type sélectionné utilise maintenant une classe `.actif`, et les
+  messages « il n'y a rien ici » la classe `.vide`.
+- `css/tete.css` et `css_v1/bar_vue1.css` pointaient vers `../photo/…`,
+  un dossier qui n'est pas envoyé en ligne : le bandeau utilise
+  maintenant une image de `images/`, et la capture d'écran qui servait
+  de fond de carte a été remplacée par un aplat.
+- Les formulaires du vendeur (modifier le profil, ajouter un produit)
+  ne s'ouvrent plus au survol : ils sont toujours visibles. Un survol
+  est impossible sur un écran tactile.
+- Les champs, boutons, pastilles d'état et messages ont la même allure
+  partout, décrite une seule fois dans `css/design.css`.
+
+### Ce qui n'a pas changé
+
+Aucun nom de classe ni d'identifiant n'a été renommé (sauf `#acceul`
+devenu `#accueil`), aucune requête ni aucun script n'a été modifié : les
+pages PHP n'ont vu que le retrait des `style=` et l'ajout des `<link>`.
+
 ## Pas encore fait (fonctionnalités jamais développées)
 
 Les boutons existent dans la maquette mais personne ne les a encore programmés :

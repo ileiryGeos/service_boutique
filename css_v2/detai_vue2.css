@@ -1,478 +1,570 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1.2vw;
-}
+/* ============================================================
+   PAGE D'UNE BOUTIQUE — ACHETEUR (suit_vue2.php)
+   ------------------------------------------------------------
+   Comme la page visiteur, plus ce que l'acheteur connecté peut
+   faire : « buy », étoile des favoris, écrire un commentaire et
+   lire ceux des autres.
+
+   Variables : css/design.css
+   ============================================================ */
 
 .detail {
-    background: wheat;
-    padding: 5.9vw 1vw 0 25vw;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .det1 {
     width: 100%;
-    border-radius: 1vw;
+    max-width: var(--l-max);
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--e-5);
 }
 
+
+/* ============================================================
+   BANDEAU DE LA BOUTIQUE
+   ============================================================ */
+
 .card_fondImage {
-    width: 100%;
     position: relative;
-    height: 30vw;
+    isolation: isolate;
+    width: 100%;
+    min-height: 16rem;
+    padding: var(--e-7) var(--e-5);
+    border-radius: var(--r-4);
+    overflow: hidden;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 1vw;
+    gap: var(--e-3);
 
-}
-
-
-.nom_bout {
-    z-index: 1;
-    font-size: 5vw;
-    color: yellow;
-    position: relative;
-    text-transform: uppercase;
-
-}
-
-.desc_box{
-    z-index: 1;
-    width: 60%;
-    color: wheat;
-    font-size: 1.5vw;
-    text-align: center;
-}
-
-.desc_box em {
-    font-size: 2vw;
-    color: orange;
-}
-
-.desc_box em b {
-    font-size: 2vw;
-    text-transform: uppercase;
-}
-
-.retour {
-    z-index: 1;
-    padding: .5vw;
-    border-radius: .5vw;
-    background: wheat;
-    text-transform: uppercase;
-    border: solid .1vw orangered;
-}
-
-.retour a {
-    color: orangered;
-    text-decoration: none;
-    font-weight: bold;
+    background: var(--pierre-800);
+    box-shadow: var(--o-2);
 }
 
 .fond {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    z-index: -2;
     width: 100%;
     height: 100%;
-    border-radius: 1vw;
-
-
+    object-fit: cover;
 }
 
 .fond_hr {
     position: absolute;
-    background: rgba(0, 0, 0, 0.425);
-    top: 0;
-    left: 0;
+    inset: 0;
+    z-index: -1;
     width: 100%;
     height: 100%;
-    border-radius: 1vw;
-
+    border: none;
+    background: linear-gradient(rgba(27, 24, 20, .58), rgba(27, 24, 20, .74));
 }
 
-.produit {
+.nom_bout {
+    margin: 0;
+    font-size: var(--t-3xl);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    text-align: center;
+    color: #ffffff;
+}
+
+.desc_box {
+    max-width: 44rem;
+    margin: 0;
+    font-size: var(--t-base);
+    text-align: center;
+    color: var(--pierre-200);
+}
+
+.desc_box em {
+    display: block;
+    margin-top: var(--e-2);
+    font-size: var(--t-base);
+    font-style: normal;
+    color: var(--pierre-300);
+}
+
+.desc_box em b {
+    font-size: var(--t-base);
+    font-weight: var(--gras-fort);
+    text-transform: none;
+    color: #ffffff;
+}
+
+.retour {
+    margin-top: var(--e-2);
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.retour a {
+    display: inline-block;
+    padding: var(--e-2) var(--e-5);
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-radius: var(--r-rond);
+    background: rgba(255, 255, 255, .1);
+    color: #ffffff;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    transition: background var(--tr), border-color var(--tr);
+}
+
+.retour a:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: var(--texte);
+}
+
+
+/* ============================================================
+   FILTRES PAR TYPE
+   ============================================================ */
+
+.bar_but {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    padding: 3vw;
-    justify-content: space-between;
+    gap: var(--e-2);
+    padding: 0;
 }
 
-
-.bar_but{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: .5vw;
-    
-}
-
-.but_type{
-    padding: .5vw 1vw;
-    width: 10vw;
-    border-radius: .5vw;
-    border: solid .1vw white;
-    background: moccasin;
+.but_type {
+    padding: 0;
+    width: auto;
+    border: none;
+    background: transparent;
 }
 
 .but_type a {
-    text-decoration: none;
-    color: blueviolet;
+    display: inline-block;
+    padding: var(--e-2) var(--e-4);
+    border: 1px solid var(--bord-fort);
+    border-radius: var(--r-rond);
+    background: var(--surface);
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
     text-transform: capitalize;
+    transition: background var(--tr), color var(--tr), border-color var(--tr);
 }
+
+.but_type a:hover {
+    border-color: var(--accent);
+    background: var(--accent-doux);
+    color: var(--accent-fort);
+}
+
+.but_type a.actif {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   GRILLE DES PRODUITS
+   ============================================================ */
+
+.produit {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: var(--e-5);
+    align-items: start;
+    padding: 0;
+}
+
+.produit > .vide { grid-column: 1 / -1; }
 
 .box_prox {
-    width: 20vw;
-    height: 24vw;
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 2vw;
-    position: relative;
-    overflow: hidden;
-    transition: 1s;
+    align-items: stretch;
+    height: auto;
+    overflow: visible;
 
+    border: 1px solid var(--bord);
+    border-radius: var(--r-3);
+    background: var(--surface);
+    box-shadow: var(--o-1);
+    transition: box-shadow var(--tr), border-color var(--tr);
 }
 
-.box_prox:hover{
-    border: solid .1vw white;
-    height: 30.5vw;
+.box_prox:hover {
+    border-color: var(--bord-fort);
+    box-shadow: var(--o-2);
 }
 
-.box_prox:hover .comments {
-    position: absolute;
-    left: 0;
-    top: -2.3vw;
-
-}
-
-.img_pr{
+.img_pr {
     width: 100%;
-    height: 15vw;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--r-3) var(--r-3) 0 0;
+    background: var(--surface-3);
 }
 
-
-.nom_pr{
+.nom_pr {
+    margin: var(--e-4) var(--e-4) 0;
+    padding-right: var(--e-6);   /* place pour l'étoile */
+    font-size: var(--t-md);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-titre);
     text-transform: capitalize;
-    font-size: 2vw;
-    color: yellow;
+    color: var(--texte);
 }
 
-.desc_pr{
-    color: blue;
-    text-align: center;
-    font-weight: lighter;
+.desc_pr {
+    margin: var(--e-2) var(--e-4) 0;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-normal);
+    text-align: left;
+    color: var(--texte-2);
 }
 
-.bay_pr{
+.desc_pr b {
+    font-weight: var(--gras-fort);
+    color: var(--texte);
+}
+
+.bay_pr {
     width: 100%;
-    padding: .5vw;
+    padding: var(--e-4);
     display: flex;
-    justify-content: space-between;
-
-}
-
-.prix_pr{
-    font-size: 2vw;
-    color: red;
-}
-
-.butbay{
-    padding: .2vw;
-    width: 5vw;
-    border-radius: .5vw;
-    border: solid .1vw red;
-    text-transform: capitalize;
-    color: yellowgreen;
-    background: yellow;
-}
-
-.comt{
-    margin-top: 1vw;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    position: relative;
-    transition: 1s;
-    /* background: red; */
-}
-
-.div_com{
-    width: 100%;
-    display: flex;
     justify-content: space-between;
-    align-items: start;
-    position: relative;
-
+    gap: var(--e-3);
 }
 
-.inp_com{
-    width: 90%;
-    border-radius: .5vw;
-    border: solid .1vw blue;
-    height: 3.5vw;
-    background: rgba(137, 43, 226, 0.192);
+.prix_pr {
+    margin: 0;
+    font-size: var(--t-lg);
+    font-weight: var(--gras-titre);
+    letter-spacing: var(--ls-titre);
+    color: var(--texte);
 }
 
-.but_com{
-    width: 9%;
-    box-shadow: 0 0 1vw blueviolet;
-    margin-bottom: .2vw;
-    border-radius: .5vw;
-    background: rgba(0, 0, 255, 0.89);
-    border: solid .1vw blue;
-    color: white;
+/* ---------- bouton « buy » ---------- */
 
+.butbay {
+    flex-shrink: 0;
+    width: auto;
+    padding: var(--e-2) var(--e-5);
+    border: 1px solid var(--accent);
+    border-radius: var(--r-2);
+    background: var(--accent);
+    color: #ffffff;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
 }
 
-.but_emj{
-    width: 9%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    box-shadow: 0 0 1vw blueviolet;
-    border-radius: .5vw;
-    background: wheat;
-    border: solid .1vw blue;
-    color: yellow;
-}
-.comt_rec{
-    width: 100%;
-    height: 5vw;
-    background: red;
-    position: absolute;
-    left: -19vw;
-    top: 0;
+.butbay:hover {
+    background: var(--accent-fort);
+    border-color: var(--accent-fort);
 }
 
-.pr_gros{
-    color: midnightblue;
+.butbay:disabled,
+.butbay:disabled:hover {
+    background: var(--surface-3);
+    border-color: var(--bord-fort);
+    color: var(--texte-3);
+}
+
+.pr_gros {
+    margin: 0;
+    font-size: var(--t-xs);
+    font-weight: var(--gras-normal);
+    color: var(--texte-3);
 }
 
 .pr_gros b {
-    color: red;
-}
-
-.comments{
-    padding: .3vw;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    align-items: center;
-    width: 101%;
-    height: 2.4vw;
-    overflow: hidden;
-    background: wheat;
-    border: solid .1vw white;
-    border-bottom: none;
-    transition: 1.5s;
-
-
-}
-
-.comments:hover {
-    border: solid .1vw blueviolet;
-    background: rgba(245, 222, 179, 0.89);
-    height: 33vw;
-    overflow-y: scroll;
-    border-radius: 1vw;
-
-}
-
-.coment_af{
-    color: orange;
-    background: wheat;
-    padding: .3vw;
-    border-radius: .3vw;
-
-
-}
-
-.boit_coments{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    /* background: red; */
+    font-weight: var(--gras-fort);
+    color: var(--texte-2);
 }
 
 
-.com_acht{
-    display: flex;
-    background: rgba(128, 128, 128, 0.253);
-    border: solid .1vw grey;
-    border-radius: .5vw;
+/* ============================================================
+   ÉTOILE DES FAVORIS (ajax/favori.js)
+   ------------------------------------------------------------
+   Coin haut-droit de la carte. Tout le coin est cliquable :
+   le triangle est dessiné par ::before, pas par un clip-path
+   sur le bouton (sinon les clics hors du triangle sont perdus).
+   ============================================================ */
 
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    padding: .5vw;
-    margin: .2vw;
-}
-
-.img_acht{
-    width: 3vw;
-    height: 3vw;
-    border-radius: 50%;
-    background: blueviolet;
-}
-
-.nd_acht{
-    width: 70%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border-bottom: solid .1vw white;
-}
-.nd_acht h3{
-    color: blue;
-    text-transform: capitalize;
-    /* background: red; */
-    width: 100%;
-}
-
-.nd_acht b{
-    color: grey;
-}
-.nd_acht button{
-    color: blue;
-    background: transparent;
-    border-radius: .5vw;
-    padding: .2vw;
-    border: solid .1vw blue;
-
-}
-
-.com_pra{
-    width: 100%;
-    /* background: teal; */
-}
-
-.fv{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 4vw;
-    height: 4vw;
-    background: orangered;
-    clip-path: polygon(0 0, 100% 100%, 100% 0);
-}
-
-.fvr{
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: .3vw;
-    width: 50%;
-    height: 50%;
-    background: white;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-}
-
-/* bouton "envoyer" du commentaire (à côté de "Qu'en pensez-vous ?") */
-.div_com .inp_com{
-    width: 70%;
-    padding: .3vw;
-}
-
-.but_envoyer{
-    width: 28%;
-    font-size: 1vw;
-    padding: .3vw;
-    border-radius: .5vw;
-    background: blue;
-    border: solid .1vw blue;
-    color: white;
-    font-weight: bold;
-    text-transform: capitalize;
-    cursor: pointer;
-}
-
-.but_envoyer:hover{
-    background: blueviolet;
-}
-
-
-/* ------------------------------------------------------------------
-   Carte produit entière visible, jusqu'aux commentaires
-   (avant : hauteur fixe + overflow hidden, les commentaires n'étaient
-   visibles qu'en survolant une bande de 2.4vw cachée sous la carte)
-   ------------------------------------------------------------------ */
-.produit {
-    align-items: flex-start;
-}
-
-.box_prox,
-.box_prox:hover {
-    height: auto;
-    padding-bottom: .5vw;
-}
-
-.box_prox:hover {
-    border: solid .1vw white;
-    border-radius: .5vw;
-}
-
-.box_prox:hover .comments {
-    position: static;
-}
-
-.comments,
-.comments:hover {
-    height: auto;
-    max-height: 18vw;
-    overflow-y: auto;
-    border-radius: .5vw;
-    margin-top: .5vw;
-}
-
-/* produit épuisé : bouton "buy" désactivé */
-.butbay:disabled {
-    background: lightgrey;
-    color: grey;
-    border-color: grey;
-}
-
-
-/* ------------------------------------------------------------------
-   Étoile ★ des produits = bouton favori (ajax/favori.js)
-   blanche : pas en favori / dorée : en favori
-   ------------------------------------------------------------------ */
-/* tout le coin est cliquable : le triangle est dessiné par ::before
-   (avec clip-path sur le bouton lui-même, un clic hors du triangle était perdu) */
 button.fv {
-    border: none;
-    padding: 0;
-    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
     z-index: 2;
-    clip-path: none;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 3rem;
+    height: 3rem;
+    padding: var(--e-2);
+
+    border: none;
+    border-radius: 0 var(--r-3) 0 0;
     background: transparent;
+    clip-path: none;
+    cursor: pointer;
 }
 
 button.fv::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: orangered;
-    clip-path: polygon(0 0, 100% 100%, 100% 0);
+    border-radius: 0 var(--r-3) 0 0;
+    background: linear-gradient(225deg, rgba(27, 24, 20, .55) 45%, transparent 45%);
+    transition: background var(--tr);
 }
 
-button.fv .fvr {
+/* l'étoile elle-même */
+.fvr {
+    position: relative;
     z-index: 1;
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    background: #ffffff;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transition: background var(--tr);
 }
 
-button.fv:hover .fvr {
-    background: yellow;
-}
-
-button.fv.en_favori .fvr {
-    background: gold;
-}
+button.fv:hover .fvr { background: var(--attention-doux); }
 
 button.fv.en_favori::before {
-    background: red;
+    background: linear-gradient(225deg, var(--or) 45%, transparent 45%);
+}
+
+button.fv.en_favori .fvr { background: #ffffff; }
+
+
+/* ============================================================
+   ÉCRIRE UN COMMENTAIRE
+   ============================================================ */
+
+.comt {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-3);
+    width: 100%;
+    margin: 0;
+    padding: 0 var(--e-4) var(--e-4);
+    border-top: 1px solid var(--bord);
+    padding-top: var(--e-4);
+}
+
+.div_com {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: var(--e-2);
+    width: 100%;
+}
+
+.inp_com {
+    flex: 1 1 100%;
+    width: 100% !important;
+    min-height: 3.5rem;
+    height: auto !important;
+    font-size: var(--t-sm) !important;
+    background: var(--surface-2) !important;
+}
+
+.but_envoyer {
+    width: auto;
+    margin-left: auto;
+    padding: var(--e-2) var(--e-4);
+    border: 1px solid var(--bord-fort);
+    border-radius: var(--r-2);
+    background: var(--surface);
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+    font-weight: var(--gras-moyen);
+    text-transform: capitalize;
+}
+
+.but_envoyer:hover {
+    border-color: var(--accent);
+    background: var(--accent-doux);
+    color: var(--accent-fort);
+}
+
+
+/* ============================================================
+   LISTE DES COMMENTAIRES
+   ============================================================ */
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-2);
+    width: 100%;
+    height: auto;
+    max-height: 17rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    margin: 0;
+    padding: var(--e-4);
+    border: none;
+    border-top: 1px solid var(--bord);
+    border-radius: 0 0 var(--r-3) var(--r-3);
+    background: var(--surface-2);
+}
+
+.comments::-webkit-scrollbar { width: 8px; }
+
+.comments::-webkit-scrollbar-thumb {
+    background: var(--bord-fort);
+    border-radius: var(--r-rond);
+}
+
+.coment_af {
+    position: sticky;
+    top: calc(var(--e-4) * -1);
+    margin: 0;
+    padding: var(--e-1) 0 var(--e-2);
+    background: var(--surface-2);
+    color: var(--texte-3);
+    font-size: var(--t-xs);
+    font-weight: var(--gras-fort);
+    letter-spacing: var(--ls-maj);
+    text-transform: uppercase;
+    border-radius: 0;
+}
+
+.boit_coments {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-2);
+    width: 100%;
+}
+
+.com_acht {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--e-1) var(--e-3);
+    margin: 0;
+    padding: var(--e-3);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-2);
+    background: var(--surface);
+}
+
+.img_acht {
+    grid-row: 1 / 3;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--surface-3);
+    border: 1px solid var(--bord);
+}
+
+.nd_acht {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--e-1) var(--e-2);
+    width: auto;
+    border: none;
+}
+
+.nd_acht h3 {
+    width: auto;
+    font-size: var(--t-sm);
+    font-weight: var(--gras-fort);
+    text-transform: capitalize;
+    color: var(--texte);
+}
+
+.nd_acht b {
+    font-size: var(--t-xs);
+    font-weight: var(--gras-normal);
+    color: var(--texte-3);
+}
+
+/* « like » : jamais programmé, on le laisse discret */
+.nd_acht button {
+    margin-left: auto;
+    padding: 0 var(--e-2);
+    border: 1px solid var(--bord);
+    border-radius: var(--r-rond);
+    background: transparent;
+    color: var(--texte-3);
+    font-size: var(--t-xs);
+}
+
+.com_pra {
+    grid-column: 2;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 960px) {
+
+    .card_fondImage {
+        min-height: 12rem;
+        padding: var(--e-6) var(--e-4);
+        border-radius: var(--r-3);
+    }
+
+    .produit {
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        gap: var(--e-4);
+    }
+}
+
+@media (max-width: 640px) {
+
+    .card_fondImage {
+        min-height: 9rem;
+        padding: var(--e-5) var(--e-3);
+    }
+
+    /* une seule colonne : la carte garde ses commentaires lisibles */
+    .produit {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--e-4);
+    }
+
+    .nom_pr  { margin: var(--e-3) var(--e-3) 0; font-size: var(--t-base); }
+    .desc_pr { margin: var(--e-1) var(--e-3) 0; }
+    .bay_pr  { padding: var(--e-3); }
+
+    .comt,
+    .comments { padding: var(--e-3); }
+
+    .comt { padding-top: var(--e-3); }
+
+    .comments { max-height: 14rem; }
+
+    .bar_but { gap: var(--e-1); }
+
+    .but_type a {
+        padding: var(--e-1) var(--e-3);
+        font-size: var(--t-xs);
+    }
 }
