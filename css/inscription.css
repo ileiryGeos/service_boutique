@@ -384,3 +384,16 @@ body { background: var(--fond); }
     .suivent,
     #fini { max-width: none; }
 }
+
+
+/* ============================================================
+   MARQUE V-STORE
+   ============================================================ */
+
+.marque_form {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: var(--e-2);
+    border-radius: var(--r-3);
+    box-shadow: var(--o-1);
+}

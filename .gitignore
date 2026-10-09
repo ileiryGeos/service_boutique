@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# Service Boutique - fichiers à ne pas mettre dans Git
+# V-STORE - fichiers à ne pas mettre dans Git
 # ------------------------------------------------------------
 
 # images/ : on garde seulement les images utilisées par le site
@@ -18,9 +18,14 @@ images/*
 !images/kara.jpg
 !images/logo 1.png
 !images/logo 2.jpg
-!images/logo.jpg
 !images/pdp.jpg
 !images/produit.jpg
+
+# logo et icones de V-STORE
+!images/logo.svg
+!images/favicon.svg
+!images/favicon-32.png
+!images/favicon-180.png
 
 # sauvegardes de base de données et fichiers système
 *.bak

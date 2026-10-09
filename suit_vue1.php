@@ -20,7 +20,10 @@ $produits = filtrer_par_type($produits);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>boîte</title>
+    <title>V-STORE</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/favicon-180.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -34,7 +37,7 @@ $produits = filtrer_par_type($produits);
 <body>
     <header id="tete1">
         <nav>
-            <a href="vue1.php" id="nom"><img src="images/logo.jpg" alt=""></a>
+            <a href="vue1.php" id="nom"><img src="images/logo.svg" alt="V-STORE"></a>
             <ul>
                 <!-- <li><a href="" class="gar"><i>parametre</i></a></li> -->
             </ul>

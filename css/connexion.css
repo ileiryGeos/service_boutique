@@ -116,7 +116,7 @@
     color: var(--pierre-200);
 }
 
-/* « service boutique » */
+/* « V-STORE » */
 .nboc {
     display: block;
     margin-top: var(--e-2);
@@ -300,4 +300,26 @@
 
     .fenoi,
     .butdm { max-width: none; }
+}
+
+
+/* ============================================================
+   MARQUE V-STORE
+   ------------------------------------------------------------
+   Le logo au-dessus du titre, dans les deux panneaux.
+   ============================================================ */
+
+.marque {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: var(--e-2);
+    border-radius: var(--r-3);
+    box-shadow: var(--o-2);
+}
+
+@media (max-width: 860px) {
+    .marque {
+        width: 3rem;
+        height: 3rem;
+    }
 }

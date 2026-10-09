@@ -69,7 +69,10 @@ function mois_francais(string $mois): string {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>administration</title>
+    <title>administration — V-STORE</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/favicon-180.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -80,6 +83,7 @@ function mois_francais(string $mois): string {
 <body>
 
     <header class="barre_admin">
+        <a href="vue1.php" class="marque_barre"><img src="images/logo.svg" alt="V-STORE"></a>
         <h1>administration</h1>
         <nav>
             <a href="#valider">à valider (<?= $resume["a_valider"] ?>)</a>

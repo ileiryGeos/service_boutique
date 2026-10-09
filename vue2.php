@@ -47,7 +47,10 @@ function e($value) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>boîte</title>
+    <title>V-STORE</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/favicon-180.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -61,7 +64,7 @@ function e($value) {
 <body>
     <header id="tete1">
         <nav>
-            <a href="vue2.php" id="nom"><img src="images/logo.jpg" alt=""></a>
+            <a href="vue2.php" id="nom"><img src="images/logo.svg" alt="V-STORE"></a>
             <ul>
                 <li><a href="vue2.php" class="gar"><i>accueil</i></a></li>
                 <li><a href="panier.php" class="gar"><i>panier (<span class="nb_panier"><?= $nb_panier ?></span>)</i></a></li>
@@ -205,7 +208,7 @@ function e($value) {
 
 
         <form class="tete" method="GET" action="vue2.php">
-            <h1 class="bout_nom">service box</h1>
+            <h1 class="bout_nom">V-STORE</h1>
             <div class="bar_rech">
                 <input type="search" class="inp_rech" name="search" value="<?= e($recherche) ?>" placeholder="Recherche ... " >
                 <button type="submit" class="but_rech"><i>rechercher</i></button>

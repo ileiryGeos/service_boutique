@@ -34,12 +34,13 @@
     height: 2.25rem;
     border-radius: var(--r-2);
     overflow: hidden;
-    border: 1px solid var(--bord);
-    background: var(--surface-3);
-    transition: border-color var(--tr);
+    transition: transform var(--tr), box-shadow var(--tr);
 }
 
-#nom:hover { border-color: var(--accent); }
+#nom:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--o-1);
+}
 
 #nom img {
     width: 100%;

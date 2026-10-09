@@ -1,6 +1,8 @@
-# Service Boutique — projet final (fusion)
+# V-STORE — projet final (fusion)
 
 Ce dossier réunit en **un seul projet** le travail de chaque membre du groupe.
+L'application s'appelle **V-STORE** ; le dossier, la base et le dépôt gardent
+leur nom technique `service_boutique`.
 Les dossiers d'origine n'ont pas été modifiés.
 
 ## Installation (WampServer)
@@ -415,14 +417,7 @@ Aucun nom de classe ni d'identifiant n'a été renommé (sauf `#acceul`
 devenu `#accueil`), aucune requête ni aucun script n'a été modifié : les
 pages PHP n'ont vu que le retrait des `style=` et l'ajout des `<link>`.
 
-## Pas encore fait (fonctionnalités jamais développées)
-
-Les boutons existent dans la maquette mais personne ne les a encore programmés :
-
-- paiement en ligne (les commandes sont payées à la livraison pour le moment) ;
-- « like » des commentaires.
-
-### Retirés de la barre du haut (11e passe)
+## Liens retirés de la barre du haut (11e passe)
 
 Le champ « langue » et le lien « aide et support » ne menaient nulle part :
 ils ont été retirés des six pages plutôt que de laisser des commandes
@@ -432,3 +427,67 @@ fichiers `header_vueN.css` en même temps.
 Sur les pages visiteur (`vue1.php`, `suit_vue1.php`) c'était tout ce que
 contenait la barre du haut : il n'y reste donc que le logo. Les liens
 vers la connexion et les inscriptions sont dans la colonne de gauche.
+
+## V-STORE : nom et logo (12e passe)
+
+L'application s'appelle désormais **V-STORE**. Avant, elle s'appelait
+« service boutique » dans les titres et « service box » dans le bandeau
+d'accueil — deux noms pour la même chose.
+
+### Ce qui a été renommé
+
+| où | avant | après |
+| --- | --- | --- |
+| bandeau d'accueil | `service box` | `V-STORE` |
+| page de connexion (3 endroits) | `service boutique` | `V-STORE` |
+| connexion de l'administrateur | `Service Boutique` | `V-STORE` |
+| titres des onglets | `boîte`, `panier`, `connexion`… | `V-STORE`, `mon panier — V-STORE`, `connexion — V-STORE`… |
+
+### Ce qui n'a PAS été renommé, et pourquoi
+
+Le dossier, la base de données, le dépôt GitHub et les fichiers `.sql`
+gardent le nom `service_boutique`. Les renommer casserait la base déjà
+importée chez l'hébergeur, le fichier `config/server.local.php` et
+l'adresse du dépôt, sans rien apporter : ce sont des noms techniques que
+personne ne voit sur le site.
+
+### Le logo
+
+Un monogramme **VS** : une tuile arrondie en dégradé (les deux bleus
+ardoise de la palette) avec le V et le S tracés en blanc.
+
+Le V et le S sont dessinés **au trait** (`<path>`), pas écrits avec une
+police. Le logo est donc identique partout, même si la police Inter ne
+se charge pas, et reste net à n'importe quelle taille.
+
+| fichier | rôle |
+| --- | --- |
+| `images/logo.svg` | le logo affiché dans les pages |
+| `images/favicon.svg` | même marque, lettres plus grandes et trait plus épais pour les petites tailles |
+| `images/favicon-32.png` | secours pour les navigateurs qui ignorent les favicons SVG |
+| `images/favicon-180.png` | icône d'écran d'accueil sur iPhone et iPad |
+
+Les deux PNG sont fabriqués à partir de la même géométrie par le script
+`faire_icones.php` (dessin en 4× puis réduction, ce qui lisse les
+bords) : ils ne peuvent pas se désynchroniser du SVG.
+
+### Où le logo apparaît
+
+- barre du haut des sept pages qui en ont une ;
+- page de connexion, au-dessus du titre de chacun des deux panneaux ;
+- carte de connexion de l'administrateur et barre de son tableau de bord ;
+- formulaires d'inscription de l'acheteur et de la boutique.
+
+Et dans l'onglet du navigateur, par trois `<link rel="icon">` posés sur
+les douze pages.
+
+`images/logo.jpg`, la photo qui servait de logo dans la barre du haut,
+n'est plus utilisée : elle est sortie de la liste des images envoyées en
+ligne.
+
+## Pas encore fait (fonctionnalités jamais développées)
+
+Les boutons existent dans la maquette mais personne ne les a encore programmés :
+
+- paiement en ligne (les commandes sont payées à la livraison pour le moment) ;
+- « like » des commentaires.

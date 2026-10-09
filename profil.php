@@ -193,7 +193,10 @@ $connexion->close();
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Inscription</title>
+    <title>créer mon compte — V-STORE</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/favicon-180.png">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -210,6 +213,7 @@ $connexion->close();
 
 <section class="sect-one">
 
+    <img src="images/logo.svg" alt="V-STORE" class="marque_form">
     <h2>Inscrivez-vous</h2>
 
 

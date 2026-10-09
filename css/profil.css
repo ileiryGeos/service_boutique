@@ -129,3 +129,16 @@ body > a {
 
     .sect-one h2 { font-size: var(--t-xl); }
 }
+
+
+/* ============================================================
+   MARQUE V-STORE
+   ============================================================ */
+
+.marque_form {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto var(--e-4);
+    border-radius: var(--r-3);
+    box-shadow: var(--o-1);
+}

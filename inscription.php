@@ -14,7 +14,10 @@ if(isset($_POST["enter"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>créer ma boutique</title>
+    <title>créer ma boutique — V-STORE</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/favicon-180.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -29,6 +32,7 @@ if(isset($_POST["enter"])){
 
         <!-- Étape 1 : inscription de la boutique (Zara) -->
         <form class="form_inscr" method="POST" enctype="multipart/form-data">
+            <img src="images/logo.svg" alt="V-STORE" class="marque_form">
             <label for="" class="nom_box">nom de votre boutique</label>
             <small>(il vous servira pour vous connecter, avec votre mot de passe)</small>
             <input type="text" class="inp_nom" name="boutname" required>
@@ -66,6 +70,7 @@ if(isset($_POST["enter"])){
 
         <!-- Étape 2 : ajout des produits de la boutique connectée (Steve) -->
         <form action="" class="form_inscr prod" id="form-produit">
+            <img src="images/logo.svg" alt="V-STORE" class="marque_form">
             <label for="type-prod" class="lab_prod">type de produit</label>
             <input type="text" id="type-prod" class="inp_prod" name="type" required>
 
