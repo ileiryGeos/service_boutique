@@ -1,8 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="V-STORE">
     <title>V-STORE</title>
 
-    <!-- Meme marque que images/logo.svg, mais lettres plus grandes et
-         trait plus epais : un favicon est souvent affiche a 16 px. -->
+    <!-- Version compacte de images/logo.svg : lettres plus grandes,
+         trait plus epais, PAS de chariot. A 16 px le chariot ne serait
+         qu'une tache : mieux vaut un VS parfaitement lisible. -->
 
     <defs>
         <linearGradient id="vs_fond_ico" x1="0" y1="0" x2="1" y2="1">
@@ -13,9 +14,9 @@
 
     <rect width="64" height="64" rx="12" fill="url(#vs_fond_ico)"/>
 
-    <g fill="none" stroke="#ffffff" stroke-width="8"
+    <g fill="none" stroke="#ffffff" stroke-width="9"
        stroke-linecap="round" stroke-linejoin="round">
         <path d="M 12 18 L 22 46 L 32 18"/>
-        <path d="M 52 23.5 C 52 16.5 38 16.5 38 24.5 C 38 32 52 32 52 39.5 C 52 47.5 38 47.5 38 40"/>
+        <path d="M 52 24 C 52 16.5 38 16.5 38 24.5 C 38 32 52 32 52 39.5 C 52 47.5 38 47.5 38 40"/>
     </g>
 </svg>

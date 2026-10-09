@@ -453,23 +453,38 @@ personne ne voit sur le site.
 
 ### Le logo
 
-Un monogramme **VS** : une tuile arrondie en dégradé (les deux bleus
-ardoise de la palette) avec le V et le S tracés en blanc.
+Un monogramme **VS** en blanc sur une tuile arrondie en dégradé (les deux
+bleus ardoise de la palette), avec un petit **chariot** laiton en bas à
+droite pour qu'on voie tout de suite qu'il s'agit d'une boutique.
 
-Le V et le S sont dessinés **au trait** (`<path>`), pas écrits avec une
-police. Le logo est donc identique partout, même si la police Inter ne
-se charge pas, et reste net à n'importe quelle taille.
+Le dessin vient d'une image produite par Gemini ; il a été **redessiné en
+vecteur** pour deux raisons : l'image d'origine était un JPG à fond blanc,
+dont les coins blancs se seraient vus sur le panneau sombre de la page de
+connexion, et un tracé vectoriel reste net à toutes les tailles.
 
-| fichier | rôle |
-| --- | --- |
-| `images/logo.svg` | le logo affiché dans les pages |
-| `images/favicon.svg` | même marque, lettres plus grandes et trait plus épais pour les petites tailles |
-| `images/favicon-32.png` | secours pour les navigateurs qui ignorent les favicons SVG |
-| `images/favicon-180.png` | icône d'écran d'accueil sur iPhone et iPad |
+Le V, le S et le chariot sont dessinés **au trait** (`<path>`), pas écrits
+avec une police : le logo est donc identique partout, même si la police
+Inter ne se charge pas.
 
-Les deux PNG sont fabriqués à partir de la même géométrie par le script
-`faire_icones.php` (dessin en 4× puis réduction, ce qui lisse les
-bords) : ils ne peuvent pas se désynchroniser du SVG.
+**Deux variantes**, parce qu'un chariot de 3 px n'est qu'une tache :
+
+| fichier | contenu | où |
+| --- | --- | --- |
+| `images/logo.svg` | VS + chariot | dans les pages, à 32 px et plus |
+| `images/favicon.svg` | VS seul, plus gros | onglet du navigateur |
+| `images/favicon-32.png` | VS seul | secours pour les navigateurs qui ignorent les favicons SVG |
+| `images/favicon-180.png` | VS + chariot | écran d'accueil sur iPhone et iPad |
+
+Les deux PNG sont fabriqués à partir de la **même géométrie** que les SVG
+par `outils/faire_icones.php` (dessin en 4× puis réduction, ce qui lisse
+les bords) : ils ne peuvent pas se désynchroniser. Pour les refaire après
+une retouche du logo :
+
+```
+php outils/faire_icones.php
+```
+
+Le dossier `outils/` n'est pas envoyé sur le site public.
 
 ### Où le logo apparaît
 

@@ -1,6 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="V-STORE">
     <title>V-STORE</title>
 
+    <!-- Marque complete : le monogramme VS et un chariot, pour les
+         tailles ou le chariot reste lisible (32 px et plus).
+         En dessous, utiliser images/favicon.svg : meme marque sans
+         le chariot. -->
+
     <defs>
         <linearGradient id="vs_fond" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#4a6a7d"/>
@@ -9,13 +14,19 @@
     </defs>
 
     <!-- la tuile -->
-    <rect width="64" height="64" rx="14" fill="url(#vs_fond)"/>
+    <rect width="64" height="64" rx="12" fill="url(#vs_fond)"/>
 
-    <!-- le V et le S sont dessines au trait : aucune police n'est
-         necessaire, le logo reste identique partout -->
-    <g fill="none" stroke="#ffffff" stroke-width="7"
+    <!-- V et S : traces au trait, aucune police n'est necessaire -->
+    <g fill="none" stroke="#ffffff" stroke-width="8"
        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M 13 19 L 23 45 L 33 19"/>
-        <path d="M 50 24.5 C 50 18.5 38 18.5 38 25.5 C 38 32 50 32 50 38.5 C 50 45.5 38 45.5 38 39"/>
+        <path d="M 13 17 L 22 41 L 31 17"/>
+        <path d="M 50 22 C 50 16.5 38 16.5 38 23 C 38 29 50 29 50 35 C 50 41.5 38 41.5 38 35.5"/>
+    </g>
+
+    <!-- le chariot : dit que c'est une boutique, sans voler la vedette -->
+    <g stroke="#a9834f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path fill="none" d="M 38 47.5 h 3.2 l 2.3 6.6 h 10.8 l 2.3 -5.4 h -13.8"/>
+        <circle cx="46.5" cy="57.2" r="1.5" fill="#a9834f" stroke="none"/>
+        <circle cx="53.8" cy="57.2" r="1.5" fill="#a9834f" stroke="none"/>
     </g>
 </svg>
