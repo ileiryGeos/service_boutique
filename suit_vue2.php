@@ -110,12 +110,9 @@ function e($value) {
         <nav>
             <a href="vue2.php" id="nom"><img src="images/logo.jpg" alt=""></a>
             <ul>
-                <!-- <li><a href="" class="gar"><i>langue</i></a></li> -->
                 <li><a href="vue2.php" class="gar"><i>accueil</i></a></li>
                 <li><a href="panier.php" class="gar"><i>panier (<span class="nb_panier"><?= $nb_panier ?></span>)</i></a></li>
-                <li><a href="" class="gar"><i>aide et support</i></a></li>
                 <li><a href="deconnexion.php" class="gar"><i>déconnexion</i></a></li>
-                <li><input type="text" class="gar langue" value="langue"></li>
             </ul>
         </nav>
     </header>

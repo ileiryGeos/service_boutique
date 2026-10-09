@@ -82,17 +82,6 @@
     border-color: var(--accent-bord);
 }
 
-/* le champ « langue » de la maquette : discret, pas un bouton */
-.langue {
-    width: 6rem;
-    padding: var(--e-1) var(--e-2);
-    font-size: var(--t-sm);
-    color: var(--texte-3);
-    background: var(--surface-2);
-    border-color: var(--bord);
-    text-align: center;
-}
-
 
 /* ============================================================
    RESPONSIVE
@@ -100,7 +89,6 @@
 
 @media (max-width: 960px) {
     #tete1 nav { padding: 0 var(--e-4); }
-    .langue { display: none; }
 }
 
 @media (max-width: 640px) {

@@ -99,12 +99,9 @@
         <nav>
             <a href="vue3.php" id="nom"><img src="images/logo.jpg" alt=""></a>
             <ul>
-                <!-- <li><a href="" class="gar"><i>langue</i></a></li> -->
                 <li><a href="vue3.php#commandes" class="gar"><i>commandes</i></a></li>
-                <li><a href="" class="gar"><i>aide et support</i></a></li>
                 <!-- afaka manova : entent que ... -->
                 <li><a href="deconnexion.php" class="gar"><i>déconnexion</i></a></li>
-                <li><input type="text" class="gar langue" value="langue"></li>
             </ul>
         </nav>
     </header>

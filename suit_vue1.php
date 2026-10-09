@@ -36,10 +36,7 @@ $produits = filtrer_par_type($produits);
         <nav>
             <a href="vue1.php" id="nom"><img src="images/logo.jpg" alt=""></a>
             <ul>
-                <!-- <li><a href="" class="gar"><i>langue</i></a></li> -->
-                <li><a href="" class="gar"><i>aide et support</i></a></li>
                 <!-- <li><a href="" class="gar"><i>parametre</i></a></li> -->
-                <li><input type="text" class="gar langue" value="langue"></li>
             </ul>
         </nav>
     </header>

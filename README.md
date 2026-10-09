@@ -420,6 +420,15 @@ pages PHP n'ont vu que le retrait des `style=` et l'ajout des `<link>`.
 Les boutons existent dans la maquette mais personne ne les a encore programmés :
 
 - paiement en ligne (les commandes sont payées à la livraison pour le moment) ;
-- « like » des commentaires ;
-- choix de la langue ;
-- page « aide et support ».
+- « like » des commentaires.
+
+### Retirés de la barre du haut (11e passe)
+
+Le champ « langue » et le lien « aide et support » ne menaient nulle part :
+ils ont été retirés des six pages plutôt que de laisser des commandes
+mortes à l'écran. Le style du champ « langue » a été retiré des trois
+fichiers `header_vueN.css` en même temps.
+
+Sur les pages visiteur (`vue1.php`, `suit_vue1.php`) c'était tout ce que
+contenait la barre du haut : il n'y reste donc que le logo. Les liens
+vers la connexion et les inscriptions sont dans la colonne de gauche.
